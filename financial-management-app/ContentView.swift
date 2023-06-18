@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  financial-management-app
 //
-//  Created by Thanapat Ussawanarong on 18/6/2566 BE.
+//  Created by Thanapat Ussawanarong on 18/6/2566 BE.a
 //
 
 import SwiftUI
