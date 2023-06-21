@@ -34,7 +34,7 @@ struct CustomTextField: View {
                             .padding(.horizontal, 8)
                             .foregroundColor(Color("color-5"))
                             .background(Color("color-1"))
-                            .offset(x: 16, y: -28)
+                            .offset(x: 12, y: -28)
 
                         // Placeholder
                         if text == "" && !isFocus {

@@ -76,12 +76,12 @@ struct ContentView: View {
                     HeadingView()
                     
                     Spacer()
-                    
+
                     FormView()
                     
                     Spacer()
                 }
-                .padding(.horizontal, 36)
+                .padding(.horizontal, 24)
             }
         }
     }

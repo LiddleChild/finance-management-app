@@ -13,10 +13,12 @@ struct CustomSecondaryButton: View {
     let callback: () -> ()
     
     var body: some View {
-        Button(label) {
+        Button() {
             callback()
+        } label: {
+            Text(label)
+                .font(.system(size: 16, weight: .regular))
+                .foregroundColor(Color("color-4"))
         }
-        .font(.system(size: 16, weight: .regular))
-        .foregroundColor(Color("color-4"))
     }
 }
