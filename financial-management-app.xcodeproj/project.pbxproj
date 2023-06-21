@@ -11,13 +11,12 @@
 		697029792A3EFE8F00A59EE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029782A3EFE8F00A59EE2 /* ContentView.swift */; };
 		6970297B2A3EFE9000A59EE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6970297A2A3EFE9000A59EE2 /* Assets.xcassets */; };
 		6970297E2A3EFE9000A59EE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6970297D2A3EFE9000A59EE2 /* Preview Assets.xcassets */; };
-		697029872A41700000A59EE2 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029862A41700000A59EE2 /* CustomTextfield.swift */; };
-		699DFC922A4175D400B64C8C /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC912A4175D400B64C8C /* CustomSecureField.swift */; };
+		697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029862A41700000A59EE2 /* TextfieldModifier.swift */; };
 		699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC932A41762300B64C8C /* FocusablePadding.swift */; };
-		699DFC982A42A18C00B64C8C /* CustomPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC972A42A18C00B64C8C /* CustomPrimaryButton.swift */; };
-		699DFC9A2A42A47100B64C8C /* CustomSecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC992A42A47100B64C8C /* CustomSecondaryButton.swift */; };
-		699DFC9E2A42C15700B64C8C /* CustomNavigationPrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC9D2A42C15600B64C8C /* CustomNavigationPrimaryButton.swift */; };
-		699DFCA02A42C40600B64C8C /* CustomNavigationSecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC9F2A42C40600B64C8C /* CustomNavigationSecondaryButton.swift */; };
+		699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCA92A42EA0200B64C8C /* LoginView.swift */; };
+		699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */; };
+		699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */; };
+		699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCB02A42F5E800B64C8C /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,13 +25,12 @@
 		697029782A3EFE8F00A59EE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6970297A2A3EFE9000A59EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6970297D2A3EFE9000A59EE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		697029862A41700000A59EE2 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
-		699DFC912A4175D400B64C8C /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		697029862A41700000A59EE2 /* TextfieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldModifier.swift; sourceTree = "<group>"; };
 		699DFC932A41762300B64C8C /* FocusablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusablePadding.swift; sourceTree = "<group>"; };
-		699DFC972A42A18C00B64C8C /* CustomPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPrimaryButton.swift; sourceTree = "<group>"; };
-		699DFC992A42A47100B64C8C /* CustomSecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecondaryButton.swift; sourceTree = "<group>"; };
-		699DFC9D2A42C15600B64C8C /* CustomNavigationPrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationPrimaryButton.swift; sourceTree = "<group>"; };
-		699DFC9F2A42C40600B64C8C /* CustomNavigationSecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationSecondaryButton.swift; sourceTree = "<group>"; };
+		699DFCA92A42EA0200B64C8C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonModifier.swift; sourceTree = "<group>"; };
+		699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonModifier.swift; sourceTree = "<group>"; };
+		699DFCB02A42F5E800B64C8C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +63,11 @@
 		697029752A3EFE8F00A59EE2 /* financial-management-app */ = {
 			isa = PBXGroup;
 			children = (
-				699DFC9C2A42C0EA00B64C8C /* CustomModifiers */,
-				699DFC9B2A42C0AD00B64C8C /* CustomComponents */,
-				697029762A3EFE8F00A59EE2 /* financial_management_appApp.swift */,
+				699DFCA12A42CD3500B64C8C /* App */,
+				699DFCA32A42CD4300B64C8C /* Core */,
+				699DFCA42A42CD5200B64C8C /* Extensions */,
+				699DFCA52A42CD5800B64C8C /* Model */,
+				699DFCA62A42CD6100B64C8C /* Services */,
 				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
 				6970297A2A3EFE9000A59EE2 /* Assets.xcassets */,
 				6970297C2A3EFE9000A59EE2 /* Preview Content */,
@@ -83,25 +83,62 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		699DFC9B2A42C0AD00B64C8C /* CustomComponents */ = {
+		699DFCA12A42CD3500B64C8C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				697029862A41700000A59EE2 /* CustomTextfield.swift */,
-				699DFC912A4175D400B64C8C /* CustomSecureField.swift */,
-				699DFC972A42A18C00B64C8C /* CustomPrimaryButton.swift */,
-				699DFC992A42A47100B64C8C /* CustomSecondaryButton.swift */,
-				699DFC9D2A42C15600B64C8C /* CustomNavigationPrimaryButton.swift */,
-				699DFC9F2A42C40600B64C8C /* CustomNavigationSecondaryButton.swift */,
+				697029762A3EFE8F00A59EE2 /* financial_management_appApp.swift */,
 			);
-			path = CustomComponents;
+			path = App;
 			sourceTree = "<group>";
 		};
-		699DFC9C2A42C0EA00B64C8C /* CustomModifiers */ = {
+		699DFCA32A42CD4300B64C8C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				699DFCAB2A42EA7600B64C8C /* Components */,
+				699DFCA82A42E9F000B64C8C /* Auth */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		699DFCA42A42CD5200B64C8C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		699DFCA52A42CD5800B64C8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		699DFCA62A42CD6100B64C8C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		699DFCA82A42E9F000B64C8C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				699DFCA92A42EA0200B64C8C /* LoginView.swift */,
+				699DFCB02A42F5E800B64C8C /* RegisterView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		699DFCAB2A42EA7600B64C8C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				699DFC932A41762300B64C8C /* FocusablePadding.swift */,
+				697029862A41700000A59EE2 /* TextfieldModifier.swift */,
+				699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */,
+				699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */,
 			);
-			path = CustomModifiers;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,15 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				699DFC922A4175D400B64C8C /* CustomSecureField.swift in Sources */,
-				699DFC9E2A42C15700B64C8C /* CustomNavigationPrimaryButton.swift in Sources */,
 				697029792A3EFE8F00A59EE2 /* ContentView.swift in Sources */,
-				699DFC982A42A18C00B64C8C /* CustomPrimaryButton.swift in Sources */,
 				697029772A3EFE8F00A59EE2 /* financial_management_appApp.swift in Sources */,
-				699DFCA02A42C40600B64C8C /* CustomNavigationSecondaryButton.swift in Sources */,
-				699DFC9A2A42A47100B64C8C /* CustomSecondaryButton.swift in Sources */,
+				699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */,
+				699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */,
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,
-				697029872A41700000A59EE2 /* CustomTextfield.swift in Sources */,
+				699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */,
+				699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */,
+				697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
