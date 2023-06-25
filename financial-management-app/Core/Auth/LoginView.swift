@@ -60,6 +60,7 @@ private struct FormView: View {
                 
                 NavigationLink {
                     RegisterView()
+                        .modifier(NagivationDismissModier())
                         .navigationBarBackButtonHidden(true)
                 } label: {
                     Text("Create an Account").modifier(SecondaryButtonModifier())

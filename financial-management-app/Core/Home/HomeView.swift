@@ -23,7 +23,7 @@ private struct HeadingView: View {
     }
 }
 
-struct HomeView: View {
+private struct QuickSummaryView: View {
     let data = [
         (0.45, Color(hex: 0x128000)),
         (1.0, Color(hex: 0x900000)),
@@ -31,27 +31,47 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
+            PieChartView(data: data)
             
-            VStack(alignment: .center) {
-                HeadingView()
-                    .padding(.bottom, 48)
-                
+            NavigationLink {
+                HistoryView()
+                    .modifier(NagivationDismissModier())
+                    .navigationBarBackButtonHidden(true)
+            } label: {
                 ZStack {
-                    PieChartView(data: data)
-                    
                     Circle()
                         .foregroundColor(Color("color-2"))
                         .frame(width: 216, height: 216)
-//
-                    Text("12,345.67")
-                        .font(.system(size: 24, weight: .regular))
-                        .foregroundColor(Color("color-5"))
+                    
+                    VStack(spacing: 4) {
+                        Text("12,345.67")
+                            .font(.system(size: 24, weight: .regular))
+                    }
                 }
             }
-            .padding(.horizontal, 24)
+            .accentColor(Color("color-5"))
+        }
+    }
+}
+
+struct HomeView: View {
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Rectangle()
+                    .fill(Color("color-1"))
+                    .ignoresSafeArea()
+                
+                VStack(alignment: .center) {
+                    HeadingView()
+                        .padding(.bottom, 48)
+                    
+                    QuickSummaryView()
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 24)
+            }
         }
     }
 }

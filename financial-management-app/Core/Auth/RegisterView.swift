@@ -76,17 +76,6 @@ struct RegisterView: View {
             }
             .padding(.horizontal, 24)
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Image(systemName: "chevron.left")
-                    .imageScale(.large)
-                    .foregroundColor(Color("color-5"))
-                    .padding()
-                    .onTapGesture {
-                        dismiss()
-                    }
-            }
-        }
     }
 }
 
