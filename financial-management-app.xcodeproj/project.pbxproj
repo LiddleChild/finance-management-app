@@ -12,6 +12,9 @@
 		6970297B2A3EFE9000A59EE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6970297A2A3EFE9000A59EE2 /* Assets.xcassets */; };
 		6970297E2A3EFE9000A59EE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6970297D2A3EFE9000A59EE2 /* Preview Assets.xcassets */; };
 		697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029862A41700000A59EE2 /* TextfieldModifier.swift */; };
+		6988F43B2A481BD100EAEACE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F43A2A481BD100EAEACE /* HomeView.swift */; };
+		6988F43D2A48323300EAEACE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F43C2A48323300EAEACE /* Color.swift */; };
+		6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F43E2A4864EA00EAEACE /* PieChartView.swift */; };
 		699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC932A41762300B64C8C /* FocusablePadding.swift */; };
 		699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCA92A42EA0200B64C8C /* LoginView.swift */; };
 		699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */; };
@@ -26,6 +29,9 @@
 		6970297A2A3EFE9000A59EE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6970297D2A3EFE9000A59EE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		697029862A41700000A59EE2 /* TextfieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldModifier.swift; sourceTree = "<group>"; };
+		6988F43A2A481BD100EAEACE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6988F43C2A48323300EAEACE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		6988F43E2A4864EA00EAEACE /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		699DFC932A41762300B64C8C /* FocusablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusablePadding.swift; sourceTree = "<group>"; };
 		699DFCA92A42EA0200B64C8C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonModifier.swift; sourceTree = "<group>"; };
@@ -83,6 +89,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		6988F4392A481BB700EAEACE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6988F43A2A481BD100EAEACE /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		699DFCA12A42CD3500B64C8C /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				699DFCAB2A42EA7600B64C8C /* Components */,
+				6988F4392A481BB700EAEACE /* Home */,
 				699DFCA82A42E9F000B64C8C /* Auth */,
 			);
 			path = Core;
@@ -103,6 +118,7 @@
 		699DFCA42A42CD5200B64C8C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6988F43C2A48323300EAEACE /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -137,6 +153,7 @@
 				697029862A41700000A59EE2 /* TextfieldModifier.swift */,
 				699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */,
 				699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */,
+				6988F43E2A4864EA00EAEACE /* PieChartView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,14 +228,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6988F43B2A481BD100EAEACE /* HomeView.swift in Sources */,
 				697029792A3EFE8F00A59EE2 /* ContentView.swift in Sources */,
 				697029772A3EFE8F00A59EE2 /* financial_management_appApp.swift in Sources */,
 				699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */,
+				6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */,
 				699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */,
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,
 				699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */,
 				699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */,
 				697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */,
+				6988F43D2A48323300EAEACE /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
