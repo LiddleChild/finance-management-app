@@ -13,6 +13,7 @@ struct NagivationDismissModier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
+            .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Image(systemName: "chevron.left")

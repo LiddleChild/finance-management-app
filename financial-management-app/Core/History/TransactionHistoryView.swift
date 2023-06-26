@@ -7,9 +7,31 @@
 
 import SwiftUI
 
+private struct HeadingView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Transaction History")
+                .font(.system(size: 48, weight: .bold))
+                .foregroundColor(Color("color-5"))
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
 struct TransactionHistoryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Rectangle()
+                .fill(Color("color-1"))
+                .ignoresSafeArea()
+            
+            
+            VStack(alignment: .center) {
+                HeadingView()
+                    .padding(.bottom, 48)
+            }
+            .padding(.horizontal, 24)
+        }
     }
 }
 

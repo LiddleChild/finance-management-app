@@ -36,7 +36,6 @@ private struct QuickSummaryView: View {
             NavigationLink {
                 HistoryView()
                     .modifier(NagivationDismissModier())
-                    .navigationBarBackButtonHidden(true)
             } label: {
                 ZStack {
                     Circle()

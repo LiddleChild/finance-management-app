@@ -19,30 +19,39 @@ private struct HeadingView: View {
 }
 
 private struct TransactionView: View {
+    var transaction: TransactionModel
+    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(Color("color-2"))
-                .frame(height: 56)
-            
-            HStack {
-                Text("Transfer")
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundColor(Color("color-5"))
+        NavigationLink {
+            TransactionHistoryView()
+                .modifier(NagivationDismissModier())
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(Color("color-2"))
+                    .frame(height: 56)
                 
-                Spacer()
-                
-                Text("+10,000 THB")
-                    .multilineTextAlignment(.trailing)
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundColor(Color(hex: 0x00FF77))
+                HStack {
+                    Text("\(transaction.category)")
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundColor(Color("color-5"))
+                    
+                    Spacer()
+                    
+                    Text(String(format: "%.2f THB", transaction.amount))
+                        .multilineTextAlignment(.trailing)
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundColor(Color(hex: transaction.amount > 0 ? 0x00FF77 : 0xDB4325))
+                }
+                .padding(.horizontal, 12)
             }
-            .padding(.horizontal, 12)
         }
     }
 }
 
 private struct DayView: View {
+    var dayTransaction: DayTransactionModel
+    
     var body: some View {
         VStack {
             ZStack(alignment: .leading) {
@@ -50,16 +59,18 @@ private struct DayView: View {
                     .frame(height: 1)
                     .foregroundColor(Color("color-5"))
                 
-                Text("18 Jun 2023")
-                    .padding(.horizontal, 8)
-                    .foregroundColor(Color("color-5"))
-                    .background(Color("color-1"))
-                    .padding(.leading, 24)
+                Text(Date(timeIntervalSince1970:Double(dayTransaction.timestamp))
+                    .formatted(.dateTime.day().month().year())
+                )
+                .padding(.horizontal, 8)
+                .foregroundColor(Color("color-5"))
+                .background(Color("color-1"))
+                .padding(.leading, 24)
             }
             
             VStack(spacing: 4) {
-                ForEach((0...2), id: \.self) { i in
-                    TransactionView()
+                ForEach(dayTransaction.transactions, id: \.id) { i in
+                    TransactionView(transaction: i)
                 }
             }
         }
@@ -67,6 +78,29 @@ private struct DayView: View {
 }
 
 struct HistoryView: View {
+    let dummy: [DayTransactionModel] = [
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(id: "1", category: "Transfer", amount: 12345.67),
+            .init(id: "2", category: "Supermarket", amount: -1000),
+        ]),
+        .init(id: "2", timestamp: 1687651200, transactions: [
+            .init(id: "1", category: "Transfer", amount: 123),
+            .init(id: "2", category: "Transport", amount: -500),
+        ]),
+        .init(id: "3", timestamp: 1687651200, transactions: [
+            .init(id: "1", category: "Transfer", amount: 123),
+            .init(id: "2", category: "Transport", amount: -500),
+        ]),
+        .init(id: "4", timestamp: 1687651200, transactions: [
+            .init(id: "1", category: "Transfer", amount: 123),
+            .init(id: "2", category: "Transport", amount: -500),
+        ]),
+        .init(id: "5", timestamp: 1687651200, transactions: [
+            .init(id: "1", category: "Transfer", amount: 123),
+            .init(id: "2", category: "Transport", amount: -500),
+        ]),
+    ]
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -79,8 +113,8 @@ struct HistoryView: View {
                         .padding(.bottom, 48)
                     
                     VStack(spacing: 16) {
-                        ForEach((0...2), id: \.self) { i in
-                            DayView()
+                        ForEach(dummy, id: \.id) { i in
+                            DayView(dayTransaction: i)
                         }
                     }
                 }

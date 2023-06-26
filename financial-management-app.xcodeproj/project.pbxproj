@@ -17,6 +17,9 @@
 		6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F43E2A4864EA00EAEACE /* PieChartView.swift */; };
 		6988F4422A4869A100EAEACE /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F4412A4869A100EAEACE /* HistoryView.swift */; };
 		6988F4442A48703A00EAEACE /* NavigationDismissModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F4432A48703A00EAEACE /* NavigationDismissModifier.swift */; };
+		6988F4462A4947C700EAEACE /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F4452A4947C700EAEACE /* TransactionModel.swift */; };
+		6988F4482A494BF100EAEACE /* DayTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F4472A494BF100EAEACE /* DayTransactionModel.swift */; };
+		6988F44A2A4954AD00EAEACE /* TransactionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988F4492A4954AD00EAEACE /* TransactionHistoryView.swift */; };
 		699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFC932A41762300B64C8C /* FocusablePadding.swift */; };
 		699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCA92A42EA0200B64C8C /* LoginView.swift */; };
 		699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */; };
@@ -36,6 +39,9 @@
 		6988F43E2A4864EA00EAEACE /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		6988F4412A4869A100EAEACE /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		6988F4432A48703A00EAEACE /* NavigationDismissModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDismissModifier.swift; sourceTree = "<group>"; };
+		6988F4452A4947C700EAEACE /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		6988F4472A494BF100EAEACE /* DayTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTransactionModel.swift; sourceTree = "<group>"; };
+		6988F4492A4954AD00EAEACE /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryView.swift; sourceTree = "<group>"; };
 		699DFC932A41762300B64C8C /* FocusablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusablePadding.swift; sourceTree = "<group>"; };
 		699DFCA92A42EA0200B64C8C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		699DFCAC2A42F2A900B64C8C /* PrimaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonModifier.swift; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				6988F4412A4869A100EAEACE /* HistoryView.swift */,
+				6988F4492A4954AD00EAEACE /* TransactionHistoryView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -120,8 +127,8 @@
 		699DFCA32A42CD4300B64C8C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				6988F4402A48697C00EAEACE /* History */,
 				699DFCAB2A42EA7600B64C8C /* Components */,
+				6988F4402A48697C00EAEACE /* History */,
 				6988F4392A481BB700EAEACE /* Home */,
 				699DFCA82A42E9F000B64C8C /* Auth */,
 			);
@@ -139,6 +146,8 @@
 		699DFCA52A42CD5800B64C8C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6988F4452A4947C700EAEACE /* TransactionModel.swift */,
+				6988F4472A494BF100EAEACE /* DayTransactionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,14 +251,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6988F4482A494BF100EAEACE /* DayTransactionModel.swift in Sources */,
 				6988F43B2A481BD100EAEACE /* HomeView.swift in Sources */,
 				6988F4422A4869A100EAEACE /* HistoryView.swift in Sources */,
 				697029792A3EFE8F00A59EE2 /* ContentView.swift in Sources */,
 				697029772A3EFE8F00A59EE2 /* financial_management_appApp.swift in Sources */,
+				6988F4462A4947C700EAEACE /* TransactionModel.swift in Sources */,
 				699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */,
 				6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */,
 				699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */,
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,
+				6988F44A2A4954AD00EAEACE /* TransactionHistoryView.swift in Sources */,
 				699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */,
 				699DFCAA2A42EA0200B64C8C /* LoginView.swift in Sources */,
 				697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */,
