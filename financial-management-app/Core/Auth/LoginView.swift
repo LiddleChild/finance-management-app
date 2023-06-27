@@ -80,7 +80,7 @@ struct LoginView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
-                    HeadingView()
+                    HeaderView(header: "Good Evening!", subheader: "Sign in to your Account")
                         .padding(.bottom, 128)
                     
                     FormView()

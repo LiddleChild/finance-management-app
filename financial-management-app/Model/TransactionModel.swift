@@ -13,4 +13,5 @@ struct TransactionModel: Hashable {
     var wallet: String
     var amount: Float
     var note: String
+    var timestamp: Int64
 }

@@ -7,21 +7,6 @@
 
 import SwiftUI
 
-private struct HeadingView: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Create your Account")
-                .font(.system(size: 40, weight: .bold))
-                .foregroundColor(Color("color-5"))
-                .padding(.bottom, 8)
-            
-            Text("Please fill your information")
-                .font(.system(size: 16, weight: .light))
-                .foregroundColor(Color("color-5"))
-        }
-    }
-}
-
 private struct FormView: View {
     @State var nameField: String = ""
     @State var emailField: String = ""
@@ -60,7 +45,7 @@ struct RegisterView: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 20) {
-                HeadingView()
+                HeaderView(header: "Create your Account", subheader: "Please fill your information")
                     .padding(.bottom, 64)
                 
                 // Textfields

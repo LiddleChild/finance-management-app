@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-private struct HeadingView: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Hello,")
-                .font(.system(size: 48, weight: .bold))
-                .foregroundColor(Color("color-5"))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Text("Gaben Newell")
-                .font(.system(size: 24, weight: .light))
-                .foregroundColor(Color("color-5"))
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-}
-
 private struct QuickSummaryView: View {
     let data = [
         (0.45, Color(hex: 0x128000)),
@@ -62,7 +46,7 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .center) {
-                    HeadingView()
+                    HeaderView(header: "Hello,", subheader: "Gaben Newell")
                         .padding(.bottom, 48)
                     
                     QuickSummaryView()
@@ -71,6 +55,7 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 24)
             }
+            .toolbar(.visible)
         }
     }
 }

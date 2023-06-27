@@ -7,23 +7,12 @@
 
 import SwiftUI
 
-private struct HeadingView: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("History")
-                .font(.system(size: 48, weight: .bold))
-                .foregroundColor(Color("color-5"))
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-}
-
 private struct TransactionView: View {
     var transaction: TransactionModel
     
     var body: some View {
         NavigationLink {
-            TransactionHistoryView()
+            TransactionHistoryView(transaction: transaction)
                 .modifier(NagivationDismissModier())
         } label: {
             ZStack {
@@ -81,45 +70,39 @@ struct HistoryView: View {
     let dummy: [DayTransactionModel] = [
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "A note", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
         .init(id: "1", timestamp: 1687737600, transactions: [
             .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
+                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
             .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: ""),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: ""),
+                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
         ]),
     ]
     
@@ -131,7 +114,7 @@ struct HistoryView: View {
             
             ScrollView {
                 VStack(alignment: .center) {
-                    HeadingView()
+                    HeaderView(header: "History")
                         .padding(.bottom, 48)
                     
                     VStack(spacing: 16) {
@@ -143,11 +126,15 @@ struct HistoryView: View {
                 .padding(.horizontal, 24)
             }
         }
+        .toolbarBackground(Color("color-1"), for: .navigationBar)
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        NavigationStack {
+            HistoryView()
+                .navigationBarHidden(false)
+        }
     }
 }
