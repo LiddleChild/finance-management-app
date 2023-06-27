@@ -67,45 +67,6 @@ private struct DayView: View {
 }
 
 struct HistoryView: View {
-    let dummy: [DayTransactionModel] = [
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "A note", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-        .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(transactionId: "1", category: "Transfer",
-                  wallet: "kbank", amount: 12345.67, note: "", timestamp: 1687737600),
-            .init(transactionId: "2", category: "Transfer",
-                  wallet: "scb", amount: -12345.67, note: "", timestamp: 1687737600),
-        ]),
-    ]
-    
     var body: some View {
         ZStack {
             Rectangle()
@@ -118,7 +79,7 @@ struct HistoryView: View {
                         .padding(.bottom, 48)
                     
                     VStack(spacing: 16) {
-                        ForEach(dummy, id: \.id) { i in
+                        ForEach(TransactionModel.dummy, id: \.id) { i in
                             DayView(dayTransaction: i)
                         }
                     }

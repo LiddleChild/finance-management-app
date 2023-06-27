@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+final class TransactionViewModel: ObservableObject {
+    @Published var transactionLists: [TransactionModel] = []
+    
+    func getTransaction() {
+        
+    }
+}
