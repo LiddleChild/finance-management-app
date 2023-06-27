@@ -8,7 +8,9 @@
 import Foundation
 
 struct TransactionModel: Hashable {
-    var id: String
+    var transactionId: String
     var category: String
+    var wallet: String
     var amount: Float
+    var note: String
 }

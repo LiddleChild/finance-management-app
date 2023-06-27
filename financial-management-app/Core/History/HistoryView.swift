@@ -69,7 +69,7 @@ private struct DayView: View {
             }
             
             VStack(spacing: 4) {
-                ForEach(dayTransaction.transactions, id: \.id) { i in
+                ForEach(dayTransaction.transactions, id: \.transactionId) { i in
                     TransactionView(transaction: i)
                 }
             }
@@ -80,24 +80,46 @@ private struct DayView: View {
 struct HistoryView: View {
     let dummy: [DayTransactionModel] = [
         .init(id: "1", timestamp: 1687737600, transactions: [
-            .init(id: "1", category: "Transfer", amount: 12345.67),
-            .init(id: "2", category: "Supermarket", amount: -1000),
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
         ]),
-        .init(id: "2", timestamp: 1687651200, transactions: [
-            .init(id: "1", category: "Transfer", amount: 123),
-            .init(id: "2", category: "Transport", amount: -500),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
         ]),
-        .init(id: "3", timestamp: 1687651200, transactions: [
-            .init(id: "1", category: "Transfer", amount: 123),
-            .init(id: "2", category: "Transport", amount: -500),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
         ]),
-        .init(id: "4", timestamp: 1687651200, transactions: [
-            .init(id: "1", category: "Transfer", amount: 123),
-            .init(id: "2", category: "Transport", amount: -500),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
         ]),
-        .init(id: "5", timestamp: 1687651200, transactions: [
-            .init(id: "1", category: "Transfer", amount: 123),
-            .init(id: "2", category: "Transport", amount: -500),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
+        ]),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
+        ]),
+        .init(id: "1", timestamp: 1687737600, transactions: [
+            .init(transactionId: "1", category: "Transfer",
+                  wallet: "kbank", amount: 12345.67, note: ""),
+            .init(transactionId: "2", category: "Transfer",
+                  wallet: "scb", amount: -12345.67, note: ""),
         ]),
     ]
     
