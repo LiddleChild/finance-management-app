@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct financial_management_appApp: App {
+    @StateObject var txnViewModel = TxnViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(txnViewModel)
         }
     }
 }

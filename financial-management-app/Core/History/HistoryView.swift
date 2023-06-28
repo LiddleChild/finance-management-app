@@ -8,7 +8,7 @@
 import SwiftUI
 
 private struct TransactionView: View {
-    var transaction: TransactionModel
+    var transaction: TxnModel
     
     var body: some View {
         NavigationLink {
@@ -21,16 +21,16 @@ private struct TransactionView: View {
                     .frame(height: 56)
                 
                 HStack {
-                    Text("\(transaction.category)")
+                    Text("\(transaction.Category)")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(Color("color-5"))
                     
                     Spacer()
                     
-                    Text(String(format: "%.2f THB", transaction.amount))
+                    Text(String(format: "%.2f THB", transaction.Amount))
                         .multilineTextAlignment(.trailing)
                         .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Color(hex: transaction.amount > 0 ? 0x00FF77 : 0xDB4325))
+                        .foregroundColor(Color(hex: transaction.Amount > 0 ? 0x00FF77 : 0xDB4325))
                 }
                 .padding(.horizontal, 12)
             }
@@ -58,7 +58,7 @@ private struct DayView: View {
             }
             
             VStack(spacing: 4) {
-                ForEach(dayTransaction.transactions, id: \.transactionId) { i in
+                ForEach(dayTransaction.transactions, id: \.TransactionId) { i in
                     TransactionView(transaction: i)
                 }
             }
@@ -67,6 +67,8 @@ private struct DayView: View {
 }
 
 struct HistoryView: View {
+    @EnvironmentObject var txnViewModel: TxnViewModel
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -75,27 +77,36 @@ struct HistoryView: View {
             
             ScrollView {
                 VStack(alignment: .center) {
-                    HeaderView(header: "History")
-                        .padding(.bottom, 48)
-                    
-                    VStack(spacing: 16) {
-                        ForEach(TransactionModel.dummy, id: \.id) { i in
-                            DayView(dayTransaction: i)
-                        }
+//                    HeaderView(header: "History")
+//                        .padding(.bottom, 48)
+//
+//                    VStack(spacing: 16) {
+//                        ForEach(TransactionModel.dummy, id: \.id) { i in
+//                            DayView(dayTransaction: i)
+//                        }
+//                    }
+                    ForEach(txnViewModel.txnLists, id: \.TransactionId) { item in
+                        TransactionView(transaction: item)
                     }
                 }
                 .padding(.horizontal, 24)
             }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
+        .onAppear {
+            txnViewModel.fetchTransaction()
+        }
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
+    @StateObject var txnViewModel = TxnViewModel()
+    
     static var previews: some View {
         NavigationStack {
             HistoryView()
                 .navigationBarHidden(false)
+                .environmentObject(TxnViewModel())
         }
     }
 }

@@ -10,5 +10,5 @@ import Foundation
 struct DayTransactionModel {
     var id: String
     var timestamp: Int64
-    var transactions: [TransactionModel]
+    var transactions: [TxnModel]
 }
