@@ -8,6 +8,8 @@
 import SwiftUI
 
 private struct TransactionView: View {
+    @EnvironmentObject var catViewModel: CategoryViewModel
+    
     var transaction: TxnModel
     
     var body: some View {
@@ -21,7 +23,7 @@ private struct TransactionView: View {
                     .frame(height: 56)
                 
                 HStack {
-                    Text("\(transaction.Category)")
+                    Text("\(catViewModel.getCategoryLabelById(id: transaction.Category))")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(Color("color-5"))
                     
@@ -68,6 +70,7 @@ private struct DayView: View {
 
 struct HistoryView: View {
     @EnvironmentObject var txnViewModel: TxnViewModel
+    @EnvironmentObject var catViewModel: CategoryViewModel
     
     var body: some View {
         ZStack {
@@ -90,20 +93,16 @@ struct HistoryView: View {
             }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
-        .onAppear {
-            txnViewModel.fetchTransaction()
-        }
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
-    @StateObject var txnViewModel = TxnViewModel()
-    
     static var previews: some View {
         NavigationStack {
             HistoryView()
                 .navigationBarHidden(false)
                 .environmentObject(TxnViewModel())
+                .environmentObject(CategoryViewModel())
         }
     }
 }

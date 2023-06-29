@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct financial_management_appApp: App {
     @StateObject var txnViewModel = TxnViewModel()
+    @StateObject var categoryViewModel = CategoryViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(txnViewModel)
+                .environmentObject(categoryViewModel)
         }
     }
 }

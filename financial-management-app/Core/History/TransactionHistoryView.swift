@@ -26,6 +26,8 @@ private struct DescriptionView: View {
 }
 
 struct TransactionHistoryView: View {
+    @EnvironmentObject var catViewModel: CategoryViewModel
+    
     var transaction: TxnModel
     
     var body: some View {
@@ -38,7 +40,7 @@ struct TransactionHistoryView: View {
                 HeaderView(header: "Transaction History")
                     .padding(.bottom, 48)
                 
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 16) {
                     Text(Date(timeIntervalSince1970:Double(transaction.Timestamp))
                         .formatted(.dateTime.day().month().year())
                     )
@@ -46,52 +48,41 @@ struct TransactionHistoryView: View {
                     .font(.system(size: 28, weight: .regular))
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        DescriptionView(key: "Category", value: transaction.Category)
-                        DescriptionView(key: "Wallet", value: transaction.Wallet)
-                        DescriptionView(key: "Amount", value: String(
-                            format: "%.2f THB", transaction.Amount))
+                        DescriptionView(key: "Category",
+                                        value: catViewModel.getCategoryLabelById(
+                                            id: transaction.Category))
                         
-                        VStack {
-                            Text("Note")
-                                .foregroundColor(Color("color-5"))
-                                .font(.system(size: 20, weight: .medium))
-                                .padding(.horizontal, 8)
-                                .background(Color("color-1"))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .zIndex(1)
-                                .padding(.leading, 16)
-                            
-                            Text(transaction.Note == "" ?
-                                 "No note written." : transaction.Note
-                            )
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .foregroundColor(Color("color-5"))
-                                .font(.system(size: 16, weight: .light))
-                                .padding()
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color("color-3"))
-                                )
-                                .offset(y: -24)
-                        }
+                        DescriptionView(key: "Wallet",
+                                        value: transaction.Wallet)
                         
-//                        Text(transaction.note)
-//                            .font(.system(size: 16, weight: .regular))
-//                            .padding()
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                            .background {
-//                                RoundedRectangle(cornerRadius: 12)
-//                                    .stroke(Color("color-3"))
-//                            }
-//                            .padding(.top, 16)
-//                            .overlay {
-//                                Text("Note")
-//                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-//                                    .offset(x: 12, y: -20)
-//                            }
-//                            .foregroundColor(Color("color-5"))
+                        DescriptionView(key: "Amount",
+                                        value: String(format: "%.2f THB", transaction.Amount))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    VStack {
+                        Text("Note")
+                            .foregroundColor(Color("color-5"))
+                            .font(.system(size: 20, weight: .medium))
+                            .padding(.horizontal, 8)
+                            .background(Color("color-1"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .zIndex(1)
+                            .padding(.leading, 16)
+                        
+                        Text(transaction.Note == "" ?
+                             "No note written." : transaction.Note
+                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color("color-5"))
+                        .font(.system(size: 16, weight: .light))
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color("color-3"))
+                        )
+                        .offset(y: -24)
+                    }
                 }
                 
                 Spacer()
@@ -107,14 +98,15 @@ struct TransactionHistoryView_Previews: PreviewProvider {
             TransactionHistoryView(
                 transaction: .init(
                     TransactionId: "1",
-                    Category: "Transfer",
+                    Category: "hYlgrFddSlTsw2gY8uYk",
                     Wallet: "kbank",
                     Amount: 12345.67,
-//                    Note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, neque vulputate dignissim maximus, lectus eros rutrum nunc, quis dignissim erat velit in ante. Nulla ac libero sed nulla egestas mattis. Fusce ac felis vitae tellus auctor porttitor. Aenean pretium dui sed ligula posuere aliquam. Duis in laoreet quam. Nunc vitae massa faucibus, hendrerit massa nec, dignissim velit. Donec semper leo nibh, sed congue nunc viverra eget. Nunc blandit urna nulla, nec venenatis sem facilisis et.",
-                      Note: "",
+//                    Note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, neque vulputate dignissim maximus, lectus eros rutrum nunc, quis dignissim erat velit in ante.",
+                    Note: "",
                     Timestamp: 1687737600)
             )
             .toolbar(.visible, for: .navigationBar)
+            .environmentObject(CategoryViewModel())
         }
     }
 }

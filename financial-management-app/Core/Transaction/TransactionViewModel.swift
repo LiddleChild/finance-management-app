@@ -11,6 +11,10 @@ class TxnViewModel: ObservableObject {
     @Published var txnLists: [TxnModel] = []
     @Published var dayTxnLists: [DayTxnModel] = []
     
+    init() {
+        fetchTransaction()
+    }
+    
     func fetchTransaction() {
         guard let url = URL(string: "http://localhost:3000/transaction") else { return }
         
