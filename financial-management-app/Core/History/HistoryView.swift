@@ -39,7 +39,7 @@ private struct TransactionView: View {
 }
 
 private struct DayView: View {
-    var dayTransaction: DayTransactionModel
+    var dayTransaction: DayTxnModel
     
     var body: some View {
         VStack {
@@ -48,7 +48,7 @@ private struct DayView: View {
                     .frame(height: 1)
                     .foregroundColor(Color("color-5"))
                 
-                Text(Date(timeIntervalSince1970:Double(dayTransaction.timestamp))
+                Text(Date(timeIntervalSince1970: Double(dayTransaction.Timestamp))
                     .formatted(.dateTime.day().month().year())
                 )
                 .padding(.horizontal, 8)
@@ -58,7 +58,7 @@ private struct DayView: View {
             }
             
             VStack(spacing: 4) {
-                ForEach(dayTransaction.transactions, id: \.TransactionId) { i in
+                ForEach(dayTransaction.Transactions, id: \.TransactionId) { i in
                     TransactionView(transaction: i)
                 }
             }
@@ -77,16 +77,13 @@ struct HistoryView: View {
             
             ScrollView {
                 VStack(alignment: .center) {
-//                    HeaderView(header: "History")
-//                        .padding(.bottom, 48)
-//
-//                    VStack(spacing: 16) {
-//                        ForEach(TransactionModel.dummy, id: \.id) { i in
-//                            DayView(dayTransaction: i)
-//                        }
-//                    }
-                    ForEach(txnViewModel.txnLists, id: \.TransactionId) { item in
-                        TransactionView(transaction: item)
+                    HeaderView(header: "History")
+                        .padding(.bottom, 48)
+
+                    VStack(spacing: 16) {
+                        ForEach(txnViewModel.dayTxnLists, id: \.DayTransactionId) { i in
+                            DayView(dayTransaction: i)
+                        }
                     }
                 }
                 .padding(.horizontal, 24)

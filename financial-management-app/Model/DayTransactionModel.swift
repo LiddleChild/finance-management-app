@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct DayTransactionModel {
-    var id: String
-    var timestamp: Int64
-    var transactions: [TxnModel]
+struct DayTxnModel: Hashable {
+    var DayTransactionId: String = UUID().uuidString
+    var Timestamp: Int64
+    var Transactions: [TxnModel]
 }
