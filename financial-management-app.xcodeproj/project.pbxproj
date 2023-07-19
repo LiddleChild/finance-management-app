@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		691227D22A67F6CF00A069E5 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D12A67F6CF00A069E5 /* WalletService.swift */; };
 		691227D42A67F70500A069E5 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D32A67F70500A069E5 /* WalletModel.swift */; };
+		691227D62A67FFB600A069E5 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D52A67FFB600A069E5 /* UINavigationController.swift */; };
 		697029772A3EFE8F00A59EE2 /* financial_management_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029762A3EFE8F00A59EE2 /* financial_management_appApp.swift */; };
 		697029792A3EFE8F00A59EE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697029782A3EFE8F00A59EE2 /* ContentView.swift */; };
 		6970297B2A3EFE9000A59EE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6970297A2A3EFE9000A59EE2 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		691227D12A67F6CF00A069E5 /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		691227D32A67F70500A069E5 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
+		691227D52A67FFB600A069E5 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		697029732A3EFE8F00A59EE2 /* financial-management-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "financial-management-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		697029762A3EFE8F00A59EE2 /* financial_management_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = financial_management_appApp.swift; sourceTree = "<group>"; };
 		697029782A3EFE8F00A59EE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				6988F43C2A48323300EAEACE /* Color.swift */,
+				691227D52A67FFB600A069E5 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */,
 				6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */,
 				699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */,
+				691227D62A67FFB600A069E5 /* UINavigationController.swift in Sources */,
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,
 				6986D81F2A4ABCD40043BF86 /* HeaderView.swift in Sources */,
 				6986D8222A4B32560043BF86 /* TxnService.swift in Sources */,

@@ -29,7 +29,7 @@ private struct QuickSummaryView: View {
                         .frame(width: 216, height: 216)
                     
                     VStack(spacing: 4) {
-                        Text("Monthly spending")
+                        Text("Monthly expense")
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(Color("color-5"))
                         
