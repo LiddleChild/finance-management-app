@@ -8,6 +8,8 @@
 import SwiftUI
 
 private struct QuickSummaryView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     let data = [
         (0.45, Color(hex: 0x128000)),
         (1.0, Color(hex: 0x900000)),
@@ -15,7 +17,7 @@ private struct QuickSummaryView: View {
     
     var body: some View {
         ZStack {
-            PieChartView(data: data)
+            PieChartView(data: viewModel.getQuickSummary())
             
             NavigationLink {
                 HistoryView()
@@ -27,12 +29,16 @@ private struct QuickSummaryView: View {
                         .frame(width: 216, height: 216)
                     
                     VStack(spacing: 4) {
-                        Text("12,345.67")
+                        Text("Monthly spending")
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(Color("color-5"))
+                        
+                        Text(String(format: "%.2f", viewModel.getQuickSummaryAmount()))
                             .font(.system(size: 24, weight: .regular))
+                            .foregroundColor(Color("color-5"))
                     }
                 }
             }
-            .accentColor(Color("color-5"))
         }
     }
 }
@@ -63,5 +69,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(ViewModel())
     }
 }

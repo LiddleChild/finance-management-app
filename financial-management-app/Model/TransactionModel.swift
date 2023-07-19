@@ -11,7 +11,7 @@ struct TxnModel: Hashable, Decodable {
     var TransactionId: String
     var Category: String
     var Wallet: String
-    var Amount: Float
+    var Amount: Double
     var Note: String
     var Timestamp: Int64
 }

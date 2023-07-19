@@ -8,7 +8,7 @@
 import SwiftUI
 
 private struct TransactionView: View {
-    @EnvironmentObject var catViewModel: CategoryViewModel
+    @EnvironmentObject var viewModel: ViewModel
     
     var transaction: TxnModel
     
@@ -22,19 +22,28 @@ private struct TransactionView: View {
                     .foregroundColor(Color("color-2"))
                     .frame(height: 56)
                 
-                HStack {
-                    Text("\(catViewModel.getCategoryLabelById(id: transaction.Category))")
+                HStack(spacing: 16) {
+                    Text("\(viewModel.getCategoryLabelById(id: transaction.Category))")
                         .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Color("color-5"))
+                    
+                    Text("\(viewModel.getWalletLabelById(id: transaction.Wallet))")
+                        .fontWeight(.semibold)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 4)
+                        .background {
+                            RoundedRectangle(cornerRadius: 12)
+                                .foregroundColor(Color(hex: viewModel.getWalletColorById(id: transaction.Wallet)))
+                        }
                     
                     Spacer()
                     
                     Text(String(format: "%.2f THB", transaction.Amount))
                         .multilineTextAlignment(.trailing)
                         .font(.system(size: 16, weight: .regular))
-                        .foregroundColor(Color(hex: transaction.Amount > 0 ? 0x00FF77 : 0xDB4325))
+                        .foregroundColor(transaction.Amount > 0 ? Color("color-green") : Color("color-red"))
                 }
-                .padding(.horizontal, 12)
+                .foregroundColor(Color("color-5"))
+                .padding(.horizontal, 16)
             }
         }
     }
@@ -69,8 +78,7 @@ private struct DayView: View {
 }
 
 struct HistoryView: View {
-    @EnvironmentObject var txnViewModel: TxnViewModel
-    @EnvironmentObject var catViewModel: CategoryViewModel
+    @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
         ZStack {
@@ -82,9 +90,9 @@ struct HistoryView: View {
                 VStack(alignment: .center) {
                     HeaderView(header: "History")
                         .padding(.bottom, 48)
-
+                    
                     VStack(spacing: 16) {
-                        ForEach(txnViewModel.dayTxnLists, id: \.DayTransactionId) { i in
+                        ForEach(viewModel.getDayTransaction(), id: \.DayTransactionId) { i in
                             DayView(dayTransaction: i)
                         }
                     }
@@ -100,9 +108,7 @@ struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             HistoryView()
-                .navigationBarHidden(false)
-                .environmentObject(TxnViewModel())
-                .environmentObject(CategoryViewModel())
+                .environmentObject(ViewModel())
         }
     }
 }

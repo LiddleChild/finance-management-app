@@ -9,6 +9,6 @@ import Foundation
 
 struct CategoryModel: Decodable {
     var CategoryId: String
-    var Color: Int64
+    var Color: Int
     var Label: String
 }

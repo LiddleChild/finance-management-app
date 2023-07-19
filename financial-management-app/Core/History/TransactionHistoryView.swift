@@ -10,6 +10,7 @@ import SwiftUI
 private struct DescriptionView: View {
     var key: String
     var value: String
+    var color: Color = Color("color-5")
     
     var body: some View {
         HStack(spacing: 16) {
@@ -19,14 +20,14 @@ private struct DescriptionView: View {
                 .frame(maxWidth: 96, alignment: .trailing)
             
             Text(value)
-                .foregroundColor(Color("color-5"))
+                .foregroundColor(color)
                 .font(.system(size: 20, weight: .light))
         }
     }
 }
 
 struct TransactionHistoryView: View {
-    @EnvironmentObject var catViewModel: CategoryViewModel
+    @EnvironmentObject var viewModel: ViewModel
     
     var transaction: TxnModel
     
@@ -49,14 +50,15 @@ struct TransactionHistoryView: View {
                     
                     VStack(alignment: .leading, spacing: 8) {
                         DescriptionView(key: "Category",
-                                        value: catViewModel.getCategoryLabelById(
+                                        value: viewModel.getCategoryLabelById(
                                             id: transaction.Category))
                         
                         DescriptionView(key: "Wallet",
-                                        value: transaction.Wallet)
+                                        value: viewModel.getWalletLabelById(id: transaction.Wallet))
                         
                         DescriptionView(key: "Amount",
-                                        value: String(format: "%.2f THB", transaction.Amount))
+                                        value: String(format: "%.2f THB", transaction.Amount),
+                                        color: transaction.Amount > 0 ? Color("color-green") : Color("color-red"))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
@@ -99,14 +101,14 @@ struct TransactionHistoryView_Previews: PreviewProvider {
                 transaction: .init(
                     TransactionId: "1",
                     Category: "hYlgrFddSlTsw2gY8uYk",
-                    Wallet: "kbank",
+                    Wallet: "nkoB55tzcxlbCrpwvwZl",
                     Amount: 12345.67,
 //                    Note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, neque vulputate dignissim maximus, lectus eros rutrum nunc, quis dignissim erat velit in ante.",
                     Note: "",
                     Timestamp: 1687737600)
             )
             .toolbar(.visible, for: .navigationBar)
-            .environmentObject(CategoryViewModel())
+            .environmentObject(ViewModel())
         }
     }
 }
