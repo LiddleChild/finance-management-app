@@ -60,7 +60,27 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 24)
+                
+                ZStack(alignment: .bottomTrailing) {
+                    NavigationLink {
+                        AddTransactionView()
+                            .modifier(NagivationDismissModier())
+                    } label: {
+                        Text("+")
+                            .font(.system(size: 28, weight: .regular))
+                            .foregroundColor(Color("color-5"))
+                            .padding(24)
+                            .background {
+                                Circle()
+                                    .foregroundColor(Color("color-4"))
+                            }
+                    }
+                }
+                .padding(28)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                
             }
+            .ignoresSafeArea(.all, edges: .bottom)
             .toolbar(.visible)
         }
     }
