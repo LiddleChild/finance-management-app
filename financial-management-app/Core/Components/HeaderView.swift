@@ -14,12 +14,12 @@ struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header)
-                .font(.system(size: 48, weight: .bold))
+                .font(.system(size: 44, weight: .bold))
                 .foregroundColor(Color("color-5"))
             
             if subheader != "" {
                 Text(subheader)
-                    .font(.system(size: 20, weight: .light))
+                    .font(.system(size: 16, weight: .light))
                     .foregroundColor(Color("color-5"))
             }
         }

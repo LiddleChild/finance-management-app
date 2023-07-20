@@ -27,7 +27,7 @@ private struct TransactionView: View {
                         .font(.system(size: 16, weight: .regular))
                     
                     Text("\(viewModel.getWalletLabelById(id: transaction.Wallet))")
-                        .fontWeight(.semibold)
+                        .font(.system(size: 16, weight: .regular))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
                         .background {
@@ -108,6 +108,7 @@ struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             HistoryView()
+                .toolbar(.visible, for: .navigationBar)
                 .environmentObject(ViewModel())
         }
     }
