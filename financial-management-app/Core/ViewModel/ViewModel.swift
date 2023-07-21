@@ -50,6 +50,7 @@ class ViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.wallets = wallets ?? [:]
                 print("Wallet fetched!")
+                print(self.wallets.values)
                 group.leave()
             }
         }

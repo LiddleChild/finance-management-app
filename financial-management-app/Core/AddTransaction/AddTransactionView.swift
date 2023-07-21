@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AddTransactionView: View {
+    @EnvironmentObject var viewModel: ViewModel
     @ObservedObject private var amountField: NumbersOnly = NumbersOnly()
+    @State private var noteField: String = ""
+    @State private var walletField: String = ""
     
     var body: some View {
         ZStack {
@@ -16,11 +19,30 @@ struct AddTransactionView: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 24) {
                 HeaderView(header: "Add your Transaction", subheader: "Please fill your transaction information")
                     .padding(.bottom, 48)
                 
+                Spacer()
+                
                 CurrencyTextfield(value: $amountField.value)
+                
+                TextField("", text: $noteField, axis: .vertical)
+                    .autocapitalization(.none)
+                    .modifier(TextfieldModifier(
+                        label: "Note", placeholder: "A note here", text: noteField))
+                
+                Spacer()
+                
+                Button {
+                    print("Clicked")
+                } label: {
+                    Text("Create Transaction")
+                        .modifier(PrimaryButtonModifier())
+                }
+                
+                Spacer()
+
             }
             .padding(.horizontal, 24)
         }
@@ -33,6 +55,7 @@ struct AddTransactionView_Previews: PreviewProvider {
         NavigationStack {
             AddTransactionView()
                 .toolbar(.visible)
+                .environmentObject(ViewModel())
         }
     }
 }

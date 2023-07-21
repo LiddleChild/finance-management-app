@@ -56,7 +56,8 @@ struct RegisterView: View {
                 Button {
                     print("Create account")
                 } label: {
-                    Text("Create Account").modifier(PrimaryButtonModifier())
+                    Text("Create Account")
+                        .modifier(PrimaryButtonModifier())
                 }
             }
             .padding(.horizontal, 24)

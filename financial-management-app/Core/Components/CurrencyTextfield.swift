@@ -62,7 +62,7 @@ struct CurrencyTextfield: View {
     }
 }
 
-struct Preview: View {
+private struct Preview: View {
     @ObservedObject var amountField: NumbersOnly = NumbersOnly()
     var body: some View {
         ZStack {

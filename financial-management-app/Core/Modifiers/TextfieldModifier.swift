@@ -21,7 +21,7 @@ struct TextfieldModifier: ViewModifier {
             .focusablePadding()
             .foregroundColor(Color("color-5"))
             .background(alignment: .bottom, content: {
-                ZStack(alignment: .leading) {
+                ZStack(alignment: .topLeading) {
                     // Border
                     RoundedRectangle(cornerRadius: 12)
                         .strokeBorder(Color("color-\(isFocus ? 4 : 3)"))
@@ -32,7 +32,7 @@ struct TextfieldModifier: ViewModifier {
                         .padding(.horizontal, 8)
                         .foregroundColor(Color("color-5"))
                         .background(Color("color-1"))
-                        .offset(x: 12, y: -28)
+                        .offset(x: 12, y: -12)
                     
                     // Placeholder
                     if text == "" && !isFocus {

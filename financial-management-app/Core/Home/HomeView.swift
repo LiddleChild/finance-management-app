@@ -10,11 +10,6 @@ import SwiftUI
 private struct QuickSummaryView: View {
     @EnvironmentObject var viewModel: ViewModel
     
-    let data = [
-        (0.45, Color(hex: 0x128000)),
-        (1.0, Color(hex: 0x900000)),
-    ]
-    
     var body: some View {
         ZStack {
             PieChartView(data: viewModel.getQuickSummary())
