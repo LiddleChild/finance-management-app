@@ -17,7 +17,8 @@ struct DropdownListButton: View {
         } label: {
             HStack {
                 Circle()
-                    .foregroundColor(option.Color)
+                    .strokeBorder(Color("color-5"), lineWidth: 1)
+                    .background(Circle().foregroundColor(option.Color))
                     .scaledToFit()
                 
                 Text(option.Label)

@@ -11,7 +11,7 @@ struct AddTransactionView: View {
     @EnvironmentObject var viewModel: ViewModel
     @ObservedObject private var amountField: NumbersOnly = NumbersOnly()
     @State private var noteField: String = ""
-    @State private var walletField: String = ""
+    @State private var walletField: DropdownOption?
     
     var body: some View {
         ZStack {
@@ -26,6 +26,12 @@ struct AddTransactionView: View {
                 Spacer()
                 
                 CurrencyTextfield(value: $amountField.value)
+                
+                DropdownMenu(selection: $walletField,
+                             placeholder: "Wallet",
+                             options: viewModel.getWalletDropdownOptions()
+                )
+                .zIndex(1)
                 
                 TextField("", text: $noteField, axis: .vertical)
                     .autocapitalization(.none)
@@ -42,7 +48,6 @@ struct AddTransactionView: View {
                 }
                 
                 Spacer()
-
             }
             .padding(.horizontal, 24)
         }

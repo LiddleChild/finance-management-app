@@ -39,13 +39,13 @@ struct DropdownMenu: View {
                     .stroke(Color(isShowingOption ? "color-4" : "color-2"))
             )
         }
-        .background(alignment: .top) {
+        .overlay(alignment: .top) {
             if isShowingOption {
                 DropdownList(options: options) { option in
                     isShowingOption = false
                     selection = option
                 }
-                    .offset(y: 48)
+                .offset(y: 52)
             }
             
         }

@@ -129,4 +129,10 @@ class ViewModel: ObservableObject {
     func getWalletColorById(id: String) -> Int {
         return wallets[id]?.Color ?? 0xFFFFFF
     }
+    
+    func getWalletDropdownOptions() -> [DropdownOption] {
+        return wallets.values.map { wallet in
+            DropdownOption(OptionId: wallet.WalletId, Label: wallet.Label, Color: Color(hex: wallet.Color))
+        }
+    }
 }
