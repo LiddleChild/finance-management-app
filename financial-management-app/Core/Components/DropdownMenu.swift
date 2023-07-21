@@ -8,19 +8,69 @@
 import SwiftUI
 
 struct DropdownMenu: View {
+    @State private var isShowingOption: Bool = false
+    @Binding var selection: DropdownOption?
+    
+    var placeholder: String
+    var options: [DropdownOption]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            withAnimation {
+                isShowingOption.toggle()
+            }
+        } label: {
+            HStack {
+                if let selection = selection {
+                    DropdownListButton(option: selection) { _ in }
+                    .disabled(true)
+                } else {
+                    Text("\(placeholder)").font(.system(size: 20))
+                }
+                
+                Spacer()
+                
+                Image(systemName: isShowingOption ? "chevron.up" : "chevron.down")
+            }
+            .padding(12)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color(isShowingOption ? "color-4" : "color-2"))
+            )
+        }
+        .background(alignment: .top) {
+            if isShowingOption {
+                DropdownList(options: options) { option in
+                    isShowingOption = false
+                    selection = option
+                }
+                    .offset(y: 48)
+            }
+            
+        }
+        .foregroundColor(Color("color-5"))
     }
 }
 
-struct DropdownMenu_Previews: PreviewProvider {
-    static var previews: some View {
+private struct Preview: View {
+    @State private var selection: DropdownOption?
+    var body: some View {
         ZStack {
             Rectangle()
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            DropdownMenu()
+            DropdownMenu(selection: $selection,
+                         placeholder: "Placeholder",
+                         options: DropdownOption.DUMMY)
+            .padding(24)
         }
+    }
+}
+
+struct DropdownMenu_Previews: PreviewProvider {
+    static var previews: some View {
+        Preview()
     }
 }
