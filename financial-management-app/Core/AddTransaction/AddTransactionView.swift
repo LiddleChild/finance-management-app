@@ -10,19 +10,6 @@ import SwiftUI
 struct AddTransactionView: View {
     @ObservedObject private var amountField: NumbersOnly = NumbersOnly()
     
-    let formatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        
-        //        formatter.numberStyle = .currency
-        //        formatter.maximumFractionDigits = 2
-        //        formatter.groupingSeparator = ","
-        //        formatter.usesGroupingSeparator = true
-        //        formatter.currencySymbol = "THB"
-        formatter.numberStyle = .decimal
-        
-        return formatter
-    }()
-    
     var body: some View {
         ZStack {
             Rectangle()
@@ -33,22 +20,7 @@ struct AddTransactionView: View {
                 HeaderView(header: "Add your Transaction", subheader: "Please fill your transaction information")
                     .padding(.bottom, 48)
                 
-                HStack {
-                    TextField("Amount", text: $amountField.value)
-                        .keyboardType(.decimalPad)
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(size: 28, weight: .regular))
-                    
-                    Text("THB")
-                        .font(.system(size: 16, weight: .regular))
-                }
-                .foregroundColor(Color("color-5"))
-                .padding(8)
-                .overlay(alignment: .bottom) {
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundColor(Color("color-3"))
-                }
+                CurrencyTextfield(value: $amountField.value)
             }
             .padding(.horizontal, 24)
         }
