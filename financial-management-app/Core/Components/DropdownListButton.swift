@@ -16,16 +16,22 @@ struct DropdownListButton: View {
             onSelectingOption(option)
         } label: {
             HStack {
-                Circle()
-                    .strokeBorder(Color("color-5"), lineWidth: 1)
-                    .background(Circle().foregroundColor(option.Color))
-                    .scaledToFit()
+                if let imageUrl = option.Image {
+                    Image(systemName: imageUrl)
+                        .foregroundColor(option.Color ?? Color("color-5"))
+                        .scaledToFit()
+                } else if let color = option.Color {
+                    Circle()
+                        .strokeBorder(Color("color-5"), lineWidth: 1)
+                        .background(Circle().foregroundColor(color))
+                        .scaledToFit()
+                }
                 
                 Text(option.Label)
                     .font(.system(size: 20))
-                    .foregroundColor(Color("color-5"))
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .foregroundColor(Color("color-5"))
             .padding(4)
             .frame(height: 28)
         }
@@ -39,7 +45,7 @@ struct DropdownListButton_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            DropdownListButton(option: DropdownOption.DUMMY[0]) { _ in }
+            DropdownListButton(option: DropdownOption.DUMMY.last!) { _ in }
                 .background {
                     Rectangle()
                         .stroke(.white)

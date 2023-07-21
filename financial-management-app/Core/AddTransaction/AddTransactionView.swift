@@ -12,6 +12,7 @@ struct AddTransactionView: View {
     @ObservedObject private var amountField: NumbersOnly = NumbersOnly()
     @State private var noteField: String = ""
     @State private var walletField: DropdownOption?
+    @State private var categoryField: DropdownOption?
     
     var body: some View {
         ZStack {
@@ -30,6 +31,12 @@ struct AddTransactionView: View {
                 DropdownMenu(selection: $walletField,
                              placeholder: "Wallet",
                              options: viewModel.getWalletDropdownOptions()
+                )
+                .zIndex(2)
+                
+                DropdownMenu(selection: $categoryField,
+                             placeholder: "Category",
+                             options: viewModel.getCategoryDropdownOptions()
                 )
                 .zIndex(1)
                 

@@ -132,7 +132,17 @@ class ViewModel: ObservableObject {
     
     func getWalletDropdownOptions() -> [DropdownOption] {
         return wallets.values.map { wallet in
-            DropdownOption(OptionId: wallet.WalletId, Label: wallet.Label, Color: Color(hex: wallet.Color))
+            DropdownOption(OptionId: wallet.WalletId,
+                           Label: wallet.Label,
+                           Color: Color(hex: wallet.Color))
+        }
+    }
+    
+    func getCategoryDropdownOptions() -> [DropdownOption] {
+        return categories.values.map { category in
+            DropdownOption(OptionId: category.CategoryId,
+                           Label: category.Label,
+                           Color: Color(hex: category.Color))
         }
     }
 }
