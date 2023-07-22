@@ -22,4 +22,8 @@ class NumbersOnly: ObservableObject {
             }
         }
     }
+    
+    func getDouble() -> Double {
+        return Double(value) ?? 0.0
+    }
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TxnModel: Hashable, Decodable {
-    var TransactionId: String
+struct TxnModel: Hashable, Decodable, Encodable {
+    var TransactionId: String?
     var Category: String
     var Wallet: String
     var Amount: Double

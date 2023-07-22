@@ -24,9 +24,8 @@ struct AddTransactionView: View {
                 Spacer()
                 
                 VStack(spacing: 32) {
-                    
-                    
                     CurrencyTextfield(value: $addTxnViewModel.amountField.value)
+                    
                     HStack {
                         DropdownMenu(selection: $addTxnViewModel.walletField,
                                      placeholder: "Wallet",
@@ -51,7 +50,7 @@ struct AddTransactionView: View {
                 Spacer()
                 
                 Button {
-                    print("Clicked")
+                    addTxnViewModel.createTxn()
                 } label: {
                     Text("Create Transaction")
                         .modifier(PrimaryButtonModifier())
