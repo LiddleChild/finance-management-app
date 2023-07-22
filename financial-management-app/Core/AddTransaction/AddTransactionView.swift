@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct AddTransactionView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    @ObservedObject private var amountField: NumbersOnly = NumbersOnly()
-    @State private var noteField: String = ""
-    @State private var walletField: DropdownOption?
-    @State private var categoryField: DropdownOption?
+    @EnvironmentObject private var viewModel: ViewModel
+    @ObservedObject private var addTxnViewModel: AddTransactionViewModel = AddTransactionViewModel()
     
     var body: some View {
         ZStack {
@@ -20,30 +17,36 @@ struct AddTransactionView: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            VStack(spacing: 24) {
+            VStack {
                 HeaderView(header: "Add your Transaction", subheader: "Please fill your transaction information")
                     .padding(.bottom, 48)
                 
                 Spacer()
                 
-                CurrencyTextfield(value: $amountField.value)
-                
-                DropdownMenu(selection: $walletField,
-                             placeholder: "Wallet",
-                             options: viewModel.getWalletDropdownOptions()
-                )
-                .zIndex(2)
-                
-                DropdownMenu(selection: $categoryField,
-                             placeholder: "Category",
-                             options: viewModel.getCategoryDropdownOptions()
-                )
-                .zIndex(1)
-                
-                TextField("", text: $noteField, axis: .vertical)
-                    .autocapitalization(.none)
-                    .modifier(TextfieldModifier(
-                        label: "Note", placeholder: "A note here", text: noteField))
+                VStack(spacing: 32) {
+                    
+                    
+                    CurrencyTextfield(value: $addTxnViewModel.amountField.value)
+                    HStack {
+                        DropdownMenu(selection: $addTxnViewModel.walletField,
+                                     placeholder: "Wallet",
+                                     options: viewModel.getWalletDropdownOptions()
+                        )
+                        
+                        DropdownMenu(selection: $addTxnViewModel.categoryField,
+                                     placeholder: "Category",
+                                     options: viewModel.getCategoryDropdownOptions()
+                        )
+                    }
+                    .zIndex(1)
+                    
+                    TextField("", text: $addTxnViewModel.noteField, axis: .vertical)
+                        .autocapitalization(.none)
+                        .modifier(TextfieldModifier(
+                            label: "Note",
+                            placeholder: "A note here",
+                            text: addTxnViewModel.noteField))
+                }
                 
                 Spacer()
                 
