@@ -107,7 +107,7 @@ class ViewModel: ObservableObject {
             dict[key] = tmp
         }
 
-        for key in dict.keys.sorted(by: <) {
+        for key in dict.keys.sorted(by: >) {
             dayTxn.append(.init(Timestamp: key, Transactions: dict[key]!))
         }
         

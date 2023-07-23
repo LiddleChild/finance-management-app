@@ -108,13 +108,6 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		691227C92A67E50900A069E5 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
 		691227CE2A67E59000A069E5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +149,6 @@
 				699DFCA42A42CD5200B64C8C /* Extensions */,
 				699DFCA52A42CD5800B64C8C /* Model */,
 				699DFCA62A42CD6100B64C8C /* Services */,
-				691227C92A67E50900A069E5 /* Repository */,
 				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
 				6970297A2A3EFE9000A59EE2 /* Assets.xcassets */,
 				6970297C2A3EFE9000A59EE2 /* Preview Content */,
