@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct AddTransactionView: View {
+    @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var viewModel: ViewModel
     @ObservedObject private var addTxnViewModel: AddTransactionViewModel = AddTransactionViewModel()
     
     @Binding var path: [NavigationViews]
-    
-    @State private var showSuccess: Bool = false
-    @State private var showFailure: Bool = false
     
     var body: some View {
         ZStack {
@@ -58,20 +56,11 @@ struct AddTransactionView: View {
                 
                 Button {
                     addTxnViewModel.createTxn {
-                        withAnimation { showSuccess = true }
-                        DispatchQueue.main.async {
-                            viewModel.fetchData()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            withAnimation(.easeInOut) { showSuccess = false }
+                        modalViewModel.alertSuccess() {
                             path = []
                         }
                     } onFailure: { error in
-                        withAnimation { showFailure = true }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            withAnimation(.easeInOut) { showFailure = false }
-                            path = []
-                        }
+                        modalViewModel.alertFailure(message: "Fail to create Transaction!")
                     }
                 } label: {
                     Text("Create Transaction")
@@ -81,14 +70,6 @@ struct AddTransactionView: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
-            
-            if showSuccess {
-                SuccessModal(text: "Success!")
-            }
-            
-            if showFailure {
-                FailureModal(text: "Fail to create Transaction!")
-            }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
     }
@@ -98,10 +79,15 @@ private struct Preview: View {
     @State private var path: [NavigationViews] = []
     
     var body: some View {
-        NavigationStack {
-            AddTransactionView(path: $path)
-                .toolbar(.visible)
-                .environmentObject(ViewModel())
+        ZStack {
+            NavigationStack {
+                AddTransactionView(path: $path)
+                    .toolbar(.visible)
+                    .environmentObject(ViewModel())
+                    .environmentObject(ModalViewModel.shared)
+            }
+            
+            Modal()
         }
     }
 }

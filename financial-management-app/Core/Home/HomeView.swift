@@ -39,6 +39,7 @@ private struct QuickSummaryView: View {
 }
 
 struct HomeView: View {
+    @EnvironmentObject private var modalViewModel: ModalViewModel
     @State private var path: [NavigationViews] = []
     
     var body: some View {
@@ -74,7 +75,6 @@ struct HomeView: View {
                 }
                 .padding(28)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .toolbar(.visible)
@@ -95,7 +95,12 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(ViewModel())
+        ZStack {
+            HomeView()
+                .environmentObject(ViewModel())
+                .environmentObject(ModalViewModel.shared)
+            
+            Modal()
+        }
     }
 }
