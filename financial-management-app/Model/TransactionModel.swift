@@ -27,11 +27,11 @@ extension TxnModel {
     )
     
     static let DUMMY_EMPTY_NOTE = TxnModel(
-        TransactionId: "1",
+        TransactionId: "2",
         Category: "hYlgrFddSlTsw2gY8uYk",
         Wallet: "nkoB55tzcxlbCrpwvwZl",
         Amount: 12345.67,
         Note: "",
-        Timestamp: 1687737600
+        Timestamp: 1687737700
     )
 }

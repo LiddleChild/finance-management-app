@@ -27,7 +27,7 @@ private struct DescriptionView: View {
 }
 
 struct TransactionHistoryView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     
     var transaction: TxnModel
     
@@ -96,7 +96,7 @@ struct TransactionHistoryView_Previews: PreviewProvider {
         NavigationStack {
             TransactionHistoryView(transaction: TxnModel.DUMMY_LONG_NOTE)
                 .toolbar(.visible, for: .navigationBar)
-                .environmentObject(ViewModel())
         }
+        .environmentObject(ViewModel())
     }
 }

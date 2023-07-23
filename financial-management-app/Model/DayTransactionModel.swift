@@ -12,3 +12,10 @@ struct DayTxnModel: Hashable {
     var Timestamp: Int64
     var Transactions: [TxnModel]
 }
+
+extension DayTxnModel {
+    static let DUMMY = DayTxnModel(Timestamp: 1687737600, Transactions: [
+        TxnModel.DUMMY_EMPTY_NOTE,
+        TxnModel.DUMMY_LONG_NOTE
+    ])
+}
