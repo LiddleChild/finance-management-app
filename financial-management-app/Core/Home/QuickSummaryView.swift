@@ -9,14 +9,13 @@ import SwiftUI
 
 struct QuickSummaryView: View {
     @EnvironmentObject var viewModel: ViewModel
-    @Binding var path: [NavigationViews]
     
     var body: some View {
         ZStack {
             PieChartView(data: viewModel.getQuickSummary())
-            
-            Button {
-                path.append(NavigationViews.HISTORY_VIEW)
+            NavigationLink {
+                HistoryView()
+                    .modifier(NagivationDismissModier())
             } label: {
                 ZStack {
                     Circle()
@@ -39,25 +38,16 @@ struct QuickSummaryView: View {
     }
 }
 
-
-private struct Preview: View {
-    @State private var path: [NavigationViews] = []
-    
-    var body: some View {
+struct QuickSummary_Previews: PreviewProvider {
+    static var previews: some View {
         ZStack {
             Rectangle()
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            QuickSummaryView(path: $path)
+            QuickSummaryView()
                 .environmentObject(ViewModel())
                 .environmentObject(ModalViewModel.shared)
         }
-    }
-}
-
-struct QuickSummary_Previews: PreviewProvider {
-    static var previews: some View {
-        Preview()
     }
 }

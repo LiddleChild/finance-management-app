@@ -21,7 +21,7 @@ struct HomeView: View {
                 VStack(alignment: .center, spacing: 48) {
                     HeaderView(header: "Hello,", subheader: "Gaben Newell")
                     
-                    QuickSummaryView(path: $path)
+                    QuickSummaryView()
                     
                     Spacer()
                 }
@@ -43,10 +43,6 @@ struct HomeView: View {
             .toolbar(.visible)
             .navigationDestination(for: NavigationViews.self) { path in
                 switch path {
-                case NavigationViews.HISTORY_VIEW:
-                    HistoryView()
-                        .modifier(NagivationDismissModier())
-                    
                 case NavigationViews.ADD_TRANSACTION_VIEW:
                     AddTransactionView(path: $path)
                         .modifier(NagivationDismissModier())
