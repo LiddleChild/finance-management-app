@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ToggleButton: View {
-    var firstState: ToggleButtonState
-    var secondState: ToggleButtonState
-    
+    var states: [ToggleButtonState]
     @Binding var value: Bool
     
     var body: some View {
@@ -21,34 +19,33 @@ struct ToggleButton: View {
         } label: {
             HStack {
                 if !value {
-                    Text(verbatim: firstState.Label)
-                        .foregroundColor(firstState.ActiveColor ?? Color("color-4"))
-                        .fontWeight(.bold)
+                    Text(verbatim: states[0].Label)
+                        .foregroundColor(states[0].ActiveColor ?? Color("color-4"))
+                        .font(.system(size: 20, weight: .bold))
                 } else {
-                    Text(verbatim: firstState.Label)
+                    Text(verbatim: states[0].Label)
                         .foregroundColor(Color("color-2"))
-                        .fontWeight(.regular)
+                        .font(.system(size: 12, weight: .regular))
                 }
                 
                 Spacer()
                 
                 if value {
-                    Text(verbatim: secondState.Label)
-                        .foregroundColor(secondState.ActiveColor ?? Color("color-4"))
-                        .fontWeight(.bold)
+                    Text(verbatim: states[1].Label)
+                        .foregroundColor(states[1].ActiveColor ?? Color("color-4"))
+                        .font(.system(size: 20, weight: .bold))
                 } else {
-                    Text(verbatim: secondState.Label)
+                    Text(verbatim: states[1].Label)
                         .foregroundColor(Color("color-2"))
-                        .fontWeight(.regular)
+                        .font(.system(size: 12, weight: .regular))
                 }
             }
             .foregroundColor(Color("color-5"))
             .padding(.vertical, 12)
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 16)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color("color-5"))
+                    .stroke(Color("color-2"))
             }
         }
     }
@@ -62,8 +59,7 @@ private struct Preview: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            ToggleButton(firstState: ToggleButtonState.DUMMY_GREEN,
-                         secondState: ToggleButtonState.DUMMY_RED,
+            ToggleButton(states: ToggleButtonState.DUMMY,
                          value: $state)
             .padding(.horizontal, 24)
         }

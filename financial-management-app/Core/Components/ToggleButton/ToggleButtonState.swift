@@ -13,6 +13,8 @@ struct ToggleButtonState {
 }
 
 extension ToggleButtonState {
-    static let DUMMY_GREEN = ToggleButtonState(Label: "GREEN", ActiveColor: .green)
-    static let DUMMY_RED = ToggleButtonState(Label: "RED", ActiveColor: .red)
+    static let DUMMY: [ToggleButtonState] = [
+        ToggleButtonState(Label: "GREEN", ActiveColor: .green),
+        ToggleButtonState(Label: "RED", ActiveColor: .red),
+    ]
 }

@@ -32,11 +32,15 @@ struct AddTransactionView: View {
                                      options: viewModel.getWalletDropdownOptions()
                         )
                         
-                        DropdownMenu(selection: $addTxnViewModel.categoryField,
-                                     placeholder: "Category",
-                                     options: viewModel.getCategoryDropdownOptions()
-                        )
+                        ToggleButton(states: addTxnViewModel.expenseState,
+                                     value: $addTxnViewModel.expenseField)
                     }
+                    .zIndex(2)
+                    
+                    DropdownMenu(selection: $addTxnViewModel.categoryField,
+                                 placeholder: "Category",
+                                 options: viewModel.getCategoryDropdownOptions()
+                    )
                     .zIndex(1)
                     
                     TextField("", text: $addTxnViewModel.noteField, axis: .vertical)

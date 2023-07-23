@@ -5,17 +5,25 @@
 //  Created by Thanapat Ussawanarong on 22/7/2566 BE.
 //
 
-import Foundation
+import SwiftUI
 
 class AddTransactionViewModel: ObservableObject {
-    var amountField: NumbersOnly = NumbersOnly()
     var walletField: DropdownOption?
     var categoryField: DropdownOption?
     var noteField: String = ""
     
+    @Published var amountField: NumbersOnly = NumbersOnly()
+    @Published var expenseField: Bool = true
+    
+    let expenseState: [ToggleButtonState] = [
+        ToggleButtonState(Label: "Income", ActiveColor: Color("color-green")),
+        ToggleButtonState(Label: "Expense", ActiveColor: Color("color-red")),
+    ]
+    
     let txnService: TxnService = TxnService()
     
     func createTxn() {
+        print(expenseField)
         guard let category = categoryField else {
             print("Category is empty")
             return
@@ -34,7 +42,7 @@ class AddTransactionViewModel: ObservableObject {
         let txn: TxnModel = TxnModel(
             Category: category.OptionId,
             Wallet: wallet.OptionId,
-            Amount: amountField.getDouble(),
+            Amount: amountField.getDouble() * (expenseField ? -1 : 1),
             Note: noteField,
             Timestamp: Int64(NSDate().timeIntervalSince1970)
         )
