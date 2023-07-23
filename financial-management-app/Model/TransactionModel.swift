@@ -34,4 +34,6 @@ extension TxnModel {
         Note: "",
         Timestamp: 1687737700
     )
+    
+    static let DUMMYS = [DUMMY_LONG_NOTE, DUMMY_EMPTY_NOTE]
 }

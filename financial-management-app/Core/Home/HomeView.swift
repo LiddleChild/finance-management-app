@@ -23,6 +23,8 @@ struct HomeView: View {
                     
                     QuickSummaryView()
                     
+                    RecentlyView(transactions: TxnModel.DUMMYS)
+                    
                     Spacer()
                 }
                 .padding(.horizontal, 24)
