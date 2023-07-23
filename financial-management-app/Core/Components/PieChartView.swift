@@ -5,7 +5,6 @@
 //  Created by Thanapat Ussawanarong on 25/6/2566 BE.
 //
 
-import Foundation
 import SwiftUI
 
 struct PieChartView: View {

@@ -10,7 +10,7 @@ import SwiftUI
 struct AddTransactionView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var viewModel: ViewModel
-    @ObservedObject private var addTxnViewModel: AddTransactionViewModel = AddTransactionViewModel()
+    @ObservedObject private var addTxnViewModel = AddTransactionViewModel()
     
     @Binding var path: [NavigationViews]
     
@@ -27,7 +27,7 @@ struct AddTransactionView: View {
                 
                 Spacer()
                 
-                VStack(spacing: 32) {
+                VStack(spacing: 24) {
                     CurrencyTextfield(value: $addTxnViewModel.amountField.value)
                     
                     HStack {
@@ -71,7 +71,6 @@ struct AddTransactionView: View {
             }
             .padding(.horizontal, 24)
         }
-        .toolbarBackground(Color("color-1"), for: .navigationBar)
     }
 }
 

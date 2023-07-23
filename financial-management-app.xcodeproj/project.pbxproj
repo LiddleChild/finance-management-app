@@ -46,6 +46,7 @@
 		69D1D0EC2A6CFC9C00E3420D /* NavigationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0EB2A6CFC9C00E3420D /* NavigationViews.swift */; };
 		69D1D0EF2A6D101900E3420D /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0EE2A6D101900E3420D /* Modal.swift */; };
 		69D1D0F32A6D1F5C00E3420D /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0F22A6D1F5C00E3420D /* ModalViewModel.swift */; };
+		69D1D0F52A6D69B400E3420D /* QuickSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0F42A6D69B400E3420D /* QuickSummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		69D1D0EB2A6CFC9C00E3420D /* NavigationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViews.swift; sourceTree = "<group>"; };
 		69D1D0EE2A6D101900E3420D /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		69D1D0F22A6D1F5C00E3420D /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
+		69D1D0F42A6D69B400E3420D /* QuickSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				6988F43A2A481BD100EAEACE /* HomeView.swift */,
+				69D1D0F42A6D69B400E3420D /* QuickSummaryView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				690A089A2A6A6B200009B183 /* CurrencyTextfield.swift in Sources */,
 				690A08A32A6AB20C0009B183 /* DropdownOption.swift in Sources */,
 				699DFCAD2A42F2A900B64C8C /* PrimaryButtonModifier.swift in Sources */,
+				69D1D0F52A6D69B400E3420D /* QuickSummaryView.swift in Sources */,
 				691227D62A67FFB600A069E5 /* UINavigationController.swift in Sources */,
 				690A089F2A6AA65E0009B183 /* DropdownMenu.swift in Sources */,
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,

@@ -37,28 +37,28 @@ struct TransactionHistoryView: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 48) {
                 HeaderView(header: "Transaction History")
-                    .padding(.bottom, 48)
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(Date(timeIntervalSince1970:Double(transaction.Timestamp))
-                        .formatted(.dateTime.day().month().year())
-                    )
+                    Text(Date(timeIntervalSince1970: Double(transaction.Timestamp))
+                        .formatted(.dateTime.day().month().year()))
                     .foregroundColor(Color("color-5"))
                     .font(.system(size: 28, weight: .regular))
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        DescriptionView(key: "Category",
-                                        value: viewModel.getCategoryLabelById(
-                                            id: transaction.Category))
+                        DescriptionView(
+                            key: "Category",
+                            value: viewModel.getCategoryLabelById(id: transaction.Category))
                         
-                        DescriptionView(key: "Wallet",
-                                        value: viewModel.getWalletLabelById(id: transaction.Wallet))
+                        DescriptionView(
+                            key: "Wallet",
+                            value: viewModel.getWalletLabelById(id: transaction.Wallet))
                         
-                        DescriptionView(key: "Amount",
-                                        value: String(format: "%.2f THB", transaction.Amount),
-                                        color: transaction.Amount > 0 ? Color("color-green") : Color("color-red"))
+                        DescriptionView(
+                            key: "Amount",
+                            value: String(format: "%.2f THB", transaction.Amount),
+                            color: transaction.Amount > 0 ? Color("color-green") : Color("color-red"))
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
@@ -73,16 +73,13 @@ struct TransactionHistoryView: View {
                             .padding(.leading, 16)
                         
                         Text(transaction.Note == "" ?
-                             "No note written." : transaction.Note
-                        )
+                             "No note written." : transaction.Note)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color("color-5"))
                         .font(.system(size: 16, weight: .light))
                         .padding()
                         .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color("color-3"))
-                        )
+                            RoundedRectangle(cornerRadius: 12).strokeBorder(Color("color-3")))
                         .offset(y: -24)
                     }
                 }
@@ -97,18 +94,9 @@ struct TransactionHistoryView: View {
 struct TransactionHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            TransactionHistoryView(
-                transaction: .init(
-                    TransactionId: "1",
-                    Category: "hYlgrFddSlTsw2gY8uYk",
-                    Wallet: "nkoB55tzcxlbCrpwvwZl",
-                    Amount: 12345.67,
-//                    Note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, neque vulputate dignissim maximus, lectus eros rutrum nunc, quis dignissim erat velit in ante.",
-                    Note: "",
-                    Timestamp: 1687737600)
-            )
-            .toolbar(.visible, for: .navigationBar)
-            .environmentObject(ViewModel())
+            TransactionHistoryView(transaction: TxnModel.DUMMY_LONG_NOTE)
+                .toolbar(.visible, for: .navigationBar)
+                .environmentObject(ViewModel())
         }
     }
 }
