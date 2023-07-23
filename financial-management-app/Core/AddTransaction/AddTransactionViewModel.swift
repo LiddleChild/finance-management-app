@@ -47,6 +47,8 @@ class AddTransactionViewModel: ObservableObject {
             Timestamp: Int64(NSDate().timeIntervalSince1970)
         )
         
-        txnService.createTxn(txn: txn)
+        txnService.createTxn(txn: txn) { error in
+            
+        }
     }
 }

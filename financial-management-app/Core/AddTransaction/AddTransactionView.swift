@@ -11,6 +11,8 @@ struct AddTransactionView: View {
     @EnvironmentObject private var viewModel: ViewModel
     @ObservedObject private var addTxnViewModel: AddTransactionViewModel = AddTransactionViewModel()
     
+    @Binding var path: [NavigationViews]
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -29,18 +31,15 @@ struct AddTransactionView: View {
                     HStack {
                         DropdownMenu(selection: $addTxnViewModel.walletField,
                                      placeholder: "Wallet",
-                                     options: viewModel.getWalletDropdownOptions()
-                        )
+                                     options: viewModel.getWalletDropdownOptions())
                         
                         ToggleButton(states: addTxnViewModel.expenseState,
                                      value: $addTxnViewModel.expenseField)
-                    }
-                    .zIndex(2)
+                    }.zIndex(2)
                     
                     DropdownMenu(selection: $addTxnViewModel.categoryField,
                                  placeholder: "Category",
-                                 options: viewModel.getCategoryDropdownOptions()
-                    )
+                                 options: viewModel.getCategoryDropdownOptions())
                     .zIndex(1)
                     
                     TextField("", text: $addTxnViewModel.noteField, axis: .vertical)
@@ -55,6 +54,7 @@ struct AddTransactionView: View {
                 
                 Button {
                     addTxnViewModel.createTxn()
+                    path = []
                 } label: {
                     Text("Create Transaction")
                         .modifier(PrimaryButtonModifier())
@@ -68,12 +68,20 @@ struct AddTransactionView: View {
     }
 }
 
-struct AddTransactionView_Previews: PreviewProvider {
-    static var previews: some View {
+private struct Preview: View {
+    @State private var path: [NavigationViews] = []
+    
+    var body: some View {
         NavigationStack {
-            AddTransactionView()
+            AddTransactionView(path: $path)
                 .toolbar(.visible)
                 .environmentObject(ViewModel())
         }
+    }
+}
+
+struct AddTransactionView_Previews: PreviewProvider {
+    static var previews: some View {
+        Preview()
     }
 }

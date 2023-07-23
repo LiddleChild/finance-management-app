@@ -9,14 +9,14 @@ import SwiftUI
 
 private struct QuickSummaryView: View {
     @EnvironmentObject var viewModel: ViewModel
+    @Binding var path: [NavigationViews]
     
     var body: some View {
         ZStack {
             PieChartView(data: viewModel.getQuickSummary())
             
-            NavigationLink {
-                HistoryView()
-                    .modifier(NagivationDismissModier())
+            Button {
+                path.append(NavigationViews.HISTORY_VIEW)
             } label: {
                 ZStack {
                     Circle()
@@ -39,8 +39,10 @@ private struct QuickSummaryView: View {
 }
 
 struct HomeView: View {
+    @State private var path: [NavigationViews] = []
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             ZStack {
                 Rectangle()
                     .fill(Color("color-1"))
@@ -50,16 +52,15 @@ struct HomeView: View {
                     HeaderView(header: "Hello,", subheader: "Gaben Newell")
                         .padding(.bottom, 48)
                     
-                    QuickSummaryView()
+                    QuickSummaryView(path: $path)
                     
                     Spacer()
                 }
                 .padding(.horizontal, 24)
                 
                 ZStack(alignment: .bottomTrailing) {
-                    NavigationLink {
-                        AddTransactionView()
-                            .modifier(NagivationDismissModier())
+                    Button {
+                        path.append(NavigationViews.ADD_TRANSACTION_VIEW)
                     } label: {
                         Text("+")
                             .font(.system(size: 28, weight: .regular))
@@ -77,6 +78,17 @@ struct HomeView: View {
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .toolbar(.visible)
+            .navigationDestination(for: NavigationViews.self) { path in
+                switch path {
+                case NavigationModel.HISTORY_VIEW:
+                    HistoryView()
+                        .modifier(NagivationDismissModier())
+                    
+                case NavigationModel.ADD_TRANSACTION_VIEW:
+                    AddTransactionView(path: $path)
+                        .modifier(NagivationDismissModier())
+                }
+            }
         }
     }
 }

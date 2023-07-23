@@ -30,7 +30,7 @@ class TxnService {
         task.resume()
     }
     
-    func createTxn(txn: TxnModel) {
+    func createTxn(txn: TxnModel, completion: @escaping (Error?) -> Void) {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(txn)
@@ -43,10 +43,8 @@ class TxnService {
             req.httpBody = data
             
             let task = URLSession.shared.dataTask(with: req) { data, res, error in
-                guard let data = data, error == nil else { return }
-                
-                print(data)
-                print(error)
+                completion(error)
+                return
             }
             
             task.resume()
