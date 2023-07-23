@@ -22,8 +22,7 @@ class AddTransactionViewModel: ObservableObject {
     
     let txnService: TxnService = TxnService()
     
-    func createTxn() {
-        print(expenseField)
+    func createTxn(onSuccess: @escaping () -> Void, onFailure: @escaping (Error?) -> Void) {
         guard let category = categoryField else {
             print("Category is empty")
             return
@@ -48,7 +47,11 @@ class AddTransactionViewModel: ObservableObject {
         )
         
         txnService.createTxn(txn: txn) { error in
-            
+            if let error = error {
+               onFailure(error)
+            } else {
+                onSuccess()
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ struct DropdownMenu: View {
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color(isShowingOption ? "color-4" : "color-2"))
+                    .strokeBorder(Color(isShowingOption ? "color-4" : "color-2"))
             )
         }
         .overlay(alignment: .top) {

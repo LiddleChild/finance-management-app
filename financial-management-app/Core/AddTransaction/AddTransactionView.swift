@@ -13,6 +13,9 @@ struct AddTransactionView: View {
     
     @Binding var path: [NavigationViews]
     
+    @State private var showSuccess: Bool = false
+    @State private var showFailure: Bool = false
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -22,6 +25,7 @@ struct AddTransactionView: View {
             VStack {
                 HeaderView(header: "Add your Transaction", subheader: "Please fill your transaction information")
                     .padding(.bottom, 48)
+                    .lineLimit(2)
                 
                 Spacer()
                 
@@ -42,7 +46,7 @@ struct AddTransactionView: View {
                                  options: viewModel.getCategoryDropdownOptions())
                     .zIndex(1)
                     
-                    TextField("", text: $addTxnViewModel.noteField, axis: .vertical)
+                    TextField("", text: $addTxnViewModel.noteField)
                         .autocapitalization(.none)
                         .modifier(TextfieldModifier(
                             label: "Note",
@@ -53,8 +57,22 @@ struct AddTransactionView: View {
                 Spacer()
                 
                 Button {
-                    addTxnViewModel.createTxn()
-                    path = []
+                    addTxnViewModel.createTxn {
+                        withAnimation { showSuccess = true }
+                        DispatchQueue.main.async {
+                            viewModel.fetchData()
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            withAnimation(.easeInOut) { showSuccess = false }
+                            path = []
+                        }
+                    } onFailure: { error in
+                        withAnimation { showFailure = true }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            withAnimation(.easeInOut) { showFailure = false }
+                            path = []
+                        }
+                    }
                 } label: {
                     Text("Create Transaction")
                         .modifier(PrimaryButtonModifier())
@@ -63,6 +81,14 @@ struct AddTransactionView: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
+            
+            if showSuccess {
+                SuccessModal(text: "Success!")
+            }
+            
+            if showFailure {
+                FailureModal(text: "Fail to create Transaction!")
+            }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
     }

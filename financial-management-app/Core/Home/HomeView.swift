@@ -80,11 +80,11 @@ struct HomeView: View {
             .toolbar(.visible)
             .navigationDestination(for: NavigationViews.self) { path in
                 switch path {
-                case NavigationModel.HISTORY_VIEW:
+                case NavigationViews.HISTORY_VIEW:
                     HistoryView()
                         .modifier(NagivationDismissModier())
                     
-                case NavigationModel.ADD_TRANSACTION_VIEW:
+                case NavigationViews.ADD_TRANSACTION_VIEW:
                     AddTransactionView(path: $path)
                         .modifier(NagivationDismissModier())
                 }

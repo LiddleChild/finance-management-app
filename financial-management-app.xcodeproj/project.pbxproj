@@ -44,6 +44,8 @@
 		69D1D0E42A6CDF4900E3420D /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0E32A6CDF4900E3420D /* ToggleButton.swift */; };
 		69D1D0E82A6CE19200E3420D /* ToggleButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0E72A6CE19200E3420D /* ToggleButtonState.swift */; };
 		69D1D0EC2A6CFC9C00E3420D /* NavigationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0EB2A6CFC9C00E3420D /* NavigationViews.swift */; };
+		69D1D0EF2A6D101900E3420D /* SuccessModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0EE2A6D101900E3420D /* SuccessModal.swift */; };
+		69D1D0F12A6D13E700E3420D /* FailureModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0F02A6D13E700E3420D /* FailureModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		69D1D0E32A6CDF4900E3420D /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		69D1D0E72A6CE19200E3420D /* ToggleButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonState.swift; sourceTree = "<group>"; };
 		69D1D0EB2A6CFC9C00E3420D /* NavigationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViews.swift; sourceTree = "<group>"; };
+		69D1D0EE2A6D101900E3420D /* SuccessModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModal.swift; sourceTree = "<group>"; };
+		69D1D0F02A6D13E700E3420D /* FailureModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +252,7 @@
 		699DFCAB2A42EA7600B64C8C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				69D1D0ED2A6D100600E3420D /* Modal */,
 				69D1D0E62A6CE17C00E3420D /* ToggleButton */,
 				69D1D0E52A6CE16900E3420D /* Dropdown */,
 				6988F43E2A4864EA00EAEACE /* PieChartView.swift */,
@@ -276,6 +281,15 @@
 				69D1D0E72A6CE19200E3420D /* ToggleButtonState.swift */,
 			);
 			path = ToggleButton;
+			sourceTree = "<group>";
+		};
+		69D1D0ED2A6D100600E3420D /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				69D1D0EE2A6D101900E3420D /* SuccessModal.swift */,
+				69D1D0F02A6D13E700E3420D /* FailureModal.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,9 +381,11 @@
 				699DFC942A41762300B64C8C /* FocusablePadding.swift in Sources */,
 				6986D81F2A4ABCD40043BF86 /* HeaderView.swift in Sources */,
 				6986D8222A4B32560043BF86 /* TxnService.swift in Sources */,
+				69D1D0EF2A6D101900E3420D /* SuccessModal.swift in Sources */,
 				690A08A52A6AB2D80009B183 /* DropdownList.swift in Sources */,
 				69D1D0E42A6CDF4900E3420D /* ToggleButton.swift in Sources */,
 				695FE6982A6C253F0036164D /* AddTransactionViewModel.swift in Sources */,
+				69D1D0F12A6D13E700E3420D /* FailureModal.swift in Sources */,
 				6986D82A2A4D726A0043BF86 /* CategoryService.swift in Sources */,
 				6988F44A2A4954AD00EAEACE /* TransactionHistoryView.swift in Sources */,
 				699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */,

@@ -45,7 +45,7 @@ struct ToggleButton: View {
             .padding(.horizontal, 16)
             .background {
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color("color-2"))
+                    .strokeBorder(Color("color-2"))
             }
         }
     }
