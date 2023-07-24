@@ -58,6 +58,7 @@ struct AddTransactionView: View {
                     addTxnViewModel.createTxn {
                         modalViewModel.alertSuccess() {
                             path = []
+                            viewModel.fetchData()
                         }
                     } onFailure: { error in
                         modalViewModel.alertFailure(message: "Fail to create Transaction!")

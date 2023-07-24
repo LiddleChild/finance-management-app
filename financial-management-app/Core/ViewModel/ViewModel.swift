@@ -12,6 +12,7 @@ class ViewModel: ObservableObject {
     @Published var categories: [String : CategoryModel] = [:]
     @Published var wallets: [String : WalletModel] = [:]
     @Published var txns: [TxnModel] = []
+    @Published var recentlyTxns: [TxnModel] = []
     
     private let categoryService: CategoryService = CategoryService()
     private let txnService: TxnService = TxnService()
@@ -41,6 +42,18 @@ class ViewModel: ObservableObject {
                 self.txns = txns ?? []
                 print("Transaction fetched!")
                 group.leave()
+            }
+        }
+        
+        // Fetch today transaction
+        group.enter()
+        txnService.fetchToday { recentlyTxns in
+            DispatchQueue.main.async {
+                self.recentlyTxns = recentlyTxns ?? []
+                print("Today Transaction fetched!")
+                group.leave()
+                
+                print(self.recentlyTxns)
             }
         }
         

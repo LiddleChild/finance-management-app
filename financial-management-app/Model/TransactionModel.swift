@@ -30,7 +30,7 @@ extension TxnModel {
         TransactionId: "2",
         Category: "hYlgrFddSlTsw2gY8uYk",
         Wallet: "nkoB55tzcxlbCrpwvwZl",
-        Amount: 12345.67,
+        Amount: -12345.67,
         Note: "",
         Timestamp: 1687737700
     )

@@ -30,7 +30,7 @@ struct RecentlyView: View {
                         RecentlyViewTransaction(transaction: transaction)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, maxHeight: 128, alignment: .topLeading)
                 .foregroundColor(Color("color-5"))
                 .font(.system(size: 16, weight: .light))
                 .padding()

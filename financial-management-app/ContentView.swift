@@ -9,8 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HomeView()
-            .environmentObject(ViewModel())
+        ZStack {
+            HomeView()
+                .environmentObject(ViewModel())
+                .environmentObject(ModalViewModel.shared)
+            
+            Modal()
+        }
     }
 }
 

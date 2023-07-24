@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct QuickSummaryView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    var summaryData: [(Double, Color)]
+    var expense: Double
     
     var body: some View {
         ZStack {
-            PieChartView(data: viewModel.getQuickSummary())
+            PieChartView(data: summaryData)
             NavigationLink {
                 HistoryView()
                     .modifier(NagivationDismissModier())
@@ -28,7 +29,7 @@ struct QuickSummaryView: View {
                             .font(.system(size: 16, weight: .regular))
                             .foregroundColor(Color("color-5"))
                         
-                        Text(String(format: "%.2f", viewModel.getQuickSummaryAmount()))
+                        Text(String(format: "%.2f", expense))
                             .font(.system(size: 24, weight: .regular))
                             .foregroundColor(Color("color-5"))
                     }
@@ -45,7 +46,7 @@ struct QuickSummary_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            QuickSummaryView()
+            QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green)], expense: 123.45)
                 .environmentObject(ViewModel())
                 .environmentObject(ModalViewModel.shared)
         }

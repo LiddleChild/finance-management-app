@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
+    @EnvironmentObject private var viewModel: ViewModel
     @State private var path: [NavigationViews] = []
     
     var body: some View {
@@ -19,11 +20,16 @@ struct HomeView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .center, spacing: 48) {
-                    HeaderView(header: "Hello,", subheader: "Gaben Newell")
+                    HeaderView(
+                        header: "Hello,",
+                        subheader: "Gaben Newell")
                     
-                    QuickSummaryView()
+                    QuickSummaryView(
+                        summaryData: viewModel.getQuickSummary(),
+                        expense: viewModel.getQuickSummaryAmount())
                     
-                    RecentlyView(transactions: TxnModel.DUMMYS)
+                    RecentlyView(
+                        transactions: viewModel.recentlyTxns)
                     
                     Spacer()
                 }

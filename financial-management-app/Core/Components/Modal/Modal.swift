@@ -25,6 +25,7 @@ struct Modal: View {
                             .scaledToFill()
                         
                         Text(verbatim: ModalViewModel.shared.message)
+                            .foregroundColor(.black)
                             .font(.system(size: 24, weight: .regular))
                     }
                     .frame(width: 216, height: 216)

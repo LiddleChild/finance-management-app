@@ -5,12 +5,41 @@
 //  Created by Thanapat Ussawanarong on 27/6/2566 BE.
 //
 
-import Foundation
 import SwiftUI
 
 class TxnService {
     func fetch(completion: @escaping ([TxnModel]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/transaction") else { return }
+        let month = Calendar.current.component(.month, from: Date())
+        let year = Calendar.current.component(.year, from: Date())
+        
+        fetchDate(month: month, year: year, completion: completion)
+    }
+    
+    func fetchDate(month: Int, year: Int, completion: @escaping ([TxnModel]?) -> Void) {
+        let url = String(format: "http://localhost:3000/transaction?month=%d&year=%d", month, year)
+        guard let url = URL(string: url) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, res, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                let txns = try JSONDecoder().decode([TxnModel].self, from: data)
+                
+                DispatchQueue.main.async {
+                    completion(txns)
+                }
+            } catch {
+                print(error)
+                completion(nil)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func fetchToday(completion: @escaping ([TxnModel]?) -> Void) {
+        let url = "http://localhost:3000/transaction/today"
+        guard let url = URL(string: url) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, res, error in
             guard let data = data, error == nil else { return }
