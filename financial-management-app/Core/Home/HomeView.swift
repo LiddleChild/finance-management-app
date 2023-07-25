@@ -24,9 +24,17 @@ struct HomeView: View {
                         header: "Hello,",
                         subheader: "Gaben Newell")
                     
-                    QuickSummaryView(
-                        summaryData: viewModel.getQuickSummary(),
-                        expense: viewModel.getQuickSummaryAmount())
+                    TabView {
+                        MonthlyExpenseView(
+                            summaryData: viewModel.getQuickSummary(),
+                            expense: viewModel.getQuickSummaryAmount())
+                        
+                        QuickSummaryView(
+                            summaryData: viewModel.getQuickSummary(),
+                            expense: viewModel.getQuickSummaryAmount())
+                    }
+                    .frame(height: 256)
+                    .tabViewStyle(.page)
                     
                     RecentlyView(
                         transactions: viewModel.recentlyTxns)

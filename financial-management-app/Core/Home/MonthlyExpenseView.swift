@@ -1,13 +1,13 @@
 //
-//  QuickSummaryView.swift
+//  QuickSummary.swift
 //  financial-management-app
 //
-//  Created by Thanapat Ussawanarong on 25/7/2566 BE.
+//  Created by Thanapat Ussawanarong on 23/7/2566 BE.
 //
 
 import SwiftUI
 
-struct QuickSummaryView: View {
+struct MonthlyExpenseView: View {
     var summaryData: [(Double, Color)]
     var expense: Double
     
@@ -39,14 +39,14 @@ struct QuickSummaryView: View {
     }
 }
 
-struct QuickSummaryView_Previews: PreviewProvider {
+struct MonthlyExpenseView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Rectangle()
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green)], expense: 123.45)
+            MonthlyExpenseView(summaryData: [(1.0, .red), (2.0, .green)], expense: 123.45)
                 .environmentObject(ViewModel())
                 .environmentObject(ModalViewModel.shared)
         }
