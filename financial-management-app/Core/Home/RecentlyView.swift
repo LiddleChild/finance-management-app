@@ -15,8 +15,8 @@ struct RecentlyView: View {
             HistoryView()
                 .modifier(NagivationDismissModier())
         } label: {
-            VStack {
-                Text("Recently Today")
+            ZStack(alignment: .top) {
+                Text("Recent Activities")
                     .foregroundColor(Color("color-5"))
                     .font(.system(size: 20, weight: .medium))
                     .padding(.horizontal, 8)
@@ -24,10 +24,17 @@ struct RecentlyView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .zIndex(1)
                     .padding(.leading, 16)
+                    .offset(y: -12)
                 
                 VStack(spacing: 8) {
-                    ForEach(transactions, id: \.TransactionId) { transaction in
-                        RecentlyViewTransaction(transaction: transaction)
+                    if transactions.count > 0 {
+                        ForEach(transactions, id: \.TransactionId) { transaction in
+                            RecentlyViewTransaction(transaction: transaction)
+                        }
+                    } else {
+                        Text("No recent activity found.")
+                            .foregroundColor(Color("color-5"))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: 128, alignment: .topLeading)
@@ -36,7 +43,6 @@ struct RecentlyView: View {
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12).strokeBorder(Color("color-3")))
-                .offset(y: -24)
             }
         }
     }
@@ -50,7 +56,8 @@ struct RecentlyView_Previews: PreviewProvider {
                     .fill(Color("color-1"))
                     .ignoresSafeArea()
                 
-                RecentlyView(transactions: TxnModel.DUMMYS)
+//                RecentlyView(transactions: TxnModel.DUMMYS)
+                RecentlyView(transactions: [])
                     .padding(.horizontal, 24)
             }
         }
