@@ -8,26 +8,22 @@
 import Foundation
 
 class WalletService {
+    static let shared = WalletService()
+    private init() {}
     
-    func fetch(completion: @escaping ([String : WalletModel]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/wallet") else { return }
+    func fetch(completion: @escaping (Wallet) -> Void) {
+        let url = URL(string: "http://localhost:3000/wallet")!
         
-        let task = URLSession.shared.dataTask(with: url) { data, res, error in
-            guard let data = data, error == nil else { return }
-            
-            do {
-                let categories = try JSONDecoder().decode([String : WalletModel].self, from: data)
+        HTTPService.shared.fetchData(for: url) { (result: Result<[String : WalletModel], Error>) in
+            switch result {
+            case .success(let wallets):
+                completion(Wallet(wallets: wallets))
+                break
                 
-                DispatchQueue.main.async {
-                    completion(categories)
-                }
-            } catch {
+            case .failure(let error):
                 print(error)
-                completion(nil)
+                break
             }
         }
-        
-        task.resume()
     }
-    
 }

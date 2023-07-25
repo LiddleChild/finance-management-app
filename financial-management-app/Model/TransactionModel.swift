@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TxnModel: Hashable, Decodable, Encodable {
+struct TransactionModel: Hashable, Decodable, Encodable {
     var TransactionId: String?
     var Category: String
     var Wallet: String
@@ -16,8 +16,8 @@ struct TxnModel: Hashable, Decodable, Encodable {
     var Timestamp: Int64
 }
 
-extension TxnModel {
-    static let DUMMY_LONG_NOTE = TxnModel(
+extension TransactionModel {
+    static let DUMMY_LONG_NOTE = TransactionModel(
         TransactionId: "1",
         Category: "hYlgrFddSlTsw2gY8uYk",
         Wallet: "nkoB55tzcxlbCrpwvwZl",
@@ -26,7 +26,7 @@ extension TxnModel {
         Timestamp: 1687737600
     )
     
-    static let DUMMY_EMPTY_NOTE = TxnModel(
+    static let DUMMY_EMPTY_NOTE = TransactionModel(
         TransactionId: "2",
         Category: "hYlgrFddSlTsw2gY8uYk",
         Wallet: "nkoB55tzcxlbCrpwvwZl",

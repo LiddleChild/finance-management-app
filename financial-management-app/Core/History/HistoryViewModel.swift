@@ -23,48 +23,26 @@ class HistoryViewModel: ObservableObject {
         DropdownOption(OptionId: "12.2023", Label: "December 2023"),
     ]
     
-    let txnService = TxnService()
+    let txnService = TransactionService.shared
     
-    @Published var month: Int
-    @Published var monthSelectionField: DropdownOption? {
-        didSet {
-            fetchDate()
-        }
-    }
-    
-    @Published var dayTxns: [DayTxnModel] = []
+//    @Published var month: Int
+//    @Published var monthSelectionField: DropdownOption?
+    @Published var transaction = Transaction()
     
     init() {
-        month = Calendar.current.component(.month, from: Date())
-        monthSelectionField = monthOptions[month - 1]
+//        month = Calendar.current.component(.month, from: Date())
+//        monthSelectionField = monthOptions[month - 1]
+        fetch()
     }
     
-    func fetchDate() {
-        let arr = monthSelectionField?.OptionId.components(separatedBy: ".")
-        let m = Int(arr![0]) ?? month
-        let y = Int(arr![1]) ?? 2023
+    func fetch() {
+//        let arr = monthSelectionField?.OptionId.components(separatedBy: ".")
+//        let m = Int(arr![0]) ?? month
+//        let y = Int(arr![1]) ?? 2023
+        let m = 7, y = 2023
         
-        txnService.fetchDate(month: m, year: y) { txns in
-            self.dayTxns = self.getDayTransaction(txns: txns ?? [])
+        txnService.fetchDate(month: m, year: y) { txn in
+            self.transaction = txn
         }
-    }
-    
-    func getDayTransaction(txns: [TxnModel]) -> [DayTxnModel] {
-        var dict: [Int64: [TxnModel]] = [:]
-        var dayTxn: [DayTxnModel] = []
-
-        for txn in txns {
-            let key = txn.Timestamp - txn.Timestamp % (60 * 60 * 24)
-
-            var tmp = dict[key] ?? []
-            tmp.append(txn)
-            dict[key] = tmp
-        }
-
-        for key in dict.keys.sorted(by: >) {
-            dayTxn.append(.init(Timestamp: key, Transactions: dict[key]!))
-        }
-        
-        return dayTxn
     }
 }

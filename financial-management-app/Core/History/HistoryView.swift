@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     @EnvironmentObject private var viewModel: ViewModel
+    @StateObject private var historyViewModel = HistoryViewModel()
     
     var body: some View {
         ZStack {
@@ -22,7 +23,8 @@ struct HistoryView: View {
                         .padding(.bottom, 48)
                     
                     VStack(spacing: 16) {
-                        ForEach(viewModel.getDayTransaction(), id: \.DayTransactionId) { i in
+                        ForEach(historyViewModel.transaction.getDayTransaction(),
+                                id: \.DayTransactionId) { i in
                             DayView(dayTransaction: i)
                         }
                     }
@@ -35,11 +37,12 @@ struct HistoryView: View {
 }
 
 struct HistoryView_Previews: PreviewProvider {
+    @StateObject static var viewModel = ViewModel()
     static var previews: some View {
         NavigationStack {
             HistoryView()
                 .toolbar(.visible, for: .navigationBar)
         }
-        .environmentObject(ViewModel())
+        .environmentObject(viewModel)
     }
 }

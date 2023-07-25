@@ -35,7 +35,7 @@ struct TextfieldModifier: ViewModifier {
                         .offset(x: 12, y: -12)
                     
                     // Placeholder
-                    if text == "" && !isFocus {
+                    if text == "" {
                         Text(verbatim: placeholder)
                             .font(.system(size: 16, weight: .light))
                             .foregroundColor(Color("color-3"))

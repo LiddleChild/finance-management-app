@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum NavigationViews {
+    case ADD_TRANSACTION_VIEW
+}
+
 struct HomeView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var viewModel: ViewModel
+    @StateObject private var homeViewModel = HomeViewModel()
+    
     @State private var path: [NavigationViews] = []
     
     var body: some View {
@@ -19,25 +25,25 @@ struct HomeView: View {
                     .fill(Color("color-1"))
                     .ignoresSafeArea()
                 
-                VStack(alignment: .center, spacing: 48) {
+                VStack(alignment: .center, spacing: 32) {
                     HeaderView(
                         header: "Hello,",
                         subheader: "Gaben Newell")
                     
                     TabView {
                         MonthlyExpenseView(
-                            summaryData: viewModel.getQuickSummary(),
-                            expense: viewModel.getQuickSummaryAmount())
+                            summaryData: homeViewModel.transaction.getExpenseSummary(),
+                            expense: homeViewModel.transaction.getExpenseAmount())
                         
                         QuickSummaryView(
-                            summaryData: viewModel.getQuickSummary(),
-                            expense: viewModel.getQuickSummaryAmount())
+                            summaryData: homeViewModel.transaction.getExpenseSummary(),
+                            expense: homeViewModel.transaction.getExpenseAmount())
                     }
-                    .frame(height: 256)
+                    .frame(height: 256 + 128 - 32)
                     .tabViewStyle(.page)
                     
                     RecentlyView(
-                        transactions: viewModel.recentlyTxns)
+                        transactions: homeViewModel.todayTransactions)
                     
                     Spacer()
                 }
@@ -64,15 +70,20 @@ struct HomeView: View {
                         .modifier(NagivationDismissModier())
                 }
             }
+            .onAppear {
+                viewModel.fetch()
+                homeViewModel.fetch()
+            }
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
+    @StateObject static var viewModel = ViewModel()
     static var previews: some View {
         ZStack {
             HomeView()
-                .environmentObject(ViewModel())
+                .environmentObject(viewModel)
                 .environmentObject(ModalViewModel.shared)
             
             Modal()

@@ -8,41 +8,22 @@
 import Foundation
 
 class CategoryService {
-    func fetch(completion: @escaping ([String : CategoryModel]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/category") else { return }
+    static let shared = CategoryService()
+    private init() {}
+    
+    func fetch(completion: @escaping (Category) -> Void) {
+        let url = URL(string: "http://localhost:3000/category")!
         
-        let task = URLSession.shared.dataTask(with: url) { data, res, error in
-            guard let data = data, error == nil else { return }
-            
-            do {
-                let categories = try JSONDecoder().decode([String : CategoryModel].self, from: data)
+        HTTPService.shared.fetchData(for: url) { (result: Result<[String : CategoryModel], Error>) in
+            switch result {
+            case .success(let categories):
+                completion(Category(categories: categories))
+                break
                 
-                DispatchQueue.main.async {
-                    completion(categories)
-                }
-            } catch {
+            case .failure(let error):
                 print(error)
-                completion(nil)
+                break
             }
         }
-        
-        task.resume()
     }
-    
-//    func getCategoryLabelById(id: String) -> String {
-//        return categoryMap[id]?.Label ?? ""
-//    }
-//
-//    func getCategoryColorById(id: String) -> Int {
-//        return categoryMap[id]?.Color ?? 0xFFFFFF
-//    }
-//
-//    func getColors() -> [(Double, Color)] {
-//        var arrs: [(Double, Color)] = []
-//        for (index, cat) in categoryMap.values.enumerated() {
-//            arrs.append((Double(index), Color(hex: cat.Color)))
-//        }
-//
-//        return arrs
-//    }
 }

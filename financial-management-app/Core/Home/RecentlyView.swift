@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecentlyView: View {
-    var transactions: [TxnModel]
+    var transactions: [TransactionModel]
     
     var body: some View {
         NavigationLink {

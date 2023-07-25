@@ -33,7 +33,7 @@ struct AddTransactionView: View {
                     HStack {
                         DropdownMenu(selection: $addTxnViewModel.walletField,
                                      placeholder: "Wallet",
-                                     options: viewModel.getWalletDropdownOptions())
+                                     options: viewModel.wallet.getWalletDropdownOptions())
                         
                         ToggleButton(states: addTxnViewModel.expenseState,
                                      value: $addTxnViewModel.expenseField)
@@ -41,7 +41,7 @@ struct AddTransactionView: View {
                     
                     DropdownMenu(selection: $addTxnViewModel.categoryField,
                                  placeholder: "Category",
-                                 options: viewModel.getCategoryDropdownOptions())
+                                 options: viewModel.category.getCategoryDropdownOptions())
                     .zIndex(1)
                     
                     TextField("", text: $addTxnViewModel.noteField)
@@ -58,7 +58,6 @@ struct AddTransactionView: View {
                     addTxnViewModel.createTxn {
                         modalViewModel.alertSuccess() {
                             path = []
-                            viewModel.fetchData()
                         }
                     } onFailure: { error in
                         modalViewModel.alertFailure(message: "Fail to create Transaction!")

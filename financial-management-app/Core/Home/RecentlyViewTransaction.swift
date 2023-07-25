@@ -10,11 +10,11 @@ import SwiftUI
 struct RecentlyViewTransaction: View {
     @EnvironmentObject private var viewModel: ViewModel
     
-    var transaction: TxnModel
+    var transaction: TransactionModel
     
     var body: some View {
         HStack(spacing: 16) {
-            Text("\(viewModel.getCategoryLabelById(id: transaction.Category))")
+            Text("\(viewModel.category.getCategoryLabelById(id: transaction.Category))")
                 .font(.system(size: 16, weight: .regular))
             
             Spacer()
@@ -35,7 +35,7 @@ struct RecentlyViewTransaction_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            RecentlyViewTransaction(transaction: TxnModel.DUMMY_EMPTY_NOTE)
+            RecentlyViewTransaction(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
                 .padding(.horizontal, 24)
                 .environmentObject(ViewModel())
         }

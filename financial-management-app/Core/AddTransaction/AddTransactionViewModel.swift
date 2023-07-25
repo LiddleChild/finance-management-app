@@ -10,8 +10,8 @@ import SwiftUI
 class AddTransactionViewModel: ObservableObject {
     var walletField: DropdownOption?
     var categoryField: DropdownOption?
-    var noteField: String = ""
     
+    @Published var noteField: String = ""
     @Published var amountField: NumbersOnly = NumbersOnly()
     @Published var expenseField: Bool = true
     
@@ -20,7 +20,7 @@ class AddTransactionViewModel: ObservableObject {
         ToggleButtonState(Label: "Expense", ActiveColor: Color("color-red")),
     ]
     
-    let txnService: TxnService = TxnService()
+    let txnService: TransactionService = TransactionService.shared
     
     func createTxn(onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         guard let category = categoryField else {
@@ -38,7 +38,7 @@ class AddTransactionViewModel: ObservableObject {
             return
         }
         
-        let txn: TxnModel = TxnModel(
+        let txn: TransactionModel = TransactionModel(
             Category: category.OptionId,
             Wallet: wallet.OptionId,
             Amount: amountField.getDouble() * (expenseField ? -1 : 1),

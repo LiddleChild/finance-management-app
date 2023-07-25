@@ -10,7 +10,7 @@ import SwiftUI
 struct TransactionView: View {
     @EnvironmentObject private var viewModel: ViewModel
     
-    var transaction: TxnModel
+    var transaction: TransactionModel
     
     var body: some View {
         NavigationLink {
@@ -23,16 +23,16 @@ struct TransactionView: View {
                     .frame(height: 56)
                 
                 HStack(spacing: 16) {
-                    Text("\(viewModel.getCategoryLabelById(id: transaction.Category))")
+                    Text("\(viewModel.category.getCategoryLabelById(id: transaction.Category))")
                         .font(.system(size: 16, weight: .regular))
                     
-                    Text("\(viewModel.getWalletLabelById(id: transaction.Wallet))")
+                    Text("\(viewModel.wallet.getWalletLabelById(id: transaction.Wallet))")
                         .font(.system(size: 16, weight: .regular))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 4)
                         .background {
                             RoundedRectangle(cornerRadius: 12)
-                                .foregroundColor(Color(hex: viewModel.getWalletColorById(id: transaction.Wallet)))
+                                .foregroundColor(Color(hex: viewModel.wallet.getWalletColorById(id: transaction.Wallet)))
                         }
                     
                     Spacer()
@@ -57,7 +57,7 @@ struct TransactionView_Previews: PreviewProvider {
                     .fill(Color("color-1"))
                     .ignoresSafeArea()
 
-                TransactionView(transaction: TxnModel.DUMMY_EMPTY_NOTE)
+                TransactionView(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
                     .padding(.horizontal, 24)
             }
         }

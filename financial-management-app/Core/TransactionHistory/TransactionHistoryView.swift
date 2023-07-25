@@ -29,7 +29,7 @@ private struct DescriptionView: View {
 struct TransactionHistoryView: View {
     @EnvironmentObject private var viewModel: ViewModel
     
-    var transaction: TxnModel
+    var transaction: TransactionModel
     
     var body: some View {
         ZStack {
@@ -49,11 +49,11 @@ struct TransactionHistoryView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         DescriptionView(
                             key: "Category",
-                            value: viewModel.getCategoryLabelById(id: transaction.Category))
+                            value: viewModel.category.getCategoryLabelById(id: transaction.Category))
                         
                         DescriptionView(
                             key: "Wallet",
-                            value: viewModel.getWalletLabelById(id: transaction.Wallet))
+                            value: viewModel.wallet.getWalletLabelById(id: transaction.Wallet))
                         
                         DescriptionView(
                             key: "Amount",
@@ -92,11 +92,12 @@ struct TransactionHistoryView: View {
 }
 
 struct TransactionHistoryView_Previews: PreviewProvider {
+    @StateObject static var viewModel = ViewModel()
     static var previews: some View {
         NavigationStack {
-            TransactionHistoryView(transaction: TxnModel.DUMMY_LONG_NOTE)
+            TransactionHistoryView(transaction: TransactionModel.DUMMY_LONG_NOTE)
                 .toolbar(.visible, for: .navigationBar)
         }
-        .environmentObject(ViewModel())
+        .environmentObject(viewModel)
     }
 }
