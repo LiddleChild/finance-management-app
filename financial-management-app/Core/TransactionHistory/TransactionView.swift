@@ -56,7 +56,7 @@ struct TransactionView_Previews: PreviewProvider {
                 Rectangle()
                     .fill(Color("color-1"))
                     .ignoresSafeArea()
-                
+
                 TransactionView(transaction: TxnModel.DUMMY_EMPTY_NOTE)
                     .padding(.horizontal, 24)
             }

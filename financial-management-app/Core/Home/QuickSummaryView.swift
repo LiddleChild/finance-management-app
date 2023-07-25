@@ -46,9 +46,11 @@ struct QuickSummaryView_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green)], expense: 123.45)
-                .environmentObject(ViewModel())
-                .environmentObject(ModalViewModel.shared)
+            QuickSummaryView(
+                summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)],
+                expense: 123.45)
+            .environmentObject(ViewModel())
+            .environmentObject(ModalViewModel.shared)
         }
     }
 }

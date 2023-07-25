@@ -46,9 +46,11 @@ struct MonthlyExpenseView_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            MonthlyExpenseView(summaryData: [(1.0, .red), (2.0, .green)], expense: 123.45)
-                .environmentObject(ViewModel())
-                .environmentObject(ModalViewModel.shared)
+            MonthlyExpenseView(
+                summaryData: [(1.0, Color("color-red")), (2.0, Color("color-green"))],
+                expense: 123.45)
+            .environmentObject(ViewModel())
+            .environmentObject(ModalViewModel.shared)
         }
     }
 }
