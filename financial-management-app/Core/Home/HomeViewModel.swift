@@ -16,11 +16,15 @@ class HomeViewModel: ObservableObject {
     
     func fetch() {
         txnService.fetch { txn in
-            self.transaction = txn
+            DispatchQueue.main.async {
+                self.transaction = txn
+            }
         }
         
         txnService.fetchToday { txns in
-            self.todayTransactions = txns
+            DispatchQueue.main.async {
+                self.todayTransactions = txns
+            }
         }
     }
 }

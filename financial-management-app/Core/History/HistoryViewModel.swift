@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class HistoryViewModel: ObservableObject {
     let monthOptions: [DropdownOption] = [
         DropdownOption(OptionId: "1.2023", Label: "January 2023"),
@@ -42,7 +43,9 @@ class HistoryViewModel: ObservableObject {
         let m = 7, y = 2023
         
         txnService.fetchDate(month: m, year: y) { txn in
-            self.transaction = txn
+            DispatchQueue.main.async {
+                self.transaction = txn
+            }
         }
     }
 }

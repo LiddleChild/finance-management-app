@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class ModalViewModel: ObservableObject {
     static let shared = ModalViewModel()
     private init() { }
@@ -44,10 +45,12 @@ class ModalViewModel: ObservableObject {
                        symbolColor: Color,
                        completion: @escaping () -> Void) {
         
-        self.symbolColor = symbolColor
-        self.message = message
-        self.symbol = symbol
-        withAnimation(.easeIn) { self.isShowing = true }
+        DispatchQueue.main.async {
+            self.symbolColor = symbolColor
+            self.message = message
+            self.symbol = symbol
+            withAnimation(.easeIn) { self.isShowing = true }
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             withAnimation(.easeOut) { self.isShowing = false }

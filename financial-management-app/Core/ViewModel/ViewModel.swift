@@ -18,11 +18,15 @@ class ViewModel: ObservableObject {
     
     func fetch() {
         categoryService.fetch { category in
-            self.category = category
+            DispatchQueue.main.async {
+                self.category = category
+            }
         }
         
         walletService.fetch { wallet in
-            self.wallet = wallet
+            DispatchQueue.main.async {
+                self.wallet = wallet
+            }
         }
     }
 }

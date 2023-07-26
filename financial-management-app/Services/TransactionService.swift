@@ -64,7 +64,7 @@ class TransactionService {
             req.setValue("application/json", forHTTPHeaderField: "Content-Type")
             req.httpBody = data
             
-            HTTPService.shared.postData(for: req) { (result: Result<[TransactionModel], Error>) in
+            HTTPService.shared.postData(for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)
