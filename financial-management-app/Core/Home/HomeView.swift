@@ -39,7 +39,7 @@ struct HomeView: View {
                             summaryData: homeViewModel.transaction.getExpenseSummary(),
                             expense: homeViewModel.transaction.getExpenseAmount())
                     }
-                    .frame(height: 256 + 128 - 32)
+                    .frame(height: 256 + 128 - 48)
                     .tabViewStyle(.page)
                     
                     RecentlyView(

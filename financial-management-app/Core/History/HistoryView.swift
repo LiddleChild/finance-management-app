@@ -17,11 +17,13 @@ struct HistoryView: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            ScrollView {
-                VStack(alignment: .center) {
-                    HeaderView(header: "History")
-                        .padding(.bottom, 48)
-                    
+            VStack(alignment: .center) {
+                HeaderView(header: "History")
+                    .padding(.horizontal, 24)
+                
+                MonthYearPicker(value: $historyViewModel.monthYearField)
+                
+                ScrollView {
                     VStack(spacing: 16) {
                         ForEach(historyViewModel.transaction.getDayTransaction(),
                                 id: \.DayTransactionId) { i in
@@ -33,6 +35,9 @@ struct HistoryView: View {
             }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
+        .onAppear {
+            viewModel.fetch()
+        }
     }
 }
 
