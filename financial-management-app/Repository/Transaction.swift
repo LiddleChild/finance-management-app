@@ -43,6 +43,30 @@ struct Transaction {
         return summary
     }
     
+    func getQuickSummary(category: Category) -> [(Double, Color)] {
+        var dict: [String : Double] = [:]
+        var summary: [(Double, Color)] = []
+        
+        for txn in txns {
+            let key = txn.Category
+            var tmp = dict[key] ?? 0
+            
+            if txn.Amount < 0 {
+                tmp += -txn.Amount
+            }
+            
+            dict[key] = tmp
+        }
+        
+        for key in dict.keys {
+            summary.append((
+                dict[key]!, Color(hex: category.getCategoryColorById(id: key))
+            ))
+        }
+        
+        return summary
+    }
+    
     func getDayTransaction() -> [DayTxnModel] {
         var dict: [Int64: [TransactionModel]] = [:]
         var dayTxn: [DayTxnModel] = []

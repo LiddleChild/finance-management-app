@@ -36,8 +36,7 @@ struct HomeView: View {
                             expense: homeViewModel.transaction.getExpenseAmount())
                         
                         QuickSummaryView(
-                            summaryData: homeViewModel.transaction.getExpenseSummary(),
-                            expense: homeViewModel.transaction.getExpenseAmount())
+                            summaryData: homeViewModel.transaction.getQuickSummary(category: viewModel.category))
                     }
                     .frame(height: 256 + 128 - 48)
                     .tabViewStyle(.page)

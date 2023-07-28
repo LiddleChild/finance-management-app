@@ -19,7 +19,7 @@ struct TransactionModel: Hashable, Decodable, Encodable {
 extension TransactionModel {
     static let DUMMY_LONG_NOTE = TransactionModel(
         TransactionId: "1",
-        Category: "hYlgrFddSlTsw2gY8uYk",
+        Category: "3YlgrFddSlTsw3gY8uYk",
         Wallet: "nkoB55tzcxlbCrpwvwZl",
         Amount: 12345.67,
         Note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum, neque vulputate dignissim maximus, lectus eros rutrum nunc, quis dignissim erat velit in ante.",

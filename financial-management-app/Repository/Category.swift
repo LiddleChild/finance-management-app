@@ -31,3 +31,10 @@ struct Category {
         }
     }
 }
+
+extension Category {
+    static let DUMMY = Category(categories: [
+        "hYlgrFddSlTsw2gY8uYk": CategoryModel(CategoryId: "hYlgrFddSlTsw2gY8uYk", Color: 0xFF0000, Label: "RED"),
+        "3YlgrFddSlTsw3gY8uYk": CategoryModel(CategoryId: "3YlgrFddSlTsw3gY8uYk", Color: 0x0000FF, Label: "BLUE"),
+    ])
+}

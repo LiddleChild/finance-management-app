@@ -16,13 +16,14 @@ struct NagivationDismissModier: ViewModifier {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Image(systemName: "chevron.left")
-                        .imageScale(.large)
-                        .foregroundColor(Color("color-5"))
-                        .padding()
-                        .onTapGesture {
-                            dismiss()
-                        }
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .imageScale(.large)
+                            .foregroundColor(Color("color-5"))
+                            .padding()
+                    }
                 }
             }
     }

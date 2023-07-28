@@ -9,7 +9,6 @@ import SwiftUI
 
 struct QuickSummaryView: View {
     var summaryData: [(Double, Color)]
-    var expense: Double
     
     var body: some View {
         ZStack {
@@ -25,12 +24,8 @@ struct QuickSummaryView: View {
                         .frame(width: 216, height: 216)
                     
                     VStack(spacing: 4) {
-                        Text("Monthly expense")
-                            .font(.system(size: 16, weight: .regular))
-                            .foregroundColor(Color("color-5"))
-                        
-                        Text(String(format: "%.2f", expense))
-                            .font(.system(size: 24, weight: .regular))
+                        Text("Quick Summary")
+                            .font(.system(size: 20, weight: .regular))
                             .foregroundColor(Color("color-5"))
                     }
                 }
@@ -46,9 +41,7 @@ struct QuickSummaryView_Previews: PreviewProvider {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            QuickSummaryView(
-                summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)],
-                expense: 123.45)
+            QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)])
             .environmentObject(ViewModel())
             .environmentObject(ModalViewModel.shared)
         }
