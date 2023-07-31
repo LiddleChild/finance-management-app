@@ -47,6 +47,10 @@ struct MonthPickerView: View {
 
 private struct Preview: View {
     @State private var monthField = 12
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+    @State private var selectedColor = "Red"
+    
+    
     var body: some View {
         ZStack {
             Rectangle()

@@ -11,6 +11,36 @@ enum NavigationViews {
     case ADD_TRANSACTION_VIEW
 }
 
+private struct MainView: View {
+    @EnvironmentObject private var viewModel: ViewModel
+    var homeViewModel: HomeViewModel
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 32) {
+            HeaderView(
+                header: "Hello,",
+                subheader: "Gaben Newell")
+            
+            TabView {
+                MonthlyExpenseView(
+                    summaryData: homeViewModel.transaction.getExpenseSummary(),
+                    expense: homeViewModel.transaction.getExpenseAmount())
+                
+                QuickSummaryView(
+                    summaryData: homeViewModel.transaction.getQuickSummary(category: viewModel.category))
+            }
+            .frame(height: 256 + 128 - 48)
+            .tabViewStyle(.page)
+            
+            RecentlyView(
+                transactions: homeViewModel.todayTransactions)
+            
+            Spacer()
+        }
+        .padding(.horizontal, 24)
+    }
+}
+
 struct HomeView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var viewModel: ViewModel
@@ -25,40 +55,23 @@ struct HomeView: View {
                     .fill(Color("color-1"))
                     .ignoresSafeArea()
                 
-                VStack(alignment: .center, spacing: 32) {
-                    HeaderView(
-                        header: "Hello,",
-                        subheader: "Gaben Newell")
-                    
-                    TabView {
-                        MonthlyExpenseView(
-                            summaryData: homeViewModel.transaction.getExpenseSummary(),
-                            expense: homeViewModel.transaction.getExpenseAmount())
-                        
-                        QuickSummaryView(
-                            summaryData: homeViewModel.transaction.getQuickSummary(category: viewModel.category))
-                    }
-                    .frame(height: 256 + 128 - 48)
-                    .tabViewStyle(.page)
-                    
-                    RecentlyView(
-                        transactions: homeViewModel.todayTransactions)
-                    
-                    Spacer()
-                }
-                .padding(.horizontal, 24)
+                MainView(homeViewModel: homeViewModel)
                 
-                Button {
-                    path.append(NavigationViews.ADD_TRANSACTION_VIEW)
-                } label: {
-                    Text("+")
-                        .font(.system(size: 28, weight: .regular))
+                ZStack {
+                    TabBarMenu(selection: $homeViewModel.tabSelection,
+                               tabItems: homeViewModel.tabItems)
+                    
+                    Image(systemName: "plus")
+                        .scaleEffect(1.25)
                         .foregroundColor(Color("color-5"))
                         .padding(24)
                         .background(Circle().foregroundColor(Color("color-4")))
+                        .onTapGesture {
+                            path.append(NavigationViews.ADD_TRANSACTION_VIEW)
+                        }
                 }
-                .padding(28)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding()
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .toolbar(.visible)
