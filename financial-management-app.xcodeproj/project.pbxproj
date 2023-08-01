@@ -17,6 +17,8 @@
 		691103142A77BADD00C261B3 /* NavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691103132A77BADD00C261B3 /* NavigationTab.swift */; };
 		6911031C2A78B48D00C261B3 /* ViewLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6911031B2A78B48D00C261B3 /* ViewLists.swift */; };
 		6911031F2A78F2F200C261B3 /* NavigationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6911031E2A78F2F200C261B3 /* NavigationCenter.swift */; };
+		691103222A79003F00C261B3 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691103212A79003F00C261B3 /* SettingView.swift */; };
+		691103252A7903FB00C261B3 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691103242A7903FB00C261B3 /* SummaryView.swift */; };
 		691227D22A67F6CF00A069E5 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D12A67F6CF00A069E5 /* WalletService.swift */; };
 		691227D42A67F70500A069E5 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D32A67F70500A069E5 /* WalletModel.swift */; };
 		691227D62A67FFB600A069E5 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691227D52A67FFB600A069E5 /* UINavigationController.swift */; };
@@ -78,6 +80,8 @@
 		691103132A77BADD00C261B3 /* NavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTab.swift; sourceTree = "<group>"; };
 		6911031B2A78B48D00C261B3 /* ViewLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLists.swift; sourceTree = "<group>"; };
 		6911031E2A78F2F200C261B3 /* NavigationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCenter.swift; sourceTree = "<group>"; };
+		691103212A79003F00C261B3 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		691103242A7903FB00C261B3 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		691227D12A67F6CF00A069E5 /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		691227D32A67F70500A069E5 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		691227D52A67FFB600A069E5 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
@@ -173,8 +177,6 @@
 		6911031A2A77DA9D00C261B3 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
-				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
-				6986D82B2A4D85520043BF86 /* ContentViewModel.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -186,6 +188,22 @@
 				6911031B2A78B48D00C261B3 /* ViewLists.swift */,
 			);
 			path = NavigationCenter;
+			sourceTree = "<group>";
+		};
+		691103202A79002100C261B3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				691103212A79003F00C261B3 /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		691103232A7903EC00C261B3 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				691103242A7903FB00C261B3 /* SummaryView.swift */,
+			);
+			path = Summary;
 			sourceTree = "<group>";
 		};
 		691227D72A68076400A069E5 /* AddTransaction */ = {
@@ -281,11 +299,15 @@
 		699DFCA32A42CD4300B64C8C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6911031A2A77DA9D00C261B3 /* ContentView */,
+				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
+				6986D82B2A4D85520043BF86 /* ContentViewModel.swift */,
 				699DFCAB2A42EA7600B64C8C /* Components */,
 				690A089D2A6AA60B0009B183 /* Modifiers */,
 				6911031D2A78F2D800C261B3 /* NavigationCenter */,
-				6911031A2A77DA9D00C261B3 /* ContentView */,
 				691227D72A68076400A069E5 /* AddTransaction */,
+				691103232A7903EC00C261B3 /* Summary */,
+				691103202A79002100C261B3 /* Setting */,
 				6988F4402A48697C00EAEACE /* History */,
 				6988F4392A481BB700EAEACE /* Home */,
 				699DFCA82A42E9F000B64C8C /* Auth */,
@@ -478,6 +500,7 @@
 				697029772A3EFE8F00A59EE2 /* financial_management_appApp.swift in Sources */,
 				6988F4462A4947C700EAEACE /* TransactionModel.swift in Sources */,
 				699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */,
+				691103252A7903FB00C261B3 /* SummaryView.swift in Sources */,
 				6988F43F2A4864EA00EAEACE /* PieChartView.swift in Sources */,
 				69FE3EB72A6FC83A00D8F0BF /* Transaction.swift in Sources */,
 				69D1D0E82A6CE19200E3420D /* ToggleButtonState.swift in Sources */,
@@ -515,6 +538,7 @@
 				6986D82C2A4D85520043BF86 /* ContentViewModel.swift in Sources */,
 				691103142A77BADD00C261B3 /* NavigationTab.swift in Sources */,
 				691227D92A68078800A069E5 /* AddTransactionView.swift in Sources */,
+				691103222A79003F00C261B3 /* SettingView.swift in Sources */,
 				697029872A41700000A59EE2 /* TextfieldModifier.swift in Sources */,
 				69D1D0F72A6D771F00E3420D /* RecentlyView.swift in Sources */,
 				69419CCF2A72CAC000DE67AC /* YearPickerView.swift in Sources */,

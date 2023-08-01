@@ -23,12 +23,20 @@ struct HistoryView: View {
                 
                 MonthYearPicker(value: $historyViewModel.monthYearField)
                 
-                ScrollView {
-                    VStack(spacing: 16) {
-                        ForEach(historyViewModel.transaction.getDayTransaction(),
-                                id: \.DayTransactionId) { i in
-                            DayView(dayTransaction: i)
+                Group {
+                    if historyViewModel.transaction.getDayTransaction().count > 0 {
+                        ScrollView {
+                            VStack(spacing: 16) {
+                                ForEach(historyViewModel.transaction.getDayTransaction(),
+                                        id: \.DayTransactionId) { i in
+                                    DayView(dayTransaction: i)
+                                }
+                            }
                         }
+                    } else {
+                        Text("No activity found on this month.")
+                            .foregroundColor(Color("color-5"))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
                 .padding(.horizontal, 24)

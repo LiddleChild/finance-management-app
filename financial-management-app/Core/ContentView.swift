@@ -23,6 +23,14 @@ struct ContentView: View {
                     HistoryView()
                         .tag(NavigationTab.history)
                         .toolbar(.visible)
+                    
+                    SummaryView()
+                        .tag(NavigationTab.summary)
+                        .toolbar(.visible)
+                    
+                    SettingView()
+                        .tag(NavigationTab.setting)
+                        .toolbar(.visible)
                 }
                 
                 NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) { tab in
