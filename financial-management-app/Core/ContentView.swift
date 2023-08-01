@@ -18,19 +18,15 @@ struct ContentView: View {
                 TabView(selection: $navigationCenter.selectedTab) {
                     HomeView()
                         .tag(NavigationTab.home)
-                        .toolbar(.visible)
                     
                     HistoryView()
                         .tag(NavigationTab.history)
-                        .toolbar(.visible)
                     
                     SummaryView()
                         .tag(NavigationTab.summary)
-                        .toolbar(.visible)
                     
                     SettingView()
                         .tag(NavigationTab.setting)
-                        .toolbar(.visible)
                 }
                 
                 NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) { tab in
@@ -41,6 +37,7 @@ struct ContentView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .padding(24)
             }
+            .toolbar(.visible)
             .ignoresSafeArea()
             .navigationDestination(for: ViewLists.self) { path in
                 switch path {

@@ -43,7 +43,6 @@ struct HomeView: View {
             .padding(.horizontal, 24)
         }
         .ignoresSafeArea(.all, edges: .bottom)
-        .toolbar(.visible)
         .onAppear {
             homeViewModel.fetch()
         }

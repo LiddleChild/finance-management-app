@@ -10,7 +10,6 @@ import SwiftUI
 
 struct NagivationDismissModier: ViewModifier {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var navigationCenter: NavigationCenter
     
     func body(content: Content) -> some View {
         content
@@ -18,8 +17,7 @@ struct NagivationDismissModier: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-//                        dismiss()
-                        navigationCenter.back()
+                        dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
                             .imageScale(.large)
