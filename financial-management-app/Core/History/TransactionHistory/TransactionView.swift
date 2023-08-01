@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ContentViewModel
     
     var transaction: TransactionModel
     
@@ -61,6 +61,6 @@ struct TransactionView_Previews: PreviewProvider {
                     .padding(.horizontal, 24)
             }
         }
-        .environmentObject(ViewModel())
+        .environmentObject(ContentViewModel())
     }
 }

@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MonthlyExpenseView: View {
+    @EnvironmentObject var navigationCenter: NavigationCenter
+    
     var summaryData: [(Double, Color)]
     var expense: Double
     
     var body: some View {
         ZStack {
             PieChartView(data: summaryData)
-            NavigationLink {
-                HistoryView()
-                    .modifier(NagivationDismissModier())
+            
+            Button {
+                navigationCenter.navigate(.history)
             } label: {
                 ZStack {
                     Circle()
@@ -49,8 +51,10 @@ struct MonthlyExpenseView_Previews: PreviewProvider {
             MonthlyExpenseView(
                 summaryData: [(1.0, Color("color-red")), (2.0, Color("color-green"))],
                 expense: 123.45)
-            .environmentObject(ViewModel())
+            
+            .environmentObject(ContentViewModel())
             .environmentObject(ModalViewModel.shared)
+            .environmentObject(NavigationCenter.shared)
         }
     }
 }

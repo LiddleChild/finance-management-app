@@ -27,7 +27,7 @@ private struct DescriptionView: View {
 }
 
 struct TransactionHistoryView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ContentViewModel
     
     var transaction: TransactionModel
     
@@ -92,7 +92,7 @@ struct TransactionHistoryView: View {
 }
 
 struct TransactionHistoryView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ViewModel()
+    @StateObject static var viewModel = ContentViewModel()
     static var previews: some View {
         NavigationStack {
             TransactionHistoryView(transaction: TransactionModel.DUMMY_LONG_NOTE)

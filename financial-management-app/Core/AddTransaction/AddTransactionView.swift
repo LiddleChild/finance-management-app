@@ -9,10 +9,9 @@ import SwiftUI
 
 struct AddTransactionView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
-    @EnvironmentObject private var viewModel: ViewModel
-    @ObservedObject private var addTxnViewModel = AddTransactionViewModel()
-    
-    @Binding var path: [NavigationViews]
+    @EnvironmentObject private var navigationCenter: NavigationCenter
+    @EnvironmentObject private var viewModel: ContentViewModel
+    @StateObject private var addTxnViewModel = AddTransactionViewModel()
     
     var body: some View {
         ZStack {
@@ -57,7 +56,7 @@ struct AddTransactionView: View {
                 Button {
                     addTxnViewModel.createTxn {
                         modalViewModel.alertSuccess() {
-                            path = []
+                            navigationCenter.backHome()
                         }
                     } onFailure: { error in
                         modalViewModel.alertFailure(message: "Fail to create Transaction!")
@@ -75,15 +74,14 @@ struct AddTransactionView: View {
 }
 
 private struct Preview: View {
-    @State private var path: [NavigationViews] = []
-    
     var body: some View {
         ZStack {
             NavigationStack {
-                AddTransactionView(path: $path)
+                AddTransactionView()
                     .toolbar(.visible)
-                    .environmentObject(ViewModel())
+                    .environmentObject(ContentViewModel())
                     .environmentObject(ModalViewModel.shared)
+                    .environmentObject(NavigationCenter.shared)
             }
             
             Modal()

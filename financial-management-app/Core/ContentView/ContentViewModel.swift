@@ -8,13 +8,12 @@
 import SwiftUI
 
 @MainActor
-class ViewModel: ObservableObject {
+class ContentViewModel: ObservableObject {
+    private let walletService = WalletService.shared
     @Published var wallet = Wallet()
-    @Published var category = Category()
     
     private let categoryService = CategoryService.shared
-    private let walletService = WalletService.shared
-    
+    @Published var category = Category()
     
     func fetch() {
         categoryService.fetch { category in

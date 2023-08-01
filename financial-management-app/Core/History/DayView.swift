@@ -48,6 +48,6 @@ struct DayView_Previews: PreviewProvider {
                     .padding(.horizontal, 24)
             }
         }
-        .environmentObject(ViewModel())
+        .environmentObject(ContentViewModel())
     }
 }

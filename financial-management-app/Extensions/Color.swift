@@ -15,4 +15,10 @@ extension Color {
         let blue = Double((hex & 0xff) >> 0) / 255.0
         self.init(.sRGB, red: red, green: green, blue: blue, opacity: opacity)
     }
+    
+    static let color1 = Color("color-1")
+    static let color2 = Color("color-2")
+    static let color3 = Color("color-3")
+    static let color4 = Color("color-4")
+    static let color5 = Color("color-5")
 }

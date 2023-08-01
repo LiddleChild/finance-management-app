@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct QuickSummaryView: View {
+    @EnvironmentObject var navigationCenter: NavigationCenter
+    
     var summaryData: [(Double, Color)]
     
     var body: some View {
         ZStack {
             PieChartView(data: summaryData)
-            NavigationLink {
-                HistoryView()
-                    .modifier(NagivationDismissModier())
+            
+            Button {
+                navigationCenter.navigate(.history)
             } label: {
                 ZStack {
                     Circle()
@@ -42,8 +44,10 @@ struct QuickSummaryView_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)])
-            .environmentObject(ViewModel())
+            
+            .environmentObject(ContentViewModel())
             .environmentObject(ModalViewModel.shared)
+            .environmentObject(NavigationCenter.shared)
         }
     }
 }

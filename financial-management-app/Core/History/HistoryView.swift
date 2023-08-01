@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ContentViewModel
     @StateObject private var historyViewModel = HistoryViewModel()
     
     var body: some View {
@@ -42,7 +42,7 @@ struct HistoryView: View {
 }
 
 struct HistoryView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ViewModel()
+    @StateObject static var viewModel = ContentViewModel()
     static var previews: some View {
         NavigationStack {
             HistoryView()

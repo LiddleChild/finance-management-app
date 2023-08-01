@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecentlyViewTransaction: View {
-    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var viewModel: ContentViewModel
     
     var transaction: TransactionModel
     
@@ -37,7 +37,7 @@ struct RecentlyViewTransaction_Previews: PreviewProvider {
             
             RecentlyViewTransaction(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
                 .padding(.horizontal, 24)
-                .environmentObject(ViewModel())
+                .environmentObject(ContentViewModel())
         }
     }
 }

@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct RecentlyView: View {
+    @EnvironmentObject var navigationCenter: NavigationCenter
+    
     var transactions: [TransactionModel]
     
     var body: some View {
-        NavigationLink {
-            HistoryView()
-                .modifier(NagivationDismissModier())
+        Button {
+//            HistoryView()
+//                .modifier(NagivationDismissModier())
+            navigationCenter.navigate(.history)
         } label: {
             ZStack(alignment: .top) {
                 Text("Recent Activities")
@@ -61,6 +64,6 @@ struct RecentlyView_Previews: PreviewProvider {
                     .padding(.horizontal, 24)
             }
         }
-        .environmentObject(ViewModel())
+        .environmentObject(ContentViewModel())
     }
 }
