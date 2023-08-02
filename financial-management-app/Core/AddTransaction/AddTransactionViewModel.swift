@@ -13,7 +13,11 @@ class AddTransactionViewModel: ObservableObject {
     
     @Published var noteField: String = ""
     @Published var amountField: NumbersOnly = NumbersOnly()
-    @Published var expenseField: Bool = true
+    @Published var expenseField: Bool = true {
+        didSet {
+            categoryField = nil
+        }
+    }
     
     let expenseState: [ToggleButtonState] = [
         ToggleButtonState(Label: "Income", ActiveColor: Color("color-green")),

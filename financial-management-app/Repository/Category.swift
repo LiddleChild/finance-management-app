@@ -22,8 +22,21 @@ struct Category {
         return categories[id]?.Color ?? 0xFFFFFF
     }
     
-    func getCategoryDropdownOptions() -> [DropdownOption] {
-        return categories.values.map { category in
+    func getIncomeCategoryDropdownOptions() -> [DropdownOption] {
+        return categories.values
+            .filter { $0.Type == "INCOME" || $0.Type == "BOTH" }
+            .map { category in
+            DropdownOption(
+                OptionId: category.CategoryId,
+                Label: category.Label,
+                Color: Color(hex: category.Color))
+        }
+    }
+    
+    func getExpenseCategoryDropdownOptions() -> [DropdownOption] {
+        return categories.values
+            .filter { $0.Type == "EXPENSE" || $0.Type == "BOTH" }
+            .map { category in
             DropdownOption(
                 OptionId: category.CategoryId,
                 Label: category.Label,
@@ -34,7 +47,7 @@ struct Category {
 
 extension Category {
     static let DUMMY = Category(categories: [
-        "hYlgrFddSlTsw2gY8uYk": CategoryModel(CategoryId: "hYlgrFddSlTsw2gY8uYk", Color: 0xFF0000, Label: "RED"),
-        "3YlgrFddSlTsw3gY8uYk": CategoryModel(CategoryId: "3YlgrFddSlTsw3gY8uYk", Color: 0x0000FF, Label: "BLUE"),
+        "hYlgrFddSlTsw2gY8uYk": CategoryModel(CategoryId: "hYlgrFddSlTsw2gY8uYk", Color: 0xFF0000, Label: "RED", Type: "EXPENSE"),
+        "3YlgrFddSlTsw3gY8uYk": CategoryModel(CategoryId: "3YlgrFddSlTsw3gY8uYk", Color: 0x0000FF, Label: "BLUE", Type: "INCOME"),
     ])
 }

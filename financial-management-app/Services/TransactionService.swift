@@ -57,7 +57,7 @@ class TransactionService {
             let encoder = JSONEncoder()
             let data = try encoder.encode(txn)
             
-            guard let url = URL(string: "http://localhost:3000/transaction/create") else { return }
+            guard let url = URL(string: "http://localhost:3000/transaction/") else { return }
             var req = URLRequest(url: url)
             
             req.httpMethod = "POST"

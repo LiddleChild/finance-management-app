@@ -38,9 +38,19 @@ struct AddTransactionView: View {
                                      value: $addTxnViewModel.expenseField)
                     }.zIndex(2)
                     
-                    DropdownMenu(selection: $addTxnViewModel.categoryField,
-                                 placeholder: "Category",
-                                 options: viewModel.category.getCategoryDropdownOptions())
+                    Group {
+                        if addTxnViewModel.expenseField {
+                            DropdownMenu(
+                                selection: $addTxnViewModel.categoryField,
+                                placeholder: "Category",
+                                options: viewModel.category.getExpenseCategoryDropdownOptions())
+                        } else {
+                            DropdownMenu(
+                                selection: $addTxnViewModel.categoryField,
+                                placeholder: "Category",
+                                options: viewModel.category.getIncomeCategoryDropdownOptions())
+                        }
+                    }
                     .zIndex(1)
                     
                     TextField("", text: $addTxnViewModel.noteField)

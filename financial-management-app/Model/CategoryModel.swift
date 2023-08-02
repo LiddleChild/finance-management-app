@@ -11,4 +11,5 @@ struct CategoryModel: Decodable {
     var CategoryId: String
     var Color: Int
     var Label: String
+    var `Type`: String
 }

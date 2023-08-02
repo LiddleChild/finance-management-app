@@ -35,7 +35,8 @@ struct ContentView: View {
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .padding(24)
+                .padding(.bottom, 36)
+                .padding(.horizontal, 24)
             }
             .toolbar(.visible)
             .ignoresSafeArea()
