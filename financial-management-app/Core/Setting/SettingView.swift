@@ -17,6 +17,16 @@ struct SettingView: View {
             VStack {
                 HeaderView(header: "Setting")
                 
+                SettingList {
+                    SettingNavigationLink(label: "Wallets") {
+                        
+                    }
+                    
+                    SettingNavigationLink(label: "Categories") {
+                        
+                    }
+                }
+                
                 Spacer()
             }
             .padding(.horizontal, 24)
