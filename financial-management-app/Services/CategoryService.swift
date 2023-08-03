@@ -14,7 +14,7 @@ class CategoryService {
     func fetch(completion: @escaping (Category) -> Void) {
         let url = URL(string: "http://localhost:3000/category")!
         
-        HTTPService.shared.fetchData(for: url) { (result: Result<[String : CategoryModel], Error>) in
+        HTTPService.shared.request(.GET, for: url) { (result: Result<[String : CategoryModel], Error>) in
             switch result {
             case .success(let categories):
                 completion(Category(categories: categories))

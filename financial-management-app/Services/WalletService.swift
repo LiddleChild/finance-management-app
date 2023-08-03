@@ -14,7 +14,7 @@ class WalletService {
     func fetch(completion: @escaping (Wallet) -> Void) {
         let url = URL(string: "http://localhost:3000/wallet")!
         
-        HTTPService.shared.fetchData(for: url) { (result: Result<[String : WalletModel], Error>) in
+        HTTPService.shared.request(.GET, for: url) { (result: Result<[String : WalletModel], Error>) in
             switch result {
             case .success(let wallets):
                 completion(Wallet(wallets: wallets))

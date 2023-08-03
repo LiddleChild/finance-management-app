@@ -11,26 +11,20 @@ class HTTPService {
     static let shared = HTTPService()
     private init() {}
     
-    func fetchData<T: Decodable>(for url: URL, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            if let data = data {
-                do {
-                    let object = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(object))
-                } catch let decoderError {
-                    completion(.failure(decoderError))
-                }
-            }
-        }
-        .resume()
+    enum Method: String {
+        case GET, POST, PATCH, DELETE = "DELETE"
     }
     
-    func postData<T: Decodable>(for url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+    func request<T: Decodable>(_ method: Method, for url: URL, completion: @escaping (Result<T, Error>) -> Void) {
+        request(method, for: URLRequest(url: url), completion: completion)
+    }
+    
+    func request<T: Decodable>(_ method: Method, for url: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+        var req = url
+        req.httpMethod = method.rawValue
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
             }

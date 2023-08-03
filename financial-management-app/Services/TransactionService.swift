@@ -23,7 +23,7 @@ class TransactionService {
             format: "http://localhost:3000/transaction?month=%d&year=%d",
             month, year))!
         
-        HTTPService.shared.fetchData(for: url) { (result: Result<[TransactionModel], Error>) in
+        HTTPService.shared.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
             switch result {
             case .success(let txns):
                 completion(Transaction(txns: txns))
@@ -39,7 +39,7 @@ class TransactionService {
     func fetchToday(completion: @escaping ([TransactionModel]) -> Void) {
         let url = URL(string: "http://localhost:3000/transaction/today")!
         
-        HTTPService.shared.fetchData(for: url) { (result: Result<[TransactionModel], Error>) in
+        HTTPService.shared.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
             switch result {
             case .success(let txns):
                 completion(txns)
@@ -64,7 +64,7 @@ class TransactionService {
             req.setValue("application/json", forHTTPHeaderField: "Content-Type")
             req.httpBody = data
             
-            HTTPService.shared.postData(for: req) { (result: Result<[String : String], Error>) in
+            HTTPService.shared.request(.POST, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)
