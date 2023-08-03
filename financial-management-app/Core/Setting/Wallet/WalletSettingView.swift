@@ -20,6 +20,9 @@ struct WalletSettingView: View {
                 }
             }
         }
+        .onAppear {
+            contentViewModel.fetch()
+        }
         
         NavigationLink {
             

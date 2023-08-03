@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WalletModel: Decodable {
+struct WalletModel: Decodable, Encodable {
     var WalletId: String
     var Color: Int
     var Label: String

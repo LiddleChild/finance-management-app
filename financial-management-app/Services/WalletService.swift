@@ -26,4 +26,28 @@ class WalletService {
             }
         }
     }
+    
+    func patch(wallet: WalletModel, completion: @escaping (Error?) -> Void) {
+        do {
+            let url = URL(string: "http://localhost:3000/wallet")!
+            var req = URLRequest(url: url)
+            
+            let encoder = JSONEncoder()
+            req.httpBody = try encoder.encode(wallet)
+            
+            HTTPService.shared.request(.PATCH, for: req) { (result: Result<[String : String], Error>) in
+                switch result {
+                case .success(_):
+                    completion(nil)
+                    break
+                    
+                case .failure(let error):
+                    completion(error)
+                    break
+                }
+            }
+        } catch (let error) {
+            completion(error)
+        }
+    }
 }

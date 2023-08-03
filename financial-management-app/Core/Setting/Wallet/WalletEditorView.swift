@@ -12,10 +12,13 @@ private enum FocusedField {
 }
 
 struct WalletEditorView: View {
-    var wallet: WalletModel
+    @EnvironmentObject private var modalvm: ModalViewModel
+    @Environment(\.dismiss) private var dismiss
     
-    @StateObject var vm = WalletEditorViewModel()
+    @StateObject private var vm = WalletEditorViewModel()
     @FocusState private var focusField: FocusedField?
+    
+    var wallet: WalletModel
     
     var body: some View {
         SettingList {
@@ -36,7 +39,15 @@ struct WalletEditorView: View {
         }
         
         Button {
-            
+            vm.patch(wallet) {
+                modalvm.alertSuccess() {
+                    dismiss()
+                }
+            } onFailure: { err in
+                modalvm.alertFailure(message: "Fail to update Wallet!") {
+                    dismiss()
+                }
+            }
         } label: {
             Text("Save")
                 .foregroundColor(Color.color5)
