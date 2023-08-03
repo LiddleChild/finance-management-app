@@ -20,12 +20,19 @@ class ContentViewModel: ObservableObject {
     }
     
     func fetch() {
+        fetchCategory()
+        fetchWallet()
+    }
+    
+    func fetchCategory() {
         categoryService.fetch { category in
             DispatchQueue.main.async {
                 self.category = category
             }
         }
-        
+    }
+    
+    func fetchWallet() {
         walletService.fetch { wallet in
             DispatchQueue.main.async {
                 self.wallet = wallet

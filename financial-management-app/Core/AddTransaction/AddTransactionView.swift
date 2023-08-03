@@ -69,7 +69,10 @@ struct AddTransactionView: View {
                             navigationCenter.backHome()
                         }
                     } onFailure: { error in
-                        modalViewModel.alertFailure(message: "Fail to create Transaction!")
+                        modalViewModel.alertFailure(
+                            message: "Fail to create Transaction!") {
+                                navigationCenter.backHome()
+                        }
                     }
                 } label: {
                     Text("Create Transaction")

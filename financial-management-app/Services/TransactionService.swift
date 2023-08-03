@@ -54,15 +54,11 @@ class TransactionService {
     
     func createTxn(txn: TransactionModel, completion: @escaping (Error?) -> Void) {
         do {
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(txn)
-            
-            guard let url = URL(string: "http://localhost:3000/transaction/") else { return }
+            let url = URL(string: "http://localhost:3000/transaction/")!
             var req = URLRequest(url: url)
             
-            req.httpMethod = "POST"
-            req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            req.httpBody = data
+            let encoder = JSONEncoder()
+            req.httpBody = try encoder.encode(txn)
             
             HTTPService.shared.request(.POST, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
@@ -70,13 +66,13 @@ class TransactionService {
                     completion(nil)
                     break
                     
-                case .failure(let error):
-                    print(error)
+                case .failure(let err):
+                    completion(err)
                     break
                 }
             }
-        } catch (let error) {
-            print(error)
+        } catch (let err) {
+            completion(err)
         }
     }
 }

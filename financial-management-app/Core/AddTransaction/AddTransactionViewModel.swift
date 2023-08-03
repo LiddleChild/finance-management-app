@@ -52,7 +52,8 @@ class AddTransactionViewModel: ObservableObject {
         
         txnService.createTxn(txn: txn) { error in
             if error != nil {
-               onFailure(error!)
+                print(error!)
+                onFailure(error!)
             } else {
                 onSuccess()
             }

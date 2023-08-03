@@ -29,7 +29,8 @@ class WalletEditorViewModel: ObservableObject {
         
         walletService.patch(wallet: patchedWallet) { err in
             if err != nil {
-               onFailure(err!)
+                print(err!)
+                onFailure(err!)
             } else {
                 onSuccess()
             }
