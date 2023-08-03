@@ -18,9 +18,9 @@ struct SettingList<Content: View>: View {
                     .font(.system(size: 24, weight: .regular))
             }
             
-            VStack(spacing: 8, content: content)
+            VStack(alignment: .leading, spacing: 8, content: content)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(8)
+                .padding(12)
                 .background(RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(Color.color2))
         }
@@ -39,9 +39,9 @@ struct SettingList_Previews: PreviewProvider {
             
             VStack {
                 SettingList(title: "Group") {
-                    Text("A")
-                    Text("B")
-                    Text("C")
+                    Text("AAAA")
+                    Text("BBB")
+                    Text("CC")
                     Text("D")
                 }
                 

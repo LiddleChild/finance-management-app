@@ -8,37 +8,34 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject private var contentViewModel: ContentViewModel
+    
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
+        ContentTemplate {
+            HeaderView(header: "Setting")
             
-            VStack {
-                HeaderView(header: "Setting")
-                
-                SettingList {
-                    SettingNavigationLink(label: "Wallets") {
-                        
-                    }
-                    
-                    SettingNavigationLink(label: "Categories") {
-                        
-                    }
+            SettingList {
+                SettingNavigationLink(label: "Wallets") {
+                    WalletSettingView()
                 }
                 
-                Spacer()
+                SettingNavigationLink(label: "Categories") {
+                    
+                }
             }
-            .padding(.horizontal, 24)
+            
+            Spacer()
         }
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
+    @StateObject private static var contentViewModel = ContentViewModel()
     static var previews: some View {
         NavigationStack {
             SettingView()
-                .toolbar(.visible, for: .navigationBar)
         }
+        .environmentObject(contentViewModel)
+        .toolbar(.visible)
     }
 }

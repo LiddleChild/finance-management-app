@@ -30,4 +30,8 @@ struct Wallet {
                 Color: Color(hex: wallet.Color))
         }
     }
+    
+    func getWallet() -> [WalletModel] {
+        return self.wallets.map { $1 }
+    }
 }

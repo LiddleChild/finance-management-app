@@ -35,7 +35,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .bottom)
-                .padding(.bottom, 36)
+                .padding(.bottom, 44)
                 .padding(.horizontal, 24)
             }
             .toolbar(.visible)
@@ -51,9 +51,6 @@ struct ContentView: View {
         .environmentObject(contentViewModel)
         .environmentObject(modalViewModel)
         .environmentObject(navigationCenter)
-        .onAppear {
-            contentViewModel.fetch()
-        }
     }
 }
 

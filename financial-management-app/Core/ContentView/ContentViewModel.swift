@@ -15,6 +15,10 @@ class ContentViewModel: ObservableObject {
     private let categoryService = CategoryService.shared
     @Published var category = Category()
     
+    init() {
+        fetch()
+    }
+    
     func fetch() {
         categoryService.fetch { category in
             DispatchQueue.main.async {
