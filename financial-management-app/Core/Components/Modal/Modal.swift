@@ -8,30 +8,41 @@
 import SwiftUI
 
 struct Modal: View {
-    @ObservedObject private var modalViewModel: ModalViewModel = ModalViewModel.shared
+    @ObservedObject private var vm = ModalViewModel.shared
+    
+    private let width = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack {
-            if modalViewModel.isShowing {
-                Group {
+            ZStack(alignment: .bottom) {
+                if vm.isShowing {
                     Rectangle()
                         .foregroundColor(.black.opacity(0.5))
-                    
+                }
+                
+                if vm.isShowing {
                     VStack(spacing: 8) {
-                        Image(systemName: modalViewModel.symbol)
+                        Image(systemName: vm.symbol)
                             .resizable()
                             .frame(width: 64, height: 64)
-                            .foregroundColor(modalViewModel.symbolColor)
+                            .foregroundColor(vm.symbolColor)
                             .scaledToFill()
                         
-                        Text(verbatim: ModalViewModel.shared.message)
+                        Text(verbatim: vm.title)
                             .foregroundColor(.black)
-                            .font(.system(size: 24, weight: .regular))
+                            .font(.system(size: 28, weight: .semibold))
+                        
+                        Text(verbatim: vm.message)
+                            .foregroundColor(.black)
+                            .font(.system(size: 20, weight: .regular))
+                            .multilineTextAlignment(.leading)
                     }
-                    .frame(width: 216, height: 216)
+                    .transition(.move(edge: .bottom))
+                    .padding(32)
+                    .frame(width: width, height: width)
                     .background {
-                        RoundedRectangle(cornerRadius: 24)
-                            .foregroundColor(Color("color-5"))
+                        RoundedRectangle(cornerRadius: 36)
+                            .foregroundColor(Color.color5)
                     }
                 }
             }
@@ -44,9 +55,13 @@ struct Modal_Previews: PreviewProvider {
     static var previews: some View {
         Modal()
             .onAppear {
-                ModalViewModel.shared.alertSuccess(
+//                ModalViewModel.shared.alertSuccess(
+//                    duration: .infinity,
+//                    title: "Success")
+                
+                ModalViewModel.shared.alertFailure(
                     duration: .infinity,
-                    message: "Success!")
+                    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie, arcu eu aliquet convallis, velit felis congue tortor, sit amet convallis nibh felis sed leo. Donec ultricies sodales neque, ut luctus justo interdum ac.")
             }
     }
 }

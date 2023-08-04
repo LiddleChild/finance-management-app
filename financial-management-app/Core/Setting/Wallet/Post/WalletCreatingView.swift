@@ -41,13 +41,10 @@ struct WalletCreatingView: View {
             
             Button {
                 vm.post {
-                    modalvm.alertSuccess() {
-                        dismiss()
-                    }
+                    modalvm.alertSuccess() { dismiss() }
                 } onFailure: { err in
-                    modalvm.alertFailure(message: "Fail to create Wallet!") {
-                        dismiss()
-                    }
+                    modalvm.alertFailure(
+                        message: "Fail to create Wallet!") { dismiss() }
                 }
             } label: {
                 Text("Create")
