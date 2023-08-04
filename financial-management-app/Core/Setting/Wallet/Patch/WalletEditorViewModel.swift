@@ -36,4 +36,15 @@ class WalletEditorViewModel: ObservableObject {
             }
         }
     }
+    
+    func delete(_ wallet: WalletModel, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+        walletService.delete(wallet: wallet) { err in
+            if err != nil {
+                print(err!)
+                onFailure(err!)
+            } else {
+                onSuccess()
+            }
+        }
+    }
 }

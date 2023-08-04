@@ -34,8 +34,8 @@ struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             SettingView()
+                .toolbar(.visible)
         }
         .environmentObject(contentViewModel)
-        .toolbar(.visible)
     }
 }
