@@ -14,8 +14,8 @@ class TransactionService {
     let httpService = HTTPService.shared
     
     func fetch(completion: @escaping (Transaction) -> Void) {
-        let month = Calendar.current.component(.month, from: Date())
-        let year = Calendar.current.component(.year, from: Date())
+        let month = Time.getCurrentMonth()
+        let year = Time.getCurrentYear()
         
         fetchDate(month: month, year: year, completion: completion)
     }

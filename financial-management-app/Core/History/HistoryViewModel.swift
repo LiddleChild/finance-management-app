@@ -16,8 +16,8 @@ class HistoryViewModel: ObservableObject {
     
     init() {
         monthYearField = MonthYearPickerValue(
-            Month: Calendar.current.component(.month, from: Date()),
-            Year: Calendar.current.component(.year, from: Date()))
+            Month: Time.getCurrentMonth(),
+            Year: Time.getCurrentYear())
         
         fetch()
     }
