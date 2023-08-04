@@ -11,6 +11,8 @@ class TransactionService {
     static let shared = TransactionService()
     private init() {}
     
+    let httpService = HTTPService.shared
+    
     func fetch(completion: @escaping (Transaction) -> Void) {
         let month = Calendar.current.component(.month, from: Date())
         let year = Calendar.current.component(.year, from: Date())
@@ -20,10 +22,10 @@ class TransactionService {
     
     func fetchDate(month: Int, year: Int, completion: @escaping (Transaction) -> Void) {
         let url = URL(string: String(
-            format: "http://localhost:3000/transaction?month=%d&year=%d",
+            format: "http://\(httpService.BACKEND_ADDRESS)/transaction?month=%d&year=%d",
             month, year))!
         
-        HTTPService.shared.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
+        httpService.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
             switch result {
             case .success(let txns):
                 completion(Transaction(txns: txns))
@@ -37,9 +39,9 @@ class TransactionService {
     }
     
     func fetchToday(completion: @escaping ([TransactionModel]) -> Void) {
-        let url = URL(string: "http://localhost:3000/transaction/today")!
+        let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/transaction/today")!
         
-        HTTPService.shared.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
+        httpService.request(.GET, for: url) { (result: Result<[TransactionModel], Error>) in
             switch result {
             case .success(let txns):
                 completion(txns)
@@ -54,13 +56,13 @@ class TransactionService {
     
     func createTxn(txn: TransactionModel, completion: @escaping (Error?) -> Void) {
         do {
-            let url = URL(string: "http://localhost:3000/transaction/")!
+            let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/transaction/")!
             var req = URLRequest(url: url)
             
             let encoder = JSONEncoder()
             req.httpBody = try encoder.encode(txn)
             
-            HTTPService.shared.request(.POST, for: req) { (result: Result<[String : String], Error>) in
+            httpService.request(.POST, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)

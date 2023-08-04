@@ -11,8 +11,10 @@ class HTTPService {
     static let shared = HTTPService()
     private init() {}
     
+    let BACKEND_ADDRESS = "192.168.1.40:3000"
+    
     enum Method: String {
-        case GET, POST, PATCH, DELETE = "DELETE"
+        case GET, POST, PATCH, DELETE
     }
     
     func request<T: Decodable>(_ method: Method, for url: URL, completion: @escaping (Result<T, Error>) -> Void) {

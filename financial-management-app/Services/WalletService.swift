@@ -11,10 +11,12 @@ class WalletService {
     static let shared = WalletService()
     private init() {}
     
+    let httpService = HTTPService.shared
+    
     func fetch(completion: @escaping (Wallet) -> Void) {
-        let url = URL(string: "http://localhost:3000/wallet")!
+        let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/wallet")!
         
-        HTTPService.shared.request(.GET, for: url) { (result: Result<[String : WalletModel], Error>) in
+        httpService.request(.GET, for: url) { (result: Result<[String : WalletModel], Error>) in
             switch result {
             case .success(let wallets):
                 completion(Wallet(wallets: wallets))
@@ -29,13 +31,13 @@ class WalletService {
     
     func patch(wallet: WalletModel, completion: @escaping (Error?) -> Void) {
         do {
-            let url = URL(string: "http://localhost:3000/wallet")!
+            let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/wallet")!
             var req = URLRequest(url: url)
             
             let encoder = JSONEncoder()
             req.httpBody = try encoder.encode(wallet)
             
-            HTTPService.shared.request(.PATCH, for: req) { (result: Result<[String : String], Error>) in
+            httpService.request(.PATCH, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)
@@ -53,13 +55,13 @@ class WalletService {
     
     func post(wallet: WalletModel, completion: @escaping (Error?) -> Void) {
         do {
-            let url = URL(string: "http://localhost:3000/wallet")!
+            let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/wallet")!
             var req = URLRequest(url: url)
             
             let encoder = JSONEncoder()
             req.httpBody = try encoder.encode(wallet)
             
-            HTTPService.shared.request(.POST, for: req) { (result: Result<[String : String], Error>) in
+            httpService.request(.POST, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)
@@ -77,13 +79,13 @@ class WalletService {
     
     func delete(wallet: WalletModel, completion: @escaping (Error?) -> Void) {
         do {
-            let url = URL(string: "http://localhost:3000/wallet")!
+            let url = URL(string: "http://\(httpService.BACKEND_ADDRESS)/wallet")!
             var req = URLRequest(url: url)
             
             let encoder = JSONEncoder()
             req.httpBody = try encoder.encode(wallet)
             
-            HTTPService.shared.request(.DELETE, for: req) { (result: Result<[String : String], Error>) in
+            httpService.request(.DELETE, for: req) { (result: Result<[String : String], Error>) in
                 switch result {
                 case .success(_):
                     completion(nil)

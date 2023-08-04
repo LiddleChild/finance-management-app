@@ -240,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				6924E48E2A7B5ED300655ADC /* WalletSettingView.swift */,
-				6924E4972A7CE00100655ADC /* Patch */,
 				6924E4982A7CE01300655ADC /* Post */,
+				6924E4972A7CE00100655ADC /* Patch */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
