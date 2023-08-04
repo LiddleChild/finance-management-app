@@ -14,7 +14,7 @@ struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header)
-                .font(.system(size: 44, weight: .bold))
+                .font(.system(size: 40, weight: .bold))
                 .foregroundColor(Color("color-5"))
             
             if subheader != "" {
