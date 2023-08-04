@@ -10,44 +10,45 @@ import SwiftUI
 struct DropdownMenu: View {
     @State private var isShowingOption: Bool = false
     @Binding var selection: DropdownOption?
-    
     var placeholder: String
     var options: [DropdownOption]
     
     var body: some View {
-        Button {
-            withAnimation {
+        HStack {
+            if let selection = selection {
+                DropdownListButton(option: selection) { _ in }
+                    .disabled(true)
+            } else {
+                Text("\(placeholder)").font(.system(size: 20))
+            }
+            
+            Spacer()
+            
+            Image(systemName: isShowingOption ? "chevron.up" : "chevron.down")
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color(isShowingOption ? "color-4" : "color-2"))
+        )
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.25)) {
                 isShowingOption.toggle()
             }
-        } label: {
-            HStack {
-                if let selection = selection {
-                    DropdownListButton(option: selection) { _ in }
-                    .disabled(true)
-                } else {
-                    Text("\(placeholder)").font(.system(size: 20))
-                }
-                
-                Spacer()
-                
-                Image(systemName: isShowingOption ? "chevron.up" : "chevron.down")
-            }
-            .padding(12)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(Color(isShowingOption ? "color-4" : "color-2"))
-            )
         }
         .overlay(alignment: .top) {
             if isShowingOption {
                 DropdownList(options: options) { option in
-                    isShowingOption = false
                     selection = option
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        isShowingOption = false
+                    }
                 }
                 .offset(y: 52)
+                .transition(.scale)
             }
-            
         }
         .foregroundColor(Color("color-5"))
     }
@@ -56,15 +57,11 @@ struct DropdownMenu: View {
 private struct Preview: View {
     @State private var selection: DropdownOption?
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
-            DropdownMenu(selection: $selection,
-                         placeholder: "Placeholder",
-                         options: DropdownOption.DUMMY)
-            .padding(24)
+        ContentTemplate {
+            DropdownMenu(
+                selection: $selection,
+                placeholder: "Placeholder",
+                options: DropdownOption.DUMMY)
         }
     }
 }
