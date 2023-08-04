@@ -8,7 +8,7 @@
 import Foundation
 
 struct WalletModel: Decodable, Encodable {
-    var WalletId: String
+    var WalletId: String?
     var Color: Int
     var Label: String
 }

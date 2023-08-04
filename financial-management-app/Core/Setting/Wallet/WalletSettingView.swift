@@ -25,11 +25,11 @@ struct WalletSettingView: View {
         }
         
         NavigationLink {
-            
+            WalletCreatingView()
         } label: {
             Text("+ Wallet").foregroundColor(Color.gray)
         }
-        .padding(12)
+        .padding(8)
     }
 }
 

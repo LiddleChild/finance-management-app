@@ -25,7 +25,7 @@ struct Wallet {
     func getWalletDropdownOptions() -> [DropdownOption] {
         return wallets.values.map { wallet in
             DropdownOption(
-                OptionId: wallet.WalletId,
+                OptionId: wallet.WalletId!,
                 Label: wallet.Label,
                 Color: Color(hex: wallet.Color))
         }

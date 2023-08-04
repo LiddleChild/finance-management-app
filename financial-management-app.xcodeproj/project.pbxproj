@@ -27,6 +27,8 @@
 		6924E4912A7B842D00655ADC /* SettingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4902A7B842D00655ADC /* SettingTextField.swift */; };
 		6924E4932A7B8CFF00655ADC /* WalletEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4922A7B8CFF00655ADC /* WalletEditorView.swift */; };
 		6924E4962A7BA29400655ADC /* WalletEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4952A7BA29400655ADC /* WalletEditorViewModel.swift */; };
+		6924E49A2A7CE02800655ADC /* WalletCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4992A7CE02800655ADC /* WalletCreatingView.swift */; };
+		6924E49C2A7CE25E00655ADC /* WalletCreatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */; };
 		69419CCC2A72C7F900DE67AC /* MonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CCB2A72C7F900DE67AC /* MonthYearPicker.swift */; };
 		69419CCF2A72CAC000DE67AC /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CCE2A72CAC000DE67AC /* YearPickerView.swift */; };
 		69419CD12A72D46B00DE67AC /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CD02A72D46B00DE67AC /* MonthPickerView.swift */; };
@@ -97,6 +99,8 @@
 		6924E4902A7B842D00655ADC /* SettingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTextField.swift; sourceTree = "<group>"; };
 		6924E4922A7B8CFF00655ADC /* WalletEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEditorView.swift; sourceTree = "<group>"; };
 		6924E4952A7BA29400655ADC /* WalletEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEditorViewModel.swift; sourceTree = "<group>"; };
+		6924E4992A7CE02800655ADC /* WalletCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreatingView.swift; sourceTree = "<group>"; };
+		6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreatingViewModel.swift; sourceTree = "<group>"; };
 		69419CCB2A72C7F900DE67AC /* MonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPicker.swift; sourceTree = "<group>"; };
 		69419CCE2A72CAC000DE67AC /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		69419CD02A72D46B00DE67AC /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
@@ -236,10 +240,28 @@
 			isa = PBXGroup;
 			children = (
 				6924E48E2A7B5ED300655ADC /* WalletSettingView.swift */,
+				6924E4972A7CE00100655ADC /* Patch */,
+				6924E4982A7CE01300655ADC /* Post */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		6924E4972A7CE00100655ADC /* Patch */ = {
+			isa = PBXGroup;
+			children = (
 				6924E4922A7B8CFF00655ADC /* WalletEditorView.swift */,
 				6924E4952A7BA29400655ADC /* WalletEditorViewModel.swift */,
 			);
-			path = Wallet;
+			path = Patch;
+			sourceTree = "<group>";
+		};
+		6924E4982A7CE01300655ADC /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				6924E4992A7CE02800655ADC /* WalletCreatingView.swift */,
+				6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		69419CCD2A72CA9D00DE67AC /* MonthYearPicker */ = {
@@ -527,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6988F4482A494BF100EAEACE /* DayTransactionModel.swift in Sources */,
+				6924E49C2A7CE25E00655ADC /* WalletCreatingViewModel.swift in Sources */,
 				69419CCC2A72C7F900DE67AC /* MonthYearPicker.swift in Sources */,
 				69D1D0FB2A6D793900E3420D /* DayView.swift in Sources */,
 				6988F43B2A481BD100EAEACE /* HomeView.swift in Sources */,
@@ -558,6 +581,7 @@
 				6986D81F2A4ABCD40043BF86 /* HeaderView.swift in Sources */,
 				69FE3EB02A6F8AA800D8F0BF /* QuickSummaryView.swift in Sources */,
 				6986D8222A4B32560043BF86 /* TransactionService.swift in Sources */,
+				6924E49A2A7CE02800655ADC /* WalletCreatingView.swift in Sources */,
 				69D1D0EF2A6D101900E3420D /* Modal.swift in Sources */,
 				69604D472A7AC55300F520AD /* ContentTemplate.swift in Sources */,
 				69D1D0FF2A6D84B900E3420D /* RecentlyViewTransaction.swift in Sources */,
