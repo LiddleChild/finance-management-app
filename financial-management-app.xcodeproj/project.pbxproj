@@ -30,6 +30,8 @@
 		6924E4962A7BA29400655ADC /* WalletEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4952A7BA29400655ADC /* WalletEditorViewModel.swift */; };
 		6924E49A2A7CE02800655ADC /* WalletCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E4992A7CE02800655ADC /* WalletCreatingView.swift */; };
 		6924E49C2A7CE25E00655ADC /* WalletCreatingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */; };
+		693723DA2A7E0D6F0061EF0F /* ModalAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693723D92A7E0D6F0061EF0F /* ModalAlert.swift */; };
+		693723DC2A7E10E30061EF0F /* ModalYesNoQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693723DB2A7E10E30061EF0F /* ModalYesNoQuestion.swift */; };
 		69419CCC2A72C7F900DE67AC /* MonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CCB2A72C7F900DE67AC /* MonthYearPicker.swift */; };
 		69419CCF2A72CAC000DE67AC /* YearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CCE2A72CAC000DE67AC /* YearPickerView.swift */; };
 		69419CD12A72D46B00DE67AC /* MonthPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69419CD02A72D46B00DE67AC /* MonthPickerView.swift */; };
@@ -103,6 +105,8 @@
 		6924E4952A7BA29400655ADC /* WalletEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletEditorViewModel.swift; sourceTree = "<group>"; };
 		6924E4992A7CE02800655ADC /* WalletCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreatingView.swift; sourceTree = "<group>"; };
 		6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreatingViewModel.swift; sourceTree = "<group>"; };
+		693723D92A7E0D6F0061EF0F /* ModalAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAlert.swift; sourceTree = "<group>"; };
+		693723DB2A7E10E30061EF0F /* ModalYesNoQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalYesNoQuestion.swift; sourceTree = "<group>"; };
 		69419CCB2A72C7F900DE67AC /* MonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPicker.swift; sourceTree = "<group>"; };
 		69419CCE2A72CAC000DE67AC /* YearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearPickerView.swift; sourceTree = "<group>"; };
 		69419CD02A72D46B00DE67AC /* MonthPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthPickerView.swift; sourceTree = "<group>"; };
@@ -272,6 +276,15 @@
 				6924E49B2A7CE25E00655ADC /* WalletCreatingViewModel.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		693723D82A7E0D5C0061EF0F /* ModalType */ = {
+			isa = PBXGroup;
+			children = (
+				693723D92A7E0D6F0061EF0F /* ModalAlert.swift */,
+				693723DB2A7E10E30061EF0F /* ModalYesNoQuestion.swift */,
+			);
+			path = ModalType;
 			sourceTree = "<group>";
 		};
 		69419CCD2A72CA9D00DE67AC /* MonthYearPicker */ = {
@@ -466,6 +479,7 @@
 			children = (
 				69D1D0EE2A6D101900E3420D /* Modal.swift */,
 				69D1D0F22A6D1F5C00E3420D /* ModalViewModel.swift */,
+				693723D82A7E0D5C0061EF0F /* ModalType */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -562,6 +576,7 @@
 				6988F4482A494BF100EAEACE /* DayTransactionModel.swift in Sources */,
 				6924E49C2A7CE25E00655ADC /* WalletCreatingViewModel.swift in Sources */,
 				69419CCC2A72C7F900DE67AC /* MonthYearPicker.swift in Sources */,
+				693723DA2A7E0D6F0061EF0F /* ModalAlert.swift in Sources */,
 				69D1D0FB2A6D793900E3420D /* DayView.swift in Sources */,
 				6988F43B2A481BD100EAEACE /* HomeView.swift in Sources */,
 				6988F4422A4869A100EAEACE /* HistoryView.swift in Sources */,
@@ -576,6 +591,7 @@
 				69FE3EB72A6FC83A00D8F0BF /* Transaction.swift in Sources */,
 				69D1D0E82A6CE19200E3420D /* ToggleButtonState.swift in Sources */,
 				690A08A92A6AB5F70009B183 /* DropdownListButton.swift in Sources */,
+				693723DC2A7E10E30061EF0F /* ModalYesNoQuestion.swift in Sources */,
 				6924E48F2A7B5ED300655ADC /* WalletSettingView.swift in Sources */,
 				690A089A2A6A6B200009B183 /* CurrencyTextfield.swift in Sources */,
 				69FE3EBB2A6FD32F00D8F0BF /* Wallet.swift in Sources */,

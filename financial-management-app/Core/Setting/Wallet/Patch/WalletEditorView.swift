@@ -59,12 +59,18 @@ struct WalletEditorView: View {
             Spacer()
             
             Button {
-                vm.delete(wallet) {
-                    modalvm.alertSuccess() { dismiss() }
-                } onFailure: { err in
-                    modalvm.alertFailure(
-                        message: "Fail to delete Wallet!") { dismiss() }
-                }
+                modalvm.yesNoQuestion(
+                    title: "Confirm?",
+                    message: "You are about to delete \(wallet.Label)") { value in
+                        if value {
+                            vm.delete(wallet) {
+                                modalvm.alertSuccess() { dismiss() }
+                            } onFailure: { err in
+                                modalvm.alertFailure(
+                                    message: "Fail to delete Wallet!") { dismiss() }
+                            }
+                        }
+                    }
             } label: {
                 Text("Delete")
                     .padding(8)

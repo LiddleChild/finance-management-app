@@ -22,24 +22,28 @@ struct Modal: View {
                 
                 if vm.isShowing {
                     VStack(spacing: 8) {
-                        Image(systemName: vm.symbol)
-                            .resizable()
-                            .frame(width: 64, height: 64)
-                            .foregroundColor(vm.symbolColor)
-                            .scaledToFill()
-                        
-                        Text(verbatim: vm.title)
-                            .foregroundColor(.black)
-                            .font(.system(size: 28, weight: .semibold))
-                        
-                        Text(verbatim: vm.message)
-                            .foregroundColor(.black)
-                            .font(.system(size: 20, weight: .regular))
-                            .multilineTextAlignment(.leading)
+                        switch vm.modalType {
+                        case .Alert:
+                            ModalAlert(
+                                title: vm.title,
+                                message: vm.message,
+                                symbol: vm.symbol,
+                                symbolColor: vm.symbolColor)
+                            
+                        case .YesNoQuestion:
+                            ModalYesNoQuestion(
+                                title: vm.title,
+                                message: vm.message,
+                                symbol: vm.symbol,
+                                symbolColor: vm.symbolColor) { value in
+                                    vm.completion(ModalViewModel.Return(yesNoQuestion: value))
+                                }
+                        }
                     }
                     .transition(.move(edge: .bottom))
                     .padding(32)
                     .frame(width: width, height: width)
+                    .foregroundColor(.black)
                     .background {
                         RoundedRectangle(cornerRadius: 36)
                             .foregroundColor(Color.color5)
@@ -59,9 +63,15 @@ struct Modal_Previews: PreviewProvider {
 //                    duration: .infinity,
 //                    title: "Success")
                 
-                ModalViewModel.shared.alertFailure(
-                    duration: .infinity,
-                    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie, arcu eu aliquet convallis, velit felis congue tortor, sit amet convallis nibh felis sed leo. Donec ultricies sodales neque, ut luctus justo interdum ac.")
+                ModalViewModel.shared.yesNoQuestion(
+                    title: "Confirm?",
+                    message: "You are about to delete") { value in
+                        print(value)
+                    }
+                
+//                ModalViewModel.shared.alertFailure(
+//                    duration: .infinity,
+//                    message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie, arcu eu aliquet convallis, velit felis congue tortor, sit amet convallis nibh felis sed leo. Donec ultricies sodales neque, ut luctus justo interdum ac.")
             }
     }
 }

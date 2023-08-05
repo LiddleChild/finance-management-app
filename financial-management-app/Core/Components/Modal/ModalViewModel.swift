@@ -9,6 +9,14 @@ import SwiftUI
 
 @MainActor
 class ModalViewModel: ObservableObject {
+    struct Return {
+        var yesNoQuestion: Bool?
+    }
+    
+    enum ModalType {
+        case Alert, YesNoQuestion
+    }
+    
     static let shared = ModalViewModel()
     private init() { }
     
@@ -19,18 +27,23 @@ class ModalViewModel: ObservableObject {
     @Published var symbol: String = ""
     @Published var symbolColor: Color = .green
     @Published var isShowing: Bool = false
+    @Published var modalType: ModalType = .Alert
+    @Published var completion: (Return) -> Void = { _ in }
     
     func alertSuccess(duration: Double = 2,
                       title: String = "Success",
                       message: String = "",
                       completion: @escaping () -> Void = {}) {
         
-        alert(duration: duration,
-              title: title,
-              message: message,
-              symbol: "checkmark.circle.fill",
-              symbolColor: .green,
-              completion: completion)
+        self.modalType = .Alert
+        self.symbolColor = symbolColor
+        self.title = title
+        self.message = message
+        self.symbol = "checkmark.circle.fill"
+        self.symbolColor = .green
+        
+        show()
+        hide(after: duration, completion: completion)
     }
     
     func alertFailure(duration: Double = 2,
@@ -38,33 +51,53 @@ class ModalViewModel: ObservableObject {
                       message: String = "",
                       completion: @escaping () -> Void = {}) {
         
-        alert(duration: duration,
-              title: title,
-              message: message,
-              symbol: "xmark.circle.fill",
-              symbolColor: .red,
-              completion: completion)
+        self.modalType = .Alert
+        self.symbolColor = symbolColor
+        self.title = title
+        self.message = message
+        self.symbol = "xmark.circle.fill"
+        self.symbolColor = .red
+        
+        show()
+        hide(after: duration, completion: completion)
     }
     
-    private func alert(duration: Double,
-                       title: String,
+    func yesNoQuestion(title: String,
                        message: String,
-                       symbol: String,
-                       symbolColor: Color,
-                       completion: @escaping () -> Void) {
+                       completion: @escaping (Bool) -> Void) {
         
+        self.modalType = .YesNoQuestion
+        self.symbolColor = symbolColor
+        self.title = title
+        self.message = message
+        self.symbol = "questionmark.circle.fill"
+        self.symbolColor = .blue
+        self.completion = { value in
+            self.hide()
+            completion(value.yesNoQuestion!)
+        }
+        
+        show()
+    }
+    
+    private func show() {
         DispatchQueue.main.async {
-            self.symbolColor = symbolColor
-            self.title = title
-            self.message = message
-            self.symbol = symbol
-            
             withAnimation(.easeInOut(duration: self.animationDuration)) {
                 self.isShowing = true
             }
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration + animationDuration) {
+    }
+    
+    private func hide() {
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut(duration: self.animationDuration)) {
+                self.isShowing = false
+            }
+        }
+    }
+    
+    private func hide(after: Double, completion: @escaping () -> Void = {}) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + after + animationDuration) {
             withAnimation(.easeInOut(duration: self.animationDuration)) {
                 self.isShowing = false
             }
