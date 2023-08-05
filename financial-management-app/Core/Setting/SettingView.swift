@@ -20,7 +20,7 @@ struct SettingView: View {
                 }
                 
                 SettingNavigationLink(label: "Categories") {
-                    
+                    CategorySettingView()
                 }
             }
             

@@ -26,8 +26,11 @@ class HTTPService {
         req.httpMethod = method.rawValue
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        print("\(method.rawValue) \(url.url!)")
+        
         URLSession.shared.dataTask(with: req) { (data, response, error) in
             if let error = error {
+                print(error)
                 completion(.failure(error))
             }
             

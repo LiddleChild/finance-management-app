@@ -27,7 +27,7 @@ struct Category {
             .filter { $0.Type == "INCOME" || $0.Type == "BOTH" }
             .map { category in
             DropdownOption(
-                OptionId: category.CategoryId,
+                OptionId: category.CategoryId!,
                 Label: category.Label,
                 Color: Color(hex: category.Color))
         }
@@ -38,10 +38,14 @@ struct Category {
             .filter { $0.Type == "EXPENSE" || $0.Type == "BOTH" }
             .map { category in
             DropdownOption(
-                OptionId: category.CategoryId,
+                OptionId: category.CategoryId!,
                 Label: category.Label,
                 Color: Color(hex: category.Color))
         }
+    }
+    
+    func getCategory() -> [CategoryModel] {
+        return self.categories.map { $1 }
     }
 }
 

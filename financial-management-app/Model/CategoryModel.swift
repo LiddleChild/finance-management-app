@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CategoryModel: Decodable {
-    var CategoryId: String
+struct CategoryModel: Decodable, Encodable {
+    var CategoryId: String?
     var Color: Int
     var Label: String
     var `Type`: String
