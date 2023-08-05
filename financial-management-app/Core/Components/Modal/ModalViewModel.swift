@@ -35,15 +35,16 @@ class ModalViewModel: ObservableObject {
                       message: String = "",
                       completion: @escaping () -> Void = {}) {
         
-        self.modalType = .Alert
-        self.symbolColor = symbolColor
-        self.title = title
-        self.message = message
-        self.symbol = "checkmark.circle.fill"
-        self.symbolColor = .green
-        
-        show()
-        hide(after: duration, completion: completion)
+        DispatchQueue.main.async {
+            self.modalType = .Alert
+            self.title = title
+            self.message = message
+            self.symbol = "checkmark.circle.fill"
+            self.symbolColor = .green
+            
+            self.show()
+            self.hide(after: duration, completion: completion)
+        }
     }
     
     func alertFailure(duration: Double = 2,
@@ -51,33 +52,35 @@ class ModalViewModel: ObservableObject {
                       message: String = "",
                       completion: @escaping () -> Void = {}) {
         
-        self.modalType = .Alert
-        self.symbolColor = symbolColor
-        self.title = title
-        self.message = message
-        self.symbol = "xmark.circle.fill"
-        self.symbolColor = .red
-        
-        show()
-        hide(after: duration, completion: completion)
+        DispatchQueue.main.async {
+            self.modalType = .Alert
+            self.title = title
+            self.message = message
+            self.symbol = "xmark.circle.fill"
+            self.symbolColor = .red
+            
+            self.show()
+            self.hide(after: duration, completion: completion)
+        }
     }
     
     func yesNoQuestion(title: String,
                        message: String,
                        completion: @escaping (Bool) -> Void) {
         
-        self.modalType = .YesNoQuestion
-        self.symbolColor = symbolColor
-        self.title = title
-        self.message = message
-        self.symbol = "questionmark.circle.fill"
-        self.symbolColor = .blue
-        self.completion = { value in
-            self.hide()
-            completion(value.yesNoQuestion!)
+        DispatchQueue.main.async {
+            self.modalType = .YesNoQuestion
+            self.title = title
+            self.message = message
+            self.symbol = "questionmark.circle.fill"
+            self.symbolColor = .blue
+            self.completion = { value in
+                self.hide()
+                completion(value.yesNoQuestion!)
+            }
+            
+            self.show()
         }
-        
-        show()
     }
     
     private func show() {

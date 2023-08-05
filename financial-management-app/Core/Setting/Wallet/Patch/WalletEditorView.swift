@@ -40,6 +40,7 @@ struct WalletEditorView: View {
             }
             
             Button {
+                focusField = nil
                 vm.patch(wallet) {
                     modalvm.alertSuccess() { dismiss() }
                 } onFailure: { err in
@@ -59,6 +60,7 @@ struct WalletEditorView: View {
             Spacer()
             
             Button {
+                focusField = nil
                 modalvm.yesNoQuestion(
                     title: "Confirm?",
                     message: "You are about to delete \(wallet.Label)") { value in

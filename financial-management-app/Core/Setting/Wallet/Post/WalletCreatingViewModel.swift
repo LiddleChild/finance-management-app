@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class WalletCreatingViewModel: ObservableObject {
     @Published var labelField: String = ""
     @Published var colorField: Color = .white

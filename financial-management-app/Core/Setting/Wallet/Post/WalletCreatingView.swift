@@ -40,6 +40,7 @@ struct WalletCreatingView: View {
             }
             
             Button {
+                focusField = nil
                 vm.post {
                     modalvm.alertSuccess() { dismiss() }
                 } onFailure: { err in
