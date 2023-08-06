@@ -11,12 +11,14 @@ struct WalletSettingView: View {
     @EnvironmentObject private var contentViewModel: ContentViewModel
     
     var body: some View {
-        SettingList {
-            ForEach(contentViewModel.wallet.getWallet(),
-                    id: \.WalletId) { wallet in
-
-                SettingNavigationLink(label: wallet.Label) {
-                    WalletEditorView(wallet: wallet)
+        ScrollView {
+            SettingList {
+                ForEach(contentViewModel.wallet.getWallet(),
+                        id: \.WalletId) { wallet in
+                    
+                    SettingNavigationLink(label: wallet.Label) {
+                        WalletEditorView(wallet: wallet)
+                    }
                 }
             }
         }
