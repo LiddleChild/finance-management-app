@@ -13,24 +13,42 @@ struct CategorySettingView: View {
     @EnvironmentObject private var contentViewModel: ContentViewModel
     
     var body: some View {
-        SettingList {
-            ForEach(contentViewModel.category.getCategory(),
-                    id: \.CategoryId) { category in
-                SettingNavigationLink(label: category.Label) {
-                    CategoryEditorView(category: category)
+        ScrollView {
+            SettingList(title: "Income") {
+                ForEach(contentViewModel.category.getIncomeCategory(),
+                        id: \.CategoryId) { category in
+                    SettingNavigationLink(label: category.Label) {
+                        CategoryEditorView(category: category)
+                    }
                 }
             }
+            
+            NavigationLink {
+                CategoryCreatingView(categoryType: "INCOME")
+            } label: {
+                Text("+ Income Category").foregroundColor(Color.gray)
+            }
+            .padding(.top, 8)
+            
+            SettingList(title: "Expense") {
+                ForEach(contentViewModel.category.getExpenseCategory(),
+                        id: \.CategoryId) { category in
+                    SettingNavigationLink(label: category.Label) {
+                        CategoryEditorView(category: category)
+                    }
+                }
+            }
+            
+            NavigationLink {
+                CategoryCreatingView(categoryType: "EXPENSE")
+            } label: {
+                Text("+ Expense Category").foregroundColor(Color.gray)
+            }
+            .padding(8)
         }
         .onAppear {
             contentViewModel.fetchCategory()
         }
-        
-        NavigationLink {
-            WalletCreatingView()
-        } label: {
-            Text("+ Category").foregroundColor(Color.gray)
-        }
-        .padding(8)
     }
 }
 

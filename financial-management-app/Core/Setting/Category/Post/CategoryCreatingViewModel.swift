@@ -18,11 +18,11 @@ class CategoryCreatingViewModel: ObservableObject {
         return labelField != ""
     }
     
-    func post(onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
+    func post(_ categoryType: String, onSuccess: @escaping () -> Void, onFailure: @escaping (Error) -> Void) {
         let label = labelField
         let color = colorField.toHex()
         
-        let category = CategoryModel(Color: color, Label: label, Type: "EXPENSE")
+        let category = CategoryModel(Color: color, Label: label, Type: categoryType)
         
         categoryService.post(category: category) { err in
             if err != nil {

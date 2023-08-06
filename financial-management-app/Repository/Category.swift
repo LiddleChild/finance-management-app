@@ -15,15 +15,15 @@ struct Category {
     }
     
     func getCategoryLabelById(id: String) -> String {
-        return categories[id]?.Label ?? ""
+        return self.categories[id]?.Label ?? ""
     }
     
     func getCategoryColorById(id: String) -> Int {
-        return categories[id]?.Color ?? 0xFFFFFF
+        return self.categories[id]?.Color ?? 0xFFFFFF
     }
     
     func getIncomeCategoryDropdownOptions() -> [DropdownOption] {
-        return categories.values
+        return self.categories.values
             .filter { $0.Type == "INCOME" || $0.Type == "BOTH" }
             .map { category in
             DropdownOption(
@@ -34,7 +34,7 @@ struct Category {
     }
     
     func getExpenseCategoryDropdownOptions() -> [DropdownOption] {
-        return categories.values
+        return self.categories.values
             .filter { $0.Type == "EXPENSE" || $0.Type == "BOTH" }
             .map { category in
             DropdownOption(
@@ -44,8 +44,16 @@ struct Category {
         }
     }
     
-    func getCategory() -> [CategoryModel] {
-        return self.categories.map { $1 }
+    func getIncomeCategory() -> [CategoryModel] {
+        return self.categories.values
+            .filter { $0.Type == "INCOME" || $0.Type == "BOTH" }
+            .map { $0 }
+    }
+    
+    func getExpenseCategory() -> [CategoryModel] {
+        return self.categories.values
+            .filter { $0.Type == "EXPENSE" || $0.Type == "BOTH" }
+            .map { $0 }
     }
 }
 

@@ -18,6 +18,8 @@ struct CategoryCreatingView: View {
     @StateObject private var vm = CategoryCreatingViewModel()
     @FocusState private var focusField: FocusedField?
     
+    var categoryType: String
+    
     var body: some View {
         ContentTemplate {
             HeaderView(header: "Create")
@@ -41,7 +43,7 @@ struct CategoryCreatingView: View {
             
             Button {
                 focusField = nil
-                vm.post {
+                vm.post(categoryType) {
                     modalvm.alertSuccess() { dismiss() }
                 } onFailure: { err in
                     modalvm.alertFailure(
@@ -66,7 +68,7 @@ struct CategoryCreatingView: View {
 struct CategoryCreatingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CategoryCreatingView()
+            CategoryCreatingView(categoryType: "INCOME")
                 .toolbar(.visible)
         }
     }

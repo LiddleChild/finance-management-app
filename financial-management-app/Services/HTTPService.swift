@@ -30,14 +30,24 @@ class HTTPService {
         
         URLSession.shared.dataTask(with: req) { (data, response, error) in
             if let error = error {
-                print(error)
                 completion(.failure(error))
             }
             
             if let data = data {
                 do {
-                    let object = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(object))
+                    if let response = response as? HTTPURLResponse {
+                        let responseType = response.statusCode / 100
+                        if responseType == 4 {
+                            let object = try JSONDecoder().decode([String : String].self, from: data)
+                            completion(.failure(HTTPError.clientError(object["Message"]!)))
+                        } else if responseType == 5 {
+                            let object = try JSONDecoder().decode([String : String].self, from: data)
+                            completion(.failure(HTTPError.serverError(object["Message"]!)))
+                        } else {
+                            let object = try JSONDecoder().decode(T.self, from: data)
+                            completion(.success(object))
+                        }
+                    }
                 } catch let decoderError {
                     completion(.failure(decoderError))
                 }
