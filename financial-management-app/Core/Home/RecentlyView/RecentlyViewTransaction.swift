@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecentlyViewTransaction: View {
-    @EnvironmentObject private var viewModel: ContentViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
     
     var transaction: TransactionModel
     

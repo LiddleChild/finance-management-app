@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUI
 
 struct CategorySettingView: View {
-    @EnvironmentObject private var contentViewModel: ContentViewModel
+    @EnvironmentObject private var contentViewModel: MainViewModel
     
     var body: some View {
         ScrollView {

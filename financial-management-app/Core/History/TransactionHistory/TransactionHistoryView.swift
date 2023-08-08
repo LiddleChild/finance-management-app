@@ -27,7 +27,7 @@ private struct DescriptionView: View {
 }
 
 struct TransactionHistoryView: View {
-    @EnvironmentObject private var viewModel: ContentViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
     
     var transaction: TransactionModel
     

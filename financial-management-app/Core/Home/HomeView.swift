@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
-    @EnvironmentObject private var viewModel: ContentViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
     @StateObject private var homeViewModel = HomeViewModel()
     
     @State private var path: [ViewLists] = []

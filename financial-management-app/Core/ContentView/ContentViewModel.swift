@@ -9,33 +9,24 @@ import SwiftUI
 
 @MainActor
 class ContentViewModel: ObservableObject {
-    private let walletService = WalletService.shared
-    @Published var wallet = Wallet()
-    
-    private let categoryService = CategoryService.shared
-    @Published var category = Category()
+    enum Status { case Loading, Connection, NoConnection }
+    let statusService = StatusService.shared
+    @Published var status: Status = .Loading
     
     init() {
-        fetch()
+        ping()
     }
     
-    func fetch() {
-        fetchCategory()
-        fetchWallet()
-    }
-    
-    func fetchCategory() {
-        categoryService.fetch { category in
+    func ping() {
+        statusService.ping { err in
             DispatchQueue.main.async {
-                self.category = category
+                self.status = err == nil ? .Connection : .NoConnection
             }
-        }
-    }
-    
-    func fetchWallet() {
-        walletService.fetch { wallet in
-            DispatchQueue.main.async {
-                self.wallet = wallet
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                if self.status == .NoConnection {
+                    self.ping()
+                }
             }
         }
     }

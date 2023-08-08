@@ -10,7 +10,7 @@ import SwiftUI
 struct AddTransactionView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var navigationCenter: NavigationCenter
-    @EnvironmentObject private var viewModel: ContentViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
     @StateObject private var addTxnViewModel = AddTransactionViewModel()
     
     var body: some View {
