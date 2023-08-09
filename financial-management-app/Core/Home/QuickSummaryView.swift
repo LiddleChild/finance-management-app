@@ -45,7 +45,7 @@ struct QuickSummaryView_Previews: PreviewProvider {
             
             QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)])
             
-            .environmentObject(ContentViewModel())
+            .environmentObject(MainViewModel())
             .environmentObject(ModalViewModel.shared)
             .environmentObject(NavigationCenter.shared)
         }

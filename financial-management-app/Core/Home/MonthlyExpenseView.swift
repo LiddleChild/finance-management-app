@@ -52,7 +52,7 @@ struct MonthlyExpenseView_Previews: PreviewProvider {
                 summaryData: [(1.0, Color("color-red")), (2.0, Color("color-green"))],
                 expense: 123.45)
             
-            .environmentObject(ContentViewModel())
+            .environmentObject(MainViewModel())
             .environmentObject(ModalViewModel.shared)
             .environmentObject(NavigationCenter.shared)
         }

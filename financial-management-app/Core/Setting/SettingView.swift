@@ -30,7 +30,7 @@ struct SettingView: View {
 }
 
 struct SettingView_Previews: PreviewProvider {
-    @StateObject private static var contentViewModel = ContentViewModel()
+    @StateObject private static var contentViewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             SettingView()

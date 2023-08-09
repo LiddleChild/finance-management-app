@@ -92,7 +92,7 @@ private struct Preview: View {
             NavigationStack {
                 AddTransactionView()
                     .toolbar(.visible)
-                    .environmentObject(ContentViewModel())
+                    .environmentObject(MainViewModel())
                     .environmentObject(ModalViewModel.shared)
                     .environmentObject(NavigationCenter.shared)
             }
