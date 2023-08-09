@@ -30,6 +30,7 @@ struct TransactionHistoryView: View {
     @EnvironmentObject private var viewModel: MainViewModel
     
     var transaction: TransactionModel
+    @State private var noteField: String = ""
     
     var body: some View {
         ContentTemplate {
@@ -58,26 +59,16 @@ struct TransactionHistoryView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    VStack {
-                        Text("Note")
-                            .foregroundColor(Color("color-5"))
-                            .font(.system(size: 20, weight: .medium))
-                            .padding(.horizontal, 8)
-                            .background(Color("color-1"))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .zIndex(1)
-                            .padding(.leading, 16)
-                        
-                        Text(transaction.Note == "" ?
-                             "No note written." : transaction.Note)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color("color-5"))
-                        .font(.system(size: 16, weight: .light))
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 12).strokeBorder(Color("color-3")))
-                        .offset(y: -24)
-                    }
+                    TextField("", text: $noteField)
+                        .modifier(TextfieldModifier(
+                            label: "Note",
+                            placeholder: noteField,
+                            text: noteField))
+                        .disabled(true)
+                        .onAppear {
+                            noteField = transaction.Note == "" ?
+                            "No note written." : transaction.Note
+                        }
                 }
                 
                 Spacer()
@@ -91,7 +82,7 @@ struct TransactionHistoryView: View {
                     Image(systemName: "square.and.pencil")
                         .foregroundColor(.color5)
                 }
-
+                
             }
         }
     }
@@ -101,7 +92,7 @@ struct TransactionHistoryView_Previews: PreviewProvider {
     @StateObject static var viewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
-            TransactionHistoryView(transaction: TransactionModel.DUMMY_LONG_NOTE)
+            TransactionHistoryView(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
                 .toolbar(.visible, for: .navigationBar)
         }
         .environmentObject(viewModel)
