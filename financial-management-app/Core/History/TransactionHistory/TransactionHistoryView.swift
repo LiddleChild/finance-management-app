@@ -32,11 +32,7 @@ struct TransactionHistoryView: View {
     var transaction: TransactionModel
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             VStack(alignment: .leading, spacing: 48) {
                 HeaderView(header: "Transaction History")
                 
@@ -86,13 +82,23 @@ struct TransactionHistoryView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 24)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                        .foregroundColor(.color5)
+                }
+
+            }
         }
     }
 }
 
 struct TransactionHistoryView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ContentViewModel()
+    @StateObject static var viewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             TransactionHistoryView(transaction: TransactionModel.DUMMY_LONG_NOTE)

@@ -50,7 +50,7 @@ struct HistoryView: View {
 }
 
 struct HistoryView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ContentViewModel()
+    @StateObject static var viewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             HistoryView()

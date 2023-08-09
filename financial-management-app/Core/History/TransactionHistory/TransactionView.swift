@@ -61,6 +61,6 @@ struct TransactionView_Previews: PreviewProvider {
                     .padding(.horizontal, 24)
             }
         }
-        .environmentObject(ContentViewModel())
+        .environmentObject(MainViewModel())
     }
 }

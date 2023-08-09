@@ -12,12 +12,10 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var vm = ContentViewModel()
     var body: some View {
-        ContentTemplate {
-            ContentView()
-                .foregroundColor(.color5)
-                .transition(.scale)
-                .animation(.easeInOut(duration: 1.5), value: vm.status)
-        }
+        ContentView()
+            .foregroundColor(.color5)
+            .transition(.scale)
+            .animation(.easeInOut(duration: 1.5), value: vm.status)
     }
     
     func ContentView() -> AnyView {
