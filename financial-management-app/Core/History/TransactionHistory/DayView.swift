@@ -39,13 +39,8 @@ struct DayView: View {
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ZStack {
-                Rectangle()
-                    .fill(Color("color-1"))
-                    .ignoresSafeArea()
-                
+            ContentTemplate {
                 DayView(dayTransaction: DayTxnModel.DUMMY)
-                    .padding(.horizontal, 24)
             }
         }
         .environmentObject(MainViewModel())

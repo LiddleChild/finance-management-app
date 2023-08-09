@@ -38,11 +38,7 @@ struct QuickSummaryView: View {
 
 struct QuickSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             QuickSummaryView(summaryData: [(1.0, .red), (2.0, .green), (3.0, .blue), (4.0, .yellow)])
             
             .environmentObject(MainViewModel())

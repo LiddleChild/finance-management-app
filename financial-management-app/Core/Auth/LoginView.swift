@@ -74,18 +74,13 @@ private struct FormView: View {
 struct LoginView: View {
     var body: some View {
         NavigationStack {
-            ZStack {
-                Rectangle()
-                    .fill(Color("color-1"))
-                    .ignoresSafeArea()
-                
+            ContentTemplate {
                 VStack(alignment: .leading) {
                     HeaderView(header: "Good Evening!", subheader: "Sign in to your Account")
                         .padding(.bottom, 128)
                     
                     FormView()
                 }
-                .padding(.horizontal, 24)
             }
         }
     }

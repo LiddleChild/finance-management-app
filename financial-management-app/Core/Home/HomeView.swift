@@ -15,11 +15,7 @@ struct HomeView: View {
     @State private var path: [ViewLists] = []
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             VStack(alignment: .center, spacing: 32) {
                 HeaderView(
                     header: "Hello,",
@@ -40,7 +36,6 @@ struct HomeView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 24)
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .onAppear {

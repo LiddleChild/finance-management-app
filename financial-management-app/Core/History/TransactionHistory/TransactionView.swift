@@ -52,13 +52,8 @@ struct TransactionView: View {
 struct TransactionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ZStack {
-                Rectangle()
-                    .fill(Color("color-1"))
-                    .ignoresSafeArea()
-
+            ContentTemplate {
                 TransactionView(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
-                    .padding(.horizontal, 24)
             }
         }
         .environmentObject(MainViewModel())

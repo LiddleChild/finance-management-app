@@ -54,14 +54,9 @@ struct RecentlyView: View {
 struct RecentlyView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ZStack {
-                Rectangle()
-                    .fill(Color("color-1"))
-                    .ignoresSafeArea()
-                
-//                RecentlyView(transactions: TxnModel.DUMMYS)
+            ContentTemplate {
+//                RecentlyView(transactions: TransactionModel.DUMMYS)
                 RecentlyView(transactions: [])
-                    .padding(.horizontal, 24)
             }
         }
         .environmentObject(ContentViewModel())

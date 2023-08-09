@@ -39,11 +39,7 @@ struct RegisterView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             VStack(alignment: .leading, spacing: 20) {
                 HeaderView(header: "Create your Account", subheader: "Please fill your information")
                     .padding(.bottom, 64)
@@ -60,7 +56,6 @@ struct RegisterView: View {
                         .modifier(PrimaryButtonModifier())
                 }
             }
-            .padding(.horizontal, 24)
         }
     }
 }

@@ -14,11 +14,7 @@ struct AddTransactionView: View {
     @StateObject private var addTxnViewModel = AddTransactionViewModel()
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             VStack {
                 HeaderView(header: "Add your Transaction", subheader: "Please fill your transaction information")
                     .padding(.bottom, 48)
@@ -81,8 +77,8 @@ struct AddTransactionView: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 24)
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 

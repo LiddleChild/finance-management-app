@@ -43,11 +43,7 @@ struct MonthlyExpenseView: View {
 
 struct MonthlyExpenseView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             MonthlyExpenseView(
                 summaryData: [(1.0, Color("color-red")), (2.0, Color("color-green"))],
                 expense: 123.45)
