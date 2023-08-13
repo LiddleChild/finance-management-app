@@ -59,7 +59,7 @@ struct TransactionHistoryView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    TextField("", text: $noteField)
+                    TextField("", text: $noteField, axis: .vertical)
                         .modifier(TextfieldModifier(
                             label: "Note",
                             placeholder: noteField,

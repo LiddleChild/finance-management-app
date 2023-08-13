@@ -22,6 +22,14 @@ struct Category {
         return self.categories[id]?.Color ?? 0xFFFFFF
     }
     
+    func getDropdownOption(id: String) -> DropdownOption {
+        print(categories)
+        return DropdownOption(
+            OptionId: id,
+            Label: getCategoryLabelById(id: id),
+            Color: Color(hex: getCategoryColorById(id: id)))
+    }
+    
     func getIncomeCategoryDropdownOptions() -> [DropdownOption] {
         return self.categories.values
             .filter { $0.Type == "INCOME" || $0.Type == "BOTH" }

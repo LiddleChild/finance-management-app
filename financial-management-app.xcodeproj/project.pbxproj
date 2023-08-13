@@ -225,9 +225,9 @@
 			children = (
 				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
 				6986D82B2A4D85520043BF86 /* ContentViewModel.swift */,
-				691A54DB2A80EC73007583AA /* LoadingView.swift */,
 				691A54E32A81D6D0007583AA /* MainView.swift */,
 				691A54E52A81D6E5007583AA /* MainViewModel.swift */,
+				691A54DB2A80EC73007583AA /* LoadingView.swift */,
 				691A54E72A81DEC4007583AA /* NoConnectionView.swift */,
 			);
 			path = ContentView;
@@ -420,6 +420,8 @@
 			children = (
 				6988F4412A4869A100EAEACE /* HistoryView.swift */,
 				69FE3EB12A6F91CC00D8F0BF /* HistoryViewModel.swift */,
+				69D1D0FA2A6D793900E3420D /* DayView.swift */,
+				69D1D0FC2A6D798200E3420D /* TransactionView.swift */,
 				69FE3EB32A6FA8A600D8F0BF /* TransactionHistory */,
 			);
 			path = History;
@@ -543,8 +545,6 @@
 		69FE3EB32A6FA8A600D8F0BF /* TransactionHistory */ = {
 			isa = PBXGroup;
 			children = (
-				69D1D0FA2A6D793900E3420D /* DayView.swift */,
-				69D1D0FC2A6D798200E3420D /* TransactionView.swift */,
 				6988F4492A4954AD00EAEACE /* TransactionHistoryView.swift */,
 			);
 			path = TransactionHistory;
