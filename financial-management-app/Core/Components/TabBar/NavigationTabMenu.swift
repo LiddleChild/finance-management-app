@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-struct NavigationTabMenu: View {
+struct NavigationTabMenu<Content: View>: View {
     @Binding var selectedTab: NavigationTab
-    var onTabSelected : (NavigationTab) -> ()
-    
-    //    func onClick(tab: NavigationTab) {
-    //        withAnimation(.easeInOut(duration: 0.2)) {
-    //            selectedTab = tab
-    //            onTabSelected()
-    //        }
-    //    }
+    @ViewBuilder var createView: () -> Content
     
     var body: some View {
         HStack {
@@ -26,16 +19,16 @@ struct NavigationTabMenu: View {
                 if tab.enlarge {
                     Spacer()
                     
-                    Image(systemName: tab.image)
-                        .padding()
-                        .foregroundColor(Color("color-5"))
-                        .background(Circle().foregroundColor(Color("color-4")))
-                        .scaleEffect(1.5)
-                        .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                onTabSelected(tab)
-                            }
-                        }
+                    NavigationLink {
+                        createView()
+                    } label: {
+                        Image(systemName: tab.image)
+                            .padding()
+                            .foregroundColor(Color("color-5"))
+                            .background(Circle().foregroundColor(Color("color-4")))
+                            .scaleEffect(1.5)
+                    }
+                    
                     Spacer()
                 } else {
                     Image(systemName: isSelected ? tab.selectedImage : tab.image)
@@ -45,7 +38,6 @@ struct NavigationTabMenu: View {
                         .onTapGesture {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 selectedTab = tab
-                                onTabSelected(tab)
                             }
                         }
                 }
@@ -72,8 +64,10 @@ private struct Preview: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            NavigationTabMenu(selectedTab: $selectedTab) { tab in }
-                .padding(36)
+            NavigationTabMenu(selectedTab: $selectedTab) {
+                Text("Create")
+            }
+            .padding(36)
         }
     }
 }

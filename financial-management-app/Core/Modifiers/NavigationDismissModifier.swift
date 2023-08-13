@@ -19,7 +19,7 @@ struct NagivationDismissModier: ViewModifier {
                     Button {
                         dismiss()
                     } label: {
-                        Image(systemName: "chevron.left")
+                        Image(systemName: "arrow.left")
                             .imageScale(.large)
                             .foregroundColor(Color("color-5"))
                             .padding()

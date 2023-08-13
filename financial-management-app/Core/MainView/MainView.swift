@@ -13,7 +13,7 @@ struct MainView: View {
     @StateObject private var contentViewModel = MainViewModel()
     
     var body: some View {
-        NavigationStack(path: $navigationCenter.path) {
+        NavigationStack {
             ZStack {
                 TabView(selection: $navigationCenter.selectedTab) {
                     HomeView()
@@ -28,29 +28,21 @@ struct MainView: View {
                     SettingView()
                         .tag(NavigationTab.setting)
                 }
-                
-                NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) { tab in
-                    if tab == .create {
-                        navigationCenter.goto(.ADD_TRANSACTION_VIEW)
-                    }
-                }
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .padding(.bottom, 44)
-                .padding(.horizontal, 24)
             }
-            .toolbar(.visible)
             .ignoresSafeArea()
-            .navigationDestination(for: ViewLists.self) { path in
-                switch path {
-                case .ADD_TRANSACTION_VIEW:
-                    AddTransactionView().modifier(NagivationDismissModier())
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) {
+                        AddTransactionView().modifier(NagivationDismissModier())
+                    }
+                    .padding(.bottom, 44)
                 }
             }
+            .overlay(Modal())
+            .environmentObject(contentViewModel)
+            .environmentObject(modalViewModel)
+            .environmentObject(navigationCenter)
         }
-        .overlay(Modal())
-        .environmentObject(contentViewModel)
-        .environmentObject(modalViewModel)
-        .environmentObject(navigationCenter)
     }
 }
 

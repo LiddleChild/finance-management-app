@@ -11,7 +11,7 @@ class HTTPService {
     static let shared = HTTPService()
     private init() {}
     
-    let BACKEND_ADDRESS = "localhost:3000"
+    let BACKEND_ADDRESS = "192.168.1.34:3000"
     
     enum Method: String {
         case GET, POST, PATCH, DELETE

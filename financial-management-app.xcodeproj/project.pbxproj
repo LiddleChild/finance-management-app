@@ -225,8 +225,6 @@
 			children = (
 				697029782A3EFE8F00A59EE2 /* ContentView.swift */,
 				6986D82B2A4D85520043BF86 /* ContentViewModel.swift */,
-				691A54E32A81D6D0007583AA /* MainView.swift */,
-				691A54E52A81D6E5007583AA /* MainViewModel.swift */,
 				691A54DB2A80EC73007583AA /* LoadingView.swift */,
 				691A54E72A81DEC4007583AA /* NoConnectionView.swift */,
 			);
@@ -363,6 +361,15 @@
 			path = SettingComponents;
 			sourceTree = "<group>";
 		};
+		696BBC652A88DB6700F84863 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				691A54E32A81D6D0007583AA /* MainView.swift */,
+				691A54E52A81D6E5007583AA /* MainViewModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		6970296A2A3EFE8F00A59EE2 = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				6911031A2A77DA9D00C261B3 /* ContentView */,
+				696BBC652A88DB6700F84863 /* MainView */,
 				699DFCAB2A42EA7600B64C8C /* Components */,
 				690A089D2A6AA60B0009B183 /* Modifiers */,
 				6911031D2A78F2D800C261B3 /* NavigationCenter */,
