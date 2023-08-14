@@ -37,7 +37,7 @@ struct RecentlyViewTransaction_Previews: PreviewProvider {
             
             RecentlyViewTransaction(transaction: TransactionModel.DUMMY_EMPTY_NOTE)
                 .padding(.horizontal, 24)
-                .environmentObject(ContentViewModel())
+                .environmentObject(MainViewModel())
         }
     }
 }

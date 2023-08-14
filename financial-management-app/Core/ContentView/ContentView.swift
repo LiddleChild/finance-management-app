@@ -13,9 +13,6 @@ struct ContentView: View {
     @ObservedObject var vm = ContentViewModel()
     var body: some View {
         ContentView()
-            .foregroundColor(.color5)
-            .transition(.scale)
-            .animation(.easeInOut(duration: 1.5), value: vm.status)
     }
     
     func ContentView() -> AnyView {

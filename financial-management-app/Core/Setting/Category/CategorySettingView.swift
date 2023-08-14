@@ -53,7 +53,7 @@ struct CategorySettingView: View {
 }
 
 struct CategorySettingView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ContentViewModel()
+    @StateObject static var viewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             ContentTemplate {

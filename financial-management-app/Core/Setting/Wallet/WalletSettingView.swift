@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct WalletSettingView: View {
-    @EnvironmentObject private var contentViewModel: MainViewModel
+    @EnvironmentObject private var viewModel: MainViewModel
     
     var body: some View {
         ScrollView {
             SettingList {
-                ForEach(contentViewModel.wallet.getWallet(),
+                ForEach(viewModel.wallet.getWallet(),
                         id: \.WalletId) { wallet in
                     
                     SettingNavigationLink(label: wallet.Label) {
@@ -21,22 +21,22 @@ struct WalletSettingView: View {
                     }
                 }
             }
+            
+            NavigationLink {
+                WalletCreatingView()
+            } label: {
+                Text("+ Wallet").foregroundColor(Color.gray)
+            }
+            .padding(8)
         }
         .onAppear {
-            contentViewModel.fetchWallet()
+            viewModel.fetchWallet()
         }
-        
-        NavigationLink {
-            WalletCreatingView()
-        } label: {
-            Text("+ Wallet").foregroundColor(Color.gray)
-        }
-        .padding(8)
     }
 }
 
 struct WalletSettingView_Previews: PreviewProvider {
-    @StateObject static var viewModel = ContentViewModel()
+    @StateObject static var viewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             ContentTemplate {

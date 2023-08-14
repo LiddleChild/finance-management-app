@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var navigationCenter = NavigationCenter.shared
     @StateObject private var modalViewModel = ModalViewModel.shared
-    @StateObject private var contentViewModel = MainViewModel()
+    @StateObject private var mainViewModel = MainViewModel()
     
     var body: some View {
         NavigationStack {
@@ -28,21 +28,24 @@ struct MainView: View {
                     SettingView()
                         .tag(NavigationTab.setting)
                 }
-            }
-            .ignoresSafeArea()
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
+                
+                VStack {
+                    Spacer()
+                    
                     NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) {
                         AddTransactionView().modifier(NagivationDismissModier())
                     }
+                    .padding(.horizontal, 24)
                     .padding(.bottom, 44)
                 }
             }
+            .toolbar(.visible)
+            .ignoresSafeArea()
             .overlay(Modal())
-            .environmentObject(contentViewModel)
-            .environmentObject(modalViewModel)
-            .environmentObject(navigationCenter)
         }
+        .environmentObject(mainViewModel)
+        .environmentObject(modalViewModel)
+        .environmentObject(navigationCenter)
     }
 }
 

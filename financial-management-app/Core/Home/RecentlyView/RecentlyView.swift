@@ -59,6 +59,6 @@ struct RecentlyView_Previews: PreviewProvider {
                 RecentlyView(transactions: [])
             }
         }
-        .environmentObject(ContentViewModel())
+        .environmentObject(MainViewModel())
     }
 }

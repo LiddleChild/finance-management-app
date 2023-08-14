@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SettingView: View {
-    @EnvironmentObject private var contentViewModel: ContentViewModel
-    
     var body: some View {
         ContentTemplate {
             HeaderView(header: "Setting")
@@ -30,12 +28,10 @@ struct SettingView: View {
 }
 
 struct SettingView_Previews: PreviewProvider {
-    @StateObject private static var contentViewModel = MainViewModel()
     static var previews: some View {
         NavigationStack {
             SettingView()
                 .toolbar(.visible)
         }
-        .environmentObject(contentViewModel)
     }
 }

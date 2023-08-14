@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     @EnvironmentObject private var viewModel: MainViewModel
-    @ObservedObject private var historyViewModel = HistoryViewModel()
+    @StateObject private var historyViewModel = HistoryViewModel()
     
     var body: some View {
         ZStack {
@@ -43,9 +43,6 @@ struct HistoryView: View {
             }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)
-        .onAppear {
-            viewModel.fetch()
-        }
     }
 }
 
