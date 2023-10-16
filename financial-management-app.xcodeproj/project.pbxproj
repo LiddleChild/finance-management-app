@@ -446,9 +446,9 @@
 			isa = PBXGroup;
 			children = (
 				6911031A2A77DA9D00C261B3 /* ContentView */,
-				696BBC652A88DB6700F84863 /* MainView */,
 				699DFCAB2A42EA7600B64C8C /* Components */,
 				690A089D2A6AA60B0009B183 /* Modifiers */,
+				696BBC652A88DB6700F84863 /* MainView */,
 				6911031D2A78F2D800C261B3 /* NavigationCenter */,
 				691227D72A68076400A069E5 /* AddTransaction */,
 				691103232A7903EC00C261B3 /* Summary */,

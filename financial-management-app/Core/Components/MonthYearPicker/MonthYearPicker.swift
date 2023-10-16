@@ -20,13 +20,10 @@ struct MonthYearPicker: View {
 
 private struct Preview: View {
     @State private var value = MonthYearPickerValue(Month: 10, Year: 2023)
+    @State private var date = Date()
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             MonthYearPicker(value: $value)
         }
     }

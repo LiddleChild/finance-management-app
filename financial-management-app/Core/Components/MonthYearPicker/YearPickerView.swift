@@ -13,9 +13,8 @@ struct YearPickerView: View {
     var body: some View {
         HStack {
             Button {
-                withAnimation {
-                    year = year + 1
-                }
+//                withAnimation(.easeInOut) { year = year - 1 }
+                year = year - 1
             } label: {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
@@ -30,9 +29,8 @@ struct YearPickerView: View {
             Spacer()
             
             Button {
-                withAnimation {
-                    year = year - 1
-                }
+//                withAnimation { year = year + 1 }
+                year = year + 1
             } label: {
                 Image(systemName: "chevron.right")
                     .imageScale(.large)
@@ -46,11 +44,7 @@ struct YearPickerView: View {
 private struct Preview: View {
     @State private var yearField = 2023
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
-            
+        ContentTemplate {
             YearPickerView(year: $yearField)
         }
     }
