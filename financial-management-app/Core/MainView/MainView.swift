@@ -13,7 +13,7 @@ struct MainView: View {
     @StateObject private var mainViewModel = MainViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationCenter.path) {
             ZStack {
                 TabView(selection: $navigationCenter.selectedTab) {
                     HomeView()
@@ -29,11 +29,18 @@ struct MainView: View {
                 VStack {
                     Spacer()
                     
-                    NavigationTabMenu(selectedTab: $navigationCenter.selectedTab) {
-                        AddTransactionView().modifier(NagivationDismissModier())
-                    }
+                    NavigationTabMenu(selectedTab: $navigationCenter.selectedTab)
                     .padding(.horizontal, 24)
                     .padding(.bottom, 44)
+                }
+            }
+            .navigationDestination(for: ViewLists.self) { destination in
+                switch (destination) {
+                case ViewLists.ADD_TRANSACTION_VIEW:
+                    AddTransactionView().modifier(NagivationDismissModier())
+                    
+                case ViewLists.ADD_DETAIL_VIEW:
+                    AddDetailView().modifier(NagivationDismissModier())
                 }
             }
             .toolbar(.visible)

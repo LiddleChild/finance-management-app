@@ -34,8 +34,8 @@ struct AddTransactionView: View {
                 
                 Spacer()
                 
-                NavigationLink {
-                    AddDetailView().modifier(NagivationDismissModier())
+                Button {
+                    navigationCenter.goto(ViewLists.ADD_DETAIL_VIEW)
                 } label: {
                     Text("Next")
                         .modifier(PrimaryButtonModifier())

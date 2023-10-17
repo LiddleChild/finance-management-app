@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct NavigationTabMenu<Content: View>: View {
+struct NavigationTabMenu: View {
+    @EnvironmentObject private var navigationCenter: NavigationCenter
+    
     @Binding var selectedTab: NavigationTab
-    @ViewBuilder var createView: () -> Content
     
     var body: some View {
         HStack {
@@ -17,8 +18,8 @@ struct NavigationTabMenu<Content: View>: View {
                 let isSelected = tab == selectedTab
                 
                 if tab.enlarge {
-                    NavigationLink {
-                        createView()
+                    Button {
+                        navigationCenter.goto(ViewLists.ADD_TRANSACTION_VIEW)
                     } label: {
                         Image(systemName: tab.image)
                             .padding()
@@ -60,9 +61,7 @@ private struct Preview: View {
                 .fill(Color("color-1"))
                 .ignoresSafeArea()
             
-            NavigationTabMenu(selectedTab: $selectedTab) {
-                Text("Create")
-            }
+            NavigationTabMenu(selectedTab: $selectedTab)
             .padding(36)
         }
     }
