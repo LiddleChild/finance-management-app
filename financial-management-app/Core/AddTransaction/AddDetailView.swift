@@ -64,6 +64,7 @@ struct AddDetailView: View {
                 }
             }
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
