@@ -1,17 +1,18 @@
 //
-//  AddTransactionView.swift
+//  AddDetailView.swift
 //  financial-management-app
 //
-//  Created by Thanapat Ussawanarong on 19/7/2566 BE.
+//  Created by Thanapat Ussawanarong on 17/10/2566 BE.
 //
 
 import SwiftUI
 
-struct AddTransactionView: View {
+struct AddDetailView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var navigationCenter: NavigationCenter
     @EnvironmentObject private var viewModel: MainViewModel
-    @StateObject private var addTxnViewModel = AddTransactionViewModel()
+    
+    @State var addTxnViewModel: AddTransactionViewModel;
     
     var body: some View {
         ContentTemplate {
@@ -20,14 +21,27 @@ struct AddTransactionView: View {
                     .padding(.bottom, 48)
                 
                 VStack(spacing: 24) {
-                    CurrencyTextfield(value: $addTxnViewModel.amountField.value)
+                    TextField("", text: $addTxnViewModel.noteField)
+                        .autocapitalization(.none)
+                        .modifier(TextfieldModifier(
+                            label: "Note",
+                            placeholder: "A note here",
+                            text: addTxnViewModel.noteField))
                     
-                    ToggleButton(states: addTxnViewModel.expenseState,
-                                 value: $addTxnViewModel.expenseField)
-                    
-                    DropdownMenu(selection: $addTxnViewModel.walletField,
-                                 placeholder: "Wallet",
-                                 options: viewModel.wallet.getWalletDropdownOptions())
+                    Group {
+                        if addTxnViewModel.expenseField {
+                            DropdownMenu(
+                                selection: $addTxnViewModel.categoryField,
+                                placeholder: "Category",
+                                options: viewModel.category.getExpenseCategoryDropdownOptions())
+                        } else {
+                            DropdownMenu(
+                                selection: $addTxnViewModel.categoryField,
+                                placeholder: "Category",
+                                options: viewModel.category.getIncomeCategoryDropdownOptions())
+                        }
+                    }
+                    .zIndex(1)
                 }
                 
                 Spacer()
@@ -49,14 +63,21 @@ struct AddTransactionView: View {
                 }
             }
         }
-        .ignoresSafeArea(.keyboard)
+    }
+}
+
+private struct Preview: View {
+    @StateObject private var addTxnViewModel = AddTransactionViewModel()
+    
+    var body: some View {
+        AddDetailView(addTxnViewModel: addTxnViewModel)
     }
 }
 
 #Preview {
     ZStack {
         NavigationStack {
-            AddTransactionView()
+            Preview()
                 .toolbar(.visible)
                 .environmentObject(MainViewModel())
                 .environmentObject(ModalViewModel.shared)
