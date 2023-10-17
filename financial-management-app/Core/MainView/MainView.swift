@@ -22,9 +22,6 @@ struct MainView: View {
                     HistoryView()
                         .tag(NavigationTab.history)
                     
-                    SummaryView()
-                        .tag(NavigationTab.summary)
-                    
                     SettingView()
                         .tag(NavigationTab.setting)
                 }
