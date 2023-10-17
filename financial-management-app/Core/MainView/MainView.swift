@@ -45,11 +45,11 @@ struct MainView: View {
             }
             .toolbar(.visible)
             .ignoresSafeArea()
-            .overlay(Modal())
         }
         .environmentObject(mainViewModel)
         .environmentObject(modalViewModel)
         .environmentObject(navigationCenter)
+        .overlay(Modal())
     }
 }
 

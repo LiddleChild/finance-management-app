@@ -47,15 +47,14 @@ struct AddTransactionView: View {
 }
 
 #Preview {
-    ZStack {
-        NavigationStack {
-            AddTransactionView()
-                .toolbar(.visible)
-                .environmentObject(MainViewModel())
-                .environmentObject(ModalViewModel.shared)
-                .environmentObject(NavigationCenter.shared)
-        }
-        
+    NavigationStack {
+        AddTransactionView()
+            .toolbar(.visible)
+            .environmentObject(MainViewModel())
+            .environmentObject(ModalViewModel.shared)
+            .environmentObject(NavigationCenter.shared)
+    }
+    .overlay {
         Modal()
     }
 }
