@@ -43,15 +43,6 @@ struct MainView: View {
         .environmentObject(mainViewModel)
         .environmentObject(modalViewModel)
         .environmentObject(navigationCenter)
-        .navigationDestination(for: ViewLists.self) { view in
-            switch (view) {
-            case ViewLists.ADD_TRANSACTION_VIEW:
-                AddTransactionView()
-            
-            case ViewLists.ADD_DETAIL_VIEW:
-                AddDetailView()
-            }
-        }
     }
 }
 

@@ -27,6 +27,7 @@ struct AddDetailView: View {
                             label: "Note",
                             placeholder: "A note here",
                             text: addTxnViewModel.noteField))
+                        .modifier(HideKeyboard())
                     
                     Group {
                         if addTxnViewModel.expenseField {

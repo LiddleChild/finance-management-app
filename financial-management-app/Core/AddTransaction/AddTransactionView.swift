@@ -22,6 +22,7 @@ struct AddTransactionView: View {
                 
                 VStack(spacing: 24) {
                     CurrencyTextfield(value: $addTxnViewModel.amountField.value)
+                        .modifier(HideKeyboard())
                     
                     ToggleButton(states: addTxnViewModel.expenseState,
                                  value: $addTxnViewModel.expenseField)
@@ -34,7 +35,7 @@ struct AddTransactionView: View {
                 Spacer()
                 
                 NavigationLink {
-                    AddDetailView()
+                    AddDetailView().modifier(NagivationDismissModier())
                 } label: {
                     Text("Next")
                         .modifier(PrimaryButtonModifier())

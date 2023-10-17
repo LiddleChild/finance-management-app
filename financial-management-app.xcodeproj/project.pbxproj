@@ -74,6 +74,7 @@
 		699DFCAF2A42F4EB00B64C8C /* SecondaryButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */; };
 		699DFCB12A42F5E800B64C8C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DFCB02A42F5E800B64C8C /* RegisterView.swift */; };
 		699F0B192ADE36C100F7F887 /* AddDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F0B182ADE36C100F7F887 /* AddDetailView.swift */; };
+		699F0B1D2ADE99CD00F7F887 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699F0B1C2ADE99CD00F7F887 /* HideKeyboard.swift */; };
 		69D1D0E42A6CDF4900E3420D /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0E32A6CDF4900E3420D /* ToggleButton.swift */; };
 		69D1D0E82A6CE19200E3420D /* ToggleButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0E72A6CE19200E3420D /* ToggleButtonState.swift */; };
 		69D1D0EF2A6D101900E3420D /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D0EE2A6D101900E3420D /* Modal.swift */; };
@@ -160,6 +161,7 @@
 		699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonModifier.swift; sourceTree = "<group>"; };
 		699DFCB02A42F5E800B64C8C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		699F0B182ADE36C100F7F887 /* AddDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailView.swift; sourceTree = "<group>"; };
+		699F0B1C2ADE99CD00F7F887 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		69D1D0E32A6CDF4900E3420D /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		69D1D0E72A6CE19200E3420D /* ToggleButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonState.swift; sourceTree = "<group>"; };
 		69D1D0EE2A6D101900E3420D /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				699DFCAE2A42F4EB00B64C8C /* SecondaryButtonModifier.swift */,
 				6988F4432A48703A00EAEACE /* NavigationDismissModifier.swift */,
 				697029862A41700000A59EE2 /* TextfieldModifier.swift */,
+				699F0B1C2ADE99CD00F7F887 /* HideKeyboard.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				699F0B192ADE36C100F7F887 /* AddDetailView.swift in Sources */,
 				69D1D0EF2A6D101900E3420D /* Modal.swift in Sources */,
 				693723E42A7E60C90061EF0F /* CategoryEditorViewModel.swift in Sources */,
+				699F0B1D2ADE99CD00F7F887 /* HideKeyboard.swift in Sources */,
 				69604D472A7AC55300F520AD /* ContentTemplate.swift in Sources */,
 				693723DF2A7E5F0C0061EF0F /* CategorySettingView.swift in Sources */,
 				69D1D0FF2A6D84B900E3420D /* RecentlyViewTransaction.swift in Sources */,
