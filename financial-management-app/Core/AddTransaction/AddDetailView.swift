@@ -12,7 +12,7 @@ struct AddDetailView: View {
     @EnvironmentObject private var navigationCenter: NavigationCenter
     @EnvironmentObject private var viewModel: MainViewModel
     
-    @State var addTxnViewModel: AddTransactionViewModel;
+    @StateObject private var addTxnViewModel = AddTransactionViewModel.shared
     
     var body: some View {
         ContentTemplate {
@@ -66,18 +66,10 @@ struct AddDetailView: View {
     }
 }
 
-private struct Preview: View {
-    @StateObject private var addTxnViewModel = AddTransactionViewModel()
-    
-    var body: some View {
-        AddDetailView(addTxnViewModel: addTxnViewModel)
-    }
-}
-
 #Preview {
     ZStack {
         NavigationStack {
-            Preview()
+            AddDetailView()
                 .toolbar(.visible)
                 .environmentObject(MainViewModel())
                 .environmentObject(ModalViewModel.shared)

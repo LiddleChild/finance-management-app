@@ -11,7 +11,8 @@ struct AddTransactionView: View {
     @EnvironmentObject private var modalViewModel: ModalViewModel
     @EnvironmentObject private var navigationCenter: NavigationCenter
     @EnvironmentObject private var viewModel: MainViewModel
-    @StateObject private var addTxnViewModel = AddTransactionViewModel()
+    
+    @StateObject private var addTxnViewModel = AddTransactionViewModel.shared
     
     var body: some View {
         ContentTemplate {
@@ -32,19 +33,10 @@ struct AddTransactionView: View {
                 
                 Spacer()
                 
-                Button {
-                    addTxnViewModel.createTxn {
-                        modalViewModel.alertSuccess() {
-                            navigationCenter.backHome()
-                        }
-                    } onFailure: { error in
-                        modalViewModel.alertFailure(
-                            message: "Fail to create Transaction!") {
-                                navigationCenter.backHome()
-                            }
-                    }
+                NavigationLink {
+                    AddDetailView()
                 } label: {
-                    Text("Create Transaction")
+                    Text("Next")
                         .modifier(PrimaryButtonModifier())
                 }
             }

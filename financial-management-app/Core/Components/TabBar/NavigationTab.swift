@@ -10,19 +10,24 @@ import Foundation
 enum NavigationTab: String, CaseIterable {
     case home
     case create
-    case history
     case setting
     
     var image: String {
         switch self {
         case .home: return "house"
-        case .create: return "plus.circle"
-        case .history: return "clock"
+        case .create: return "plus"
         case .setting: return "gearshape"
         }
     }
     
     var selectedImage: String {
         self.image + ".fill"
+    }
+    
+    var enlarge: Bool {
+        switch self {
+        case .create: return true
+        default: return false
+        }
     }
 }

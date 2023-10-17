@@ -8,6 +8,9 @@
 import SwiftUI
 
 class AddTransactionViewModel: ObservableObject {
+    static let shared = AddTransactionViewModel()
+    private init() { }
+    
     var walletField: DropdownOption?
     var categoryField: DropdownOption?
     

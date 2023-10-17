@@ -9,4 +9,5 @@ import Foundation
 
 enum ViewLists {
     case ADD_TRANSACTION_VIEW
+    case ADD_DETAIL_VIEW
 }

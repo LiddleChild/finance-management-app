@@ -16,15 +16,27 @@ struct NavigationTabMenu<Content: View>: View {
             ForEach(NavigationTab.allCases, id: \.rawValue) { tab in
                 let isSelected = tab == selectedTab
                 
-                Image(systemName: isSelected ? tab.selectedImage : tab.image)
-                    .padding()
-                    .foregroundColor(isSelected ? Color("color-4") : .gray)
-                    .scaleEffect(isSelected ? 1.25 : 1)
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            selectedTab = tab
-                        }
+                if tab.enlarge {
+                    NavigationLink {
+                        createView()
+                    } label: {
+                        Image(systemName: tab.image)
+                            .padding()
+                            .foregroundColor(Color("color-5"))
+                            .background(Circle().foregroundColor(Color("color-4")))
+                            .scaleEffect(1.5)
                     }
+                } else {
+                    Image(systemName: isSelected ? tab.selectedImage : tab.image)
+                        .padding()
+                        .foregroundColor(isSelected ? Color("color-4") : .gray)
+                        .scaleEffect(isSelected ? 1.25 : 1)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                selectedTab = tab
+                            }
+                        }
+                }
                 
                 if tab != NavigationTab.allCases.last {
                     Spacer()

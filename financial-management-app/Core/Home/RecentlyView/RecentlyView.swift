@@ -13,8 +13,8 @@ struct RecentlyView: View {
     var transactions: [TransactionModel]
     
     var body: some View {
-        Button {
-            navigationCenter.navigate(.history)
+        NavigationLink {
+            HistoryView().modifier(NagivationDismissModier())
         } label: {
             ZStack(alignment: .top) {
                 Text("Recent Activities")
