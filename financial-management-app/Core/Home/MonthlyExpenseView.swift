@@ -28,11 +28,11 @@ struct MonthlyExpenseView: View {
                     
                     VStack(spacing: 4) {
                         Text("Monthly expense")
-                            .font(.system(size: 16, weight: .regular))
+                            .font(.system(size: 12, weight: .regular))
                             .foregroundColor(Color("color-5"))
                         
                         Text(String(format: "%.2f", expense))
-                            .font(.system(size: 24, weight: .regular))
+                            .font(.system(size: 20, weight: .regular))
                             .foregroundColor(Color("color-5"))
                     }
                 }

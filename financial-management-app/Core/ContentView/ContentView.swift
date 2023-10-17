@@ -12,7 +12,8 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var vm = ContentViewModel()
     var body: some View {
-        ContentView()
+//        ContentView()
+        MainView()
     }
     
     func ContentView() -> AnyView {

@@ -14,20 +14,18 @@ struct RecentlyView: View {
     
     var body: some View {
         Button {
-//            HistoryView()
-//                .modifier(NagivationDismissModier())
             navigationCenter.navigate(.history)
         } label: {
             ZStack(alignment: .top) {
                 Text("Recent Activities")
                     .foregroundColor(Color("color-5"))
-                    .font(.system(size: 20, weight: .medium))
+                    .font(.system(size: 16, weight: .medium))
                     .padding(.horizontal, 8)
                     .background(Color("color-1"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .zIndex(1)
                     .padding(.leading, 16)
-                    .offset(y: -12)
+                    .offset(y: -10)
                 
                 VStack(spacing: 8) {
                     if transactions.count > 0 {
@@ -42,7 +40,7 @@ struct RecentlyView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 128, alignment: .topLeading)
                 .foregroundColor(Color("color-5"))
-                .font(.system(size: 16, weight: .light))
+                .font(.system(size: 12, weight: .light))
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 12).strokeBorder(Color("color-3")))
