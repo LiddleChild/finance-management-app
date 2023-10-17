@@ -9,15 +9,15 @@ import Foundation
 
 enum NavigationTab: String, CaseIterable {
     case home
-    case history
     case create
+    case history
     case setting
     
     var image: String {
         switch self {
         case .home: return "house"
-        case .history: return "clock"
         case .create: return "plus.circle"
+        case .history: return "clock"
         case .setting: return "gearshape"
         }
     }
