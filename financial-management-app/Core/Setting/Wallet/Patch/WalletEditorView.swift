@@ -26,6 +26,7 @@ struct WalletEditorView: View {
                 SettingTextField(text: $vm.labelField, placeholder: wallet.Label)
                     .focused($focusField, equals: .Label)
                     .autocapitalization(.none)
+                    .modifier(HideKeyboard())
                 
                 ColorPicker(
                     "Color",

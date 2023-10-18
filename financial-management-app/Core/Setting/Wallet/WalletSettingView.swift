@@ -16,6 +16,7 @@ struct WalletSettingView: View {
                 if (viewModel.wallet.getWallet().isEmpty) {
                     Text("No wallet found.")
                         .frame(maxWidth: .infinity)
+                        .font(.system(size: 16))
                         .foregroundColor(Color.color5)
                 } else {
                     ForEach(viewModel.wallet.getWallet(),
@@ -31,7 +32,9 @@ struct WalletSettingView: View {
             NavigationLink {
                 WalletCreatingView()
             } label: {
-                Text("+ Wallet").foregroundColor(Color.gray)
+                Text("+ Wallet")
+                    .foregroundColor(Color.gray)
+                    .font(.system(size: 16))
             }
             .padding(8)
         }

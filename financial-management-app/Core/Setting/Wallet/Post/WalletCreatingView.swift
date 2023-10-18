@@ -26,7 +26,8 @@ struct WalletCreatingView: View {
                 SettingTextField(
                     text: $vm.labelField, placeholder: "Wallet label")
                 .focused($focusField, equals: .Label)
-                    .autocapitalization(.none)
+                .autocapitalization(.none)
+                .modifier(HideKeyboard())
                 
                 ColorPicker(
                     "Color",

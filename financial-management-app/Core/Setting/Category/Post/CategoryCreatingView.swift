@@ -28,7 +28,8 @@ struct CategoryCreatingView: View {
                 SettingTextField(
                     text: $vm.labelField, placeholder: "Category label")
                 .focused($focusField, equals: .Label)
-                    .autocapitalization(.none)
+                .autocapitalization(.none)
+                .modifier(HideKeyboard())
                 
                 ColorPicker(
                     "Color",

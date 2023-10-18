@@ -24,7 +24,7 @@ struct SettingNavigationLink<Content: View>: View {
         } label: {
             HStack {
                 Text(verbatim: label)
-                    .font(.system(size: 20))
+                    .font(.system(size: 16))
                 
                 Spacer()
                 

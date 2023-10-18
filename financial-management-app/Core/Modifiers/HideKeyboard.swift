@@ -18,6 +18,8 @@ struct HideKeyboard: ViewModifier {
                         let resign = #selector(UIResponder.resignFirstResponder)
                         UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
                     }
+                    .font(.system(size: 16))
+                    .foregroundColor(Color.color5)
                 }
             }
     }

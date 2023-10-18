@@ -19,6 +19,7 @@ struct CategorySettingView: View {
                 if (contentViewModel.category.getIncomeCategory().isEmpty) {
                     Text("No income category found.")
                         .frame(maxWidth: .infinity)
+                        .font(.system(size: 16))
                         .foregroundColor(Color.color5)
                 } else {
                     ForEach(contentViewModel.category.getIncomeCategory(),
@@ -33,7 +34,9 @@ struct CategorySettingView: View {
             NavigationLink {
                 CategoryCreatingView(categoryType: "INCOME")
             } label: {
-                Text("+ Income Category").foregroundColor(Color.gray)
+                Text("+ Income Category")
+                    .foregroundColor(Color.gray)
+                    .font(.system(size: 16))
             }
             .padding(.top, 8)
             
@@ -42,6 +45,7 @@ struct CategorySettingView: View {
                 if (contentViewModel.category.getExpenseCategory().isEmpty) {
                     Text("No expense category found.")
                         .frame(maxWidth: .infinity)
+                        .font(.system(size: 16))
                         .foregroundColor(Color.color5)
                 } else {
                     ForEach(contentViewModel.category.getExpenseCategory(),
@@ -56,7 +60,9 @@ struct CategorySettingView: View {
             NavigationLink {
                 CategoryCreatingView(categoryType: "EXPENSE")
             } label: {
-                Text("+ Expense Category").foregroundColor(Color.gray)
+                Text("+ Expense Category")
+                    .foregroundColor(Color.gray)
+                    .font(.system(size: 16))
             }
             .padding(8)
         }
