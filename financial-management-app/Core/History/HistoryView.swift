@@ -12,34 +12,28 @@ struct HistoryView: View {
     @StateObject private var historyViewModel = HistoryViewModel()
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color("color-1"))
-                .ignoresSafeArea()
+        ContentTemplate  {
+            HeaderView(header: "History")
             
-            VStack(alignment: .center) {
-                HeaderView(header: "History")
-                    .padding(.horizontal, 24)
-                
-                MonthYearPicker(value: $historyViewModel.monthYearField)
-                
-                Group {
-                    if historyViewModel.transaction.getDayTransaction().count > 0 {
-                        ScrollView {
-                            VStack(spacing: 16) {
-                                ForEach(historyViewModel.transaction.getDayTransaction(),
-                                        id: \.DayTransactionId) { i in
-                                    DayView(dayTransaction: i)
-                                }
+            MonthYearPicker(value: $historyViewModel.monthYearField)
+                .zIndex(1)
+                .padding(.bottom, 8)
+            
+            Group {
+                if historyViewModel.transaction.getDayTransaction().count > 0 {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(historyViewModel.transaction.getDayTransaction(),
+                                    id: \.DayTransactionId) { i in
+                                DayView(dayTransaction: i)
                             }
                         }
-                    } else {
-                        Text("No activity found on this month.")
-                            .foregroundColor(Color("color-5"))
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
+                } else {
+                    Text("No activity found on this month.")
+                        .foregroundColor(Color("color-5"))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .padding(.horizontal, 24)
             }
         }
         .toolbarBackground(Color("color-1"), for: .navigationBar)

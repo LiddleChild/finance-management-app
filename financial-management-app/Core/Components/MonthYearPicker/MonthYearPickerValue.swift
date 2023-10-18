@@ -11,3 +11,12 @@ struct MonthYearPickerValue {
     var Month: Int
     var Year: Int
 }
+
+extension MonthYearPickerValue {
+    func getMonthName() -> String {
+        return [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ][Month - 1];
+    }
+}
