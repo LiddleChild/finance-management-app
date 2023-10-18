@@ -18,7 +18,7 @@ struct MonthlyExpenseView: View {
             PieChartView(data: summaryData)
             
             NavigationLink {
-                HistoryView().modifier(NagivationDismissModier())
+                HistoryView().modifier(NavigationDismissModier())
             } label: {
                 ZStack {
                     Circle()

@@ -15,7 +15,7 @@ struct TransactionView: View {
     var body: some View {
         NavigationLink {
             TransactionHistoryView(transaction: transaction)
-                .modifier(NagivationDismissModier())
+                .modifier(NavigationDismissModier())
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)

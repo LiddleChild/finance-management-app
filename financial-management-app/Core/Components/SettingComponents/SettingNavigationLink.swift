@@ -20,7 +20,7 @@ struct SettingNavigationLink<Content: View>: View {
                 
                 Spacer()
             }
-            .modifier(NagivationDismissModier())
+            .modifier(NavigationDismissModier())
         } label: {
             HStack {
                 Text(verbatim: label)

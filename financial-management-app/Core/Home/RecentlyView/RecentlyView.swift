@@ -14,7 +14,7 @@ struct RecentlyView: View {
     
     var body: some View {
         NavigationLink {
-            HistoryView().modifier(NagivationDismissModier())
+            HistoryView().modifier(NavigationDismissModier())
         } label: {
             ZStack(alignment: .top) {
                 Text("Recent Activities")

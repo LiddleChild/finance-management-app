@@ -37,10 +37,10 @@ struct MainView: View {
             .navigationDestination(for: ViewLists.self) { destination in
                 switch (destination) {
                 case ViewLists.ADD_TRANSACTION_VIEW:
-                    AddTransactionView().modifier(NagivationDismissModier())
+                    AddTransactionView().modifier(NavigationDismissModier())
                     
                 case ViewLists.ADD_DETAIL_VIEW:
-                    AddDetailView().modifier(NagivationDismissModier())
+                    AddDetailView().modifier(NavigationDismissModier())
                 }
             }
             .toolbar(.visible)

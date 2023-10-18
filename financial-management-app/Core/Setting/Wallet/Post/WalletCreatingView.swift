@@ -60,7 +60,7 @@ struct WalletCreatingView: View {
             
             Spacer()
         }
-        .modifier(NagivationDismissModier())
+        .modifier(NavigationDismissModier())
     }
 }
 

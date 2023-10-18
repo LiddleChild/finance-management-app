@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct NagivationDismissModier: ViewModifier {
+struct NavigationDismissModier: ViewModifier {
     @Environment(\.dismiss) var dismiss
     
     func body(content: Content) -> some View {

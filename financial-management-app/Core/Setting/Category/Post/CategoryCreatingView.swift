@@ -62,7 +62,7 @@ struct CategoryCreatingView: View {
             
             Spacer()
         }
-        .modifier(NagivationDismissModier())
+        .modifier(NavigationDismissModier())
     }
 }
 
