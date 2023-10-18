@@ -13,11 +13,17 @@ struct WalletSettingView: View {
     var body: some View {
         ScrollView {
             SettingList {
-                ForEach(viewModel.wallet.getWallet(),
-                        id: \.WalletId) { wallet in
-                    
-                    SettingNavigationLink(label: wallet.Label) {
-                        WalletEditorView(wallet: wallet)
+                if (viewModel.wallet.getWallet().isEmpty) {
+                    Text("No wallet found.")
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.color5)
+                } else {
+                    ForEach(viewModel.wallet.getWallet(),
+                            id: \.WalletId) { wallet in
+                        
+                        SettingNavigationLink(label: wallet.Label) {
+                            WalletEditorView(wallet: wallet)
+                        }
                     }
                 }
             }

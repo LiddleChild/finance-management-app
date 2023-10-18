@@ -15,10 +15,17 @@ struct CategorySettingView: View {
     var body: some View {
         ScrollView {
             SettingList(title: "Income") {
-                ForEach(contentViewModel.category.getIncomeCategory(),
-                        id: \.CategoryId) { category in
-                    SettingNavigationLink(label: category.Label) {
-                        CategoryEditorView(category: category)
+                
+                if (contentViewModel.category.getIncomeCategory().isEmpty) {
+                    Text("No income category found.")
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.color5)
+                } else {
+                    ForEach(contentViewModel.category.getIncomeCategory(),
+                            id: \.CategoryId) { category in
+                        SettingNavigationLink(label: category.Label) {
+                            CategoryEditorView(category: category)
+                        }
                     }
                 }
             }
@@ -31,10 +38,17 @@ struct CategorySettingView: View {
             .padding(.top, 8)
             
             SettingList(title: "Expense") {
-                ForEach(contentViewModel.category.getExpenseCategory(),
-                        id: \.CategoryId) { category in
-                    SettingNavigationLink(label: category.Label) {
-                        CategoryEditorView(category: category)
+                
+                if (contentViewModel.category.getExpenseCategory().isEmpty) {
+                    Text("No expense category found.")
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(Color.color5)
+                } else {
+                    ForEach(contentViewModel.category.getExpenseCategory(),
+                            id: \.CategoryId) { category in
+                        SettingNavigationLink(label: category.Label) {
+                            CategoryEditorView(category: category)
+                        }
                     }
                 }
             }
