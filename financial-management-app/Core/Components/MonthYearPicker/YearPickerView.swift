@@ -13,7 +13,6 @@ struct YearPickerView: View {
     var body: some View {
         HStack {
             Button {
-//                withAnimation(.easeInOut) { year = year - 1 }
                 year = year - 1
             } label: {
                 Image(systemName: "chevron.left")
@@ -24,12 +23,11 @@ struct YearPickerView: View {
             Spacer()
             
             Text(verbatim: String(year))
-                .font(.system(size: 20, weight: .semibold))
+                .font(.system(size: 16, weight: .semibold))
             
             Spacer()
             
             Button {
-//                withAnimation { year = year + 1 }
                 year = year + 1
             } label: {
                 Image(systemName: "chevron.right")
