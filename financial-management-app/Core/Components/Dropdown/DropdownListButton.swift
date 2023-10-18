@@ -28,7 +28,7 @@ struct DropdownListButton: View {
                 }
                 
                 Text(option.Label)
-                    .font(.system(size: 20))
+                    .font(.system(size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .foregroundColor(Color("color-5"))

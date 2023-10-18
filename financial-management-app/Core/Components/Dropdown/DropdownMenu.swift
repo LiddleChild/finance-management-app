@@ -19,7 +19,7 @@ struct DropdownMenu: View {
                 DropdownListButton(option: selection) { _ in }
                     .disabled(true)
             } else {
-                Text("\(placeholder)").font(.system(size: 20))
+                Text("\(placeholder)").font(.system(size: 16))
             }
             
             Spacer()
@@ -46,7 +46,7 @@ struct DropdownMenu: View {
                         isShowingOption = false
                     }
                 }
-                .offset(y: 52)
+                .offset(y: 44)
                 .transition(.scale)
             }
         }
