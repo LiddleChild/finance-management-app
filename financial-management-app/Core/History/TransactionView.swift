@@ -19,10 +19,10 @@ struct TransactionView: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(Color("color-2"))
-                    .frame(height: 56)
+                    .foregroundColor(Color.color2)
+                    .frame(height: 48)
                 
-                HStack(spacing: 16) {
+                HStack(spacing: 12) {
                     Text("\(viewModel.category.getCategoryLabelById(id: transaction.Category))")
                         .font(.system(size: 16, weight: .regular))
                     
@@ -42,7 +42,7 @@ struct TransactionView: View {
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(transaction.Amount > 0 ? Color("color-green") : Color("color-red"))
                 }
-                .foregroundColor(Color("color-5"))
+                .foregroundColor(Color.color5)
                 .padding(.horizontal, 16)
             }
         }

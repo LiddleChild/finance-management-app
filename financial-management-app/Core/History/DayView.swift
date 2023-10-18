@@ -11,18 +11,18 @@ struct DayView: View {
     var dayTransaction: DayTxnModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 4) {
             ZStack(alignment: .leading) {
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundColor(Color("color-5"))
+                    .foregroundColor(Color.color5)
                 
                 Text(Date(timeIntervalSince1970: Double(dayTransaction.Timestamp))
                     .formatted(.dateTime.day().month().year())
                 )
                 .padding(.horizontal, 8)
-                .foregroundColor(Color("color-5"))
-                .background(Color("color-1"))
+                .foregroundColor(Color.color5)
+                .background(Color.color1)
                 .padding(.leading, 24)
             }
             
